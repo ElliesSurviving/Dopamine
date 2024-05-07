@@ -17,19 +17,23 @@ NSString *NSPrebootUUIDPath(NSString *relativePath)
 	}
 }
 
-void _JBFixMobilePermissionsOfDirectory(NSString *directoryPath, BOOL recursive)
+void JBFixMobilePermissions(void)
 {
-	struct stat s;
-	NSURL *directoryURL = [NSURL fileURLWithPath:directoryPath];
+	@autoreleasepool {
+		struct stat s;
 
-	if (stat(directoryURL.fileSystemRepresentation, &s) == 0) {
-		if (s.st_uid != 501 || s.st_gid != 501) {
-			chown(directoryURL.fileSystemRepresentation, 501, 501);
+		// Anything in /var/mobile should owned by mobile...
+		// For some reason some packages seem to fuck this up, so we automatically fix it every userspace reboot and on rejailbreak
+		NSString *mobilePath = NSJBRootPath(@"/var/mobile");
+		NSURL *mobileURL = [NSURL fileURLWithPath:mobilePath];
+
+		if (stat(mobileURL.fileSystemRepresentation, &s) == 0) {
+			if (s.st_uid != 501 || s.st_gid != 501) {
+				chown(mobileURL.fileSystemRepresentation, 501, 501);
+			}
 		}
-	}
 
-	if (recursive) {
-		NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:directoryURL includingPropertiesForKeys:nil options:0 errorHandler:nil];
+		NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtURL:mobileURL includingPropertiesForKeys:nil options:0 errorHandler:nil];
 		for (NSURL *fileURL in enumerator) {
 			if (stat(fileURL.fileSystemRepresentation, &s) == 0) {
 				if (s.st_uid != 501 || s.st_gid != 501) {
@@ -37,27 +41,5 @@ void _JBFixMobilePermissionsOfDirectory(NSString *directoryPath, BOOL recursive)
 				}
 			}
 		}
-	}
-}
-
-void JBFixMobilePermissions(void)
-{
-	@autoreleasepool {
-		NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:NSJBRootPath(@"/var") error:nil];
-		if ([attributes[NSFileType] isEqualToString:NSFileTypeSymbolicLink]) {
-			// /var/jb/var is a symlink, abort
-			return;
-		}
-		attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:NSJBRootPath(@"/var/mobile") error:nil];
-		if ([attributes[NSFileType] isEqualToString:NSFileTypeSymbolicLink]) {
-			// /var/jb/var/mobile is a symlink, abort
-			return;
-		}
-
-		_JBFixMobilePermissionsOfDirectory(NSJBRootPath(@"/var/mobile"), NO);
-		_JBFixMobilePermissionsOfDirectory(NSJBRootPath(@"/var/mobile/Library"), NO);
-		_JBFixMobilePermissionsOfDirectory(NSJBRootPath(@"/var/mobile/Library/SplashBoard"), YES);
-		_JBFixMobilePermissionsOfDirectory(NSJBRootPath(@"/var/mobile/Library/Application Support"), YES);
-		_JBFixMobilePermissionsOfDirectory(NSJBRootPath(@"/var/mobile/Library/Preferences"), YES);
 	}
 }
