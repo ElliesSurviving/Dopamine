@@ -90,5 +90,39 @@
 		<key>titleShadow</key>
 		<false/>
 	</dict>
+	<dict>
+		<key>key</key>
+		<string>galaxy</string>
+		<key>icon</key>
+		<string>AppIcon_Purple</string>
+		<key>name</key>
+		<string>Galaxy</string>
+		<key>image</key>
+		<string>Background_Galaxy.jpg</string>
+		<key>actionMenuColor</key>
+		<string>4F150C71</string>
+		<key>windowColor</key>
+		<string>6008040A</string>
+		<key>blur</key>
+		<integer>25</integer>
+		<key>titleShadow</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>key</key>
+		<string>pixel</string>
+		<key>name</key>
+		<string>Pixel</string>
+		<key>image</key>
+		<string>Background_Pixel.jpg</string>
+		<key>actionMenuColor</key>
+		<string>723f3f3f</string>
+		<key>windowColor</key>
+		<string>994c4c4c</string>
+		<key>blur</key>
+		<integer>25</integer>
+		<key>titleShadow</key>
+		<true/>
+	</dict>
 </array>
 </plist>
