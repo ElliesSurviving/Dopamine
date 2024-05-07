@@ -2,6 +2,5 @@
 
 # Dopamine
 
-Rootless arm64e jailbreak for iOS 15.0 - 16.5.1 (arm64e) and iOS 15.0 - 16.6.1 (arm64). More details will follow here soon.
-
-Official website / download: https://ellekit.space/dopamine/
+Personal fork of Dopamine maintained by the Winters Collective. This is so we can administer all changes before they run on our devices and adapt the code to our needs on our janky setup.
+This is not for the average user at all, please don't use this. This may leave out core Dopamine functionality or other known issues, or create more issues on stock. If you do run this and have issues, DO NOT REPORT IT TO OPA334. Restore rootfs, rejailbreak with the latest stock Dopamine version, and see if the issue persists, then you may report bugs to the developer or open an issue on the main repository.
