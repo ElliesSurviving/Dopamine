@@ -544,7 +544,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     // We also do it now though in case there is a failure between the now step and the userspace reboot
     //[[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Initializing Protection") debug:NO];
     //*errOut = [self applyProtection];
-   // if (*errOut) return;
+    //if (*errOut) return;
     
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Bind Mount") debug:NO];
     *errOut = [self createFakeLib];
