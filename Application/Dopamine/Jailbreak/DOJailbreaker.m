@@ -366,14 +366,14 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     return nil;
 }
 
-//- (NSError *)applyProtection
-//{
- //   int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "protection_init", NULL);
- //   if (r != 0) {
- //       return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitProtection userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Failed initializing protection with error: %d", r]}];
- //   }
-//    return nil;
-//}
+- (NSError *)applyProtection
+{
+    int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "protection_init", NULL);
+    if (r != 0) {
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitProtection userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Failed initializing protection with error: %d", r]}];
+    }
+    return nil;
+}
 
 - (NSError *)createFakeLib
 {
