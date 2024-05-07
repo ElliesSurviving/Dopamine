@@ -1,12 +1,12 @@
-"Credits_Made_By" = "by opa334, ElleKit by évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by Ellie Winters";
 
 // Log
-"Status_Title_Jailbreaking" = "Jailbreaking";
+"Status_Title_Jailbreaking" = "Running Jailbreak";
 "Log_Error" = "Error";
 
 // Jailbreak Button
 "Button_Jailbreak_Title" = "Jailbreak";
-"Status_Title_Jailbroken" = "Jailbroken";
+"Status_Title_Jailbroken" = "Already Jailbroken";
 "Unsupported" = "Unsupported";
 
 // Action Menu
@@ -18,7 +18,7 @@
 // Updating
 "Button_Update" = "Update";
 "Button_Update_Available" = "Update Available";
-"Button_Update_Environment" = "Update Environment";
+"Button_Update_Environment" = "Update BaseBins";
 
 // Update View
 "Update_Status_Downloading" = "Downloading update...";
@@ -29,8 +29,8 @@
 "Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-"Removed_Jailbreak_Alert_Title" = "Removed Jailbreak";
-"Removed_Jailbreak_Alert_Message" = "Successfully removed jailbreak. Rebooting the device is recommended.";
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
 "Button_Close" = "Close";
 
 // Error View
@@ -38,22 +38,22 @@
 "Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "Tweak Injection";
-"Settings_iDownload" = "iDownload (Developer Shell)";
-"Settings_Verbose_Logs" = "Verbose Logs";
-"Settings_Apps_JIT" = "Allow JIT in Apps";
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "Remove Jailbreak";
-"Button_Hide_Jailbreak" = "Hide Jailbreak";
-"Button_Unhide_Jailbreak" = "Unhide Jailbreak";
-"Button_Refresh_Jailbreak_Apps" = "Refresh Jailbreak Apps";
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run uicache";
 "Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
 "Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "\"Hide Jailbreak\" temporarily removes jailbreak-related files until the next rejailbreak";
-"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
 "Section_Jailbreak_Settings" = "Jailbreak Settings";
 "Section_Actions" = "Actions";
 "Section_Customization" = "Customization";
@@ -64,9 +64,9 @@
 "Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
 "Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
 "Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
-"Alert_Remove_Jailbreak_Title" = "Remove Jailbreak";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
 "Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
-"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
 "Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
 "Password_Placeholder" = "Password";
 "Repeat_Password_Placeholder" = "Repeat Password";
@@ -84,7 +84,7 @@
 "Kernel Exploit" = "Kernel Exploit";
 "PPL Bypass" = "PPL Bypass";
 "PAC Bypass" = "PAC Bypass";
-"None" = "None";
+"None" = "Disabled";
 "Recommended" = "Recommended";
 
 // Credits
@@ -93,19 +93,19 @@
 "Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Initializing Jailbreak Environment";
+"Initializing Environment" = "Initializing Jailbreak Environment (9/11)";
 "Initializing Protection" = "Initializing Protection";
-"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache";
-"Applying Bind Mount" = "Applying Bind Mount";
-"Removing Jailbreak" = "Removing Jailbreak";
-"Elevating Privileges" = "Elevating Privileges";
-"Cleaning Up Exploits" = "Cleaning Up Exploits";
-"Building Phys R/W Primitive" = "Building Phys R/W Primitive";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (8/11)";
+"Applying Bind Mount" = "Applying Bind Mount (10/11)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/11)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/11)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/11)";
 "Rebooting Userspace" = "Rebooting Userspace";
-"Patchfinding" = "Patchfinding";
-"Exploiting Kernel (%@)" = "Exploiting Kernel (%@)";
-"Bypassing PAC (%@)" = "Bypassing PAC (%@)";
-"Bypassing PPL (%@)" = "Bypassing PPL (%@)";
+"Patchfinding" = "Patchfinding (1/11)";
+"Exploiting Kernel (%@)" = "Running Exploit (2/11)";
+"Bypassing PAC (%@)" = "Bypassing PAC (3/11)";
+"Bypassing PPL (%@)" = "Bypassing PPL (4/11))";
 
 // Package Manager selection
 "Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
