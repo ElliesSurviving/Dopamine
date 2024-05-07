@@ -35,7 +35,7 @@
 
 - (void)openSourceCode
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/opa334/Dopamine"] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/elliessurviving/Dopamine"] options:@{} completionHandler:nil];
 }
 
 - (void)openDiscord
