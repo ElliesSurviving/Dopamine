@@ -8,39 +8,39 @@
 
 SInt32 CFUserNotificationDisplayAlert(CFTimeInterval timeout, CFOptionFlags flags, CFURLRef iconURL, CFURLRef soundURL, CFURLRef localizationURL, CFStringRef alertHeader, CFStringRef alertMessage, CFStringRef defaultButtonTitle, CFStringRef alternateButtonTitle, CFStringRef otherButtonTitle, CFOptionFlags *responseFlags) API_AVAILABLE(ios(3.0));
 
-void execute_unsandboxed(void (^block)(void))
-{
-	uint64_t credBackup = 0;
-	jbclient_root_steal_ucred(0, &credBackup);
-	block();
-	jbclient_root_steal_ucred(credBackup, NULL);
-}
+//void execute_unsandboxed(void (^block)(void))
+//{
+//	uint64_t credBackup = 0;
+//	jbclient_root_steal_ucred(0, &credBackup);
+//	block();
+//	jbclient_root_steal_ucred(credBackup, NULL);
+//}
 
-int mount_unsandboxed(const char *type, const char *dir, int flags, void *data)
-{
-	__block int r = 0;
-	execute_unsandboxed(^{
-		r = mount(type, dir, flags, data);
-	});
-	return r;
-}
+//int mount_unsandboxed(const char *type, const char *dir, int flags, void *data)
+//{
+//	__block int r = 0;
+//	execute_unsandboxed(^{
+//		r = mount(type, dir, flags, data);
+//	});
+//	return r;
+//}
 
-void ensureProtected(const char *path)
-{
-	struct statfs sb;
-	statfs(path, &sb);
-	if (strcmp(path, sb.f_mntonname) != 0) {
-		mount_unsandboxed("bindfs", path, 0, (void *)path);
-	}
-}
+//void ensureProtected(const char *path)
+//{
+//	struct statfs sb;
+//	statfs(path, &sb);
+//	if (strcmp(path, sb.f_mntonname) != 0) {
+//		mount_unsandboxed("bindfs", path, 0, (void *)path);
+//	}
+//}
 
-void ensureProtectionActive(void)
-{
+//void ensureProtectionActive(void)
+//{
 	// Protect /private/preboot/UUID/<System, usr> from being modified by bind mounting them on top of themselves
 	// This protects dumb users from accidentally deleting these, which would induce a recovery loop after rebooting
-	ensureProtected(prebootUUIDPath("/System"));
-	ensureProtected(prebootUUIDPath("/usr"));
-}
+//	ensureProtected(prebootUUIDPath("/System"));
+//	ensureProtected(prebootUUIDPath("/usr"));
+//}
 
 int jbctl_handle_internal(const char *command, int argc, char* argv[])
 {
@@ -85,10 +85,10 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 		mach_port_deallocate(mach_task_self(), launchdTaskPort);
 		return 0;
 	}
-	else if (!strcmp(command, "protection_init")) {
-		ensureProtectionActive();
-		return 0;
-	}
+	//else if (!strcmp(command, "protection_init")) {
+	//	ensureProtectionActive();
+	//	return 0;
+	//}
 	else if (!strcmp(command, "fakelib_init")) {
 		NSString *basebinPath = NSJBRootPath(@"/basebin");
 		NSString *fakelibPath = NSJBRootPath(@"/basebin/.fakelib");
@@ -121,7 +121,7 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 		return mount_unsandboxed("bindfs", "/usr/lib", MNT_RDONLY, (void *)JBRootPath("/basebin/.fakelib"));
 	}
 	else if (!strcmp(command, "startup")) {
-		ensureProtectionActive();
+//		ensureProtectionActive();
 		char *panicMessage = NULL;
 		if (jbclient_watchdog_get_last_userspace_panic(&panicMessage) == 0) {
 			NSString *printMessage = [NSString stringWithFormat:@"Dopamine has protected you from a userspace panic by temporarily disabling tweak injection and triggering a userspace reboot instead. A log is available under Analytics in the Preferences app. You can reenable tweak injection in the Dopamine app.\n\nPanic message: \n%s", panicMessage];
