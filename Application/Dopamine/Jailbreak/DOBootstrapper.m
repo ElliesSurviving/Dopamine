@@ -525,7 +525,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             [[NSFileManager defaultManager] createDirectoryAtPath:mobilePreferencesPath withIntermediateDirectories:YES attributes:attributes error:nil];
         }
         
-        JBFixMobilePermissions();
 
         completion(nil);
     };

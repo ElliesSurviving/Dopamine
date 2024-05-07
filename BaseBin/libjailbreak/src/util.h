@@ -80,6 +80,4 @@ NSString *NSJBRootPath(NSString *relativePath);
 NSString *NSPrebootUUIDPath(NSString *relativePath);
 #endif
 
-void JBFixMobilePermissions(void);
-
 #endif
