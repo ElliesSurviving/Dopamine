@@ -18,7 +18,7 @@
 // Updating
 "Button_Update" = "Update";
 "Button_Update_Available" = "Update Available";
-"Button_Update_Environment" = "Update BaseBins";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
 "Update_Status_Downloading" = "Downloading update...";
