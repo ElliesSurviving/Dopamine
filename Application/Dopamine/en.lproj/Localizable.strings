@@ -93,19 +93,21 @@
 "Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Initializing Jailbreak Environment (9/11)";
+"Initializing Environment" = "Initializing Jailbreak Environment (10/12)";
 "Initializing Protection" = "Initializing Protection";
-"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (8/11)";
-"Applying Bind Mount" = "Applying Bind Mount (10/11)";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/12)";
+"Applying Bind Mount" = "Applying Bind Mount (11/12)";
 "Removing Jailbreak" = "Restoring RootFS";
-"Elevating Privileges" = "Elevating Privileges (7/11)";
-"Cleaning Up Exploits" = "Cleaning Up Exploits (6/11)";
-"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/11)";
+"Elevating Privileges" = "Elevating Privileges (7/12)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/12)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/12)";
 "Rebooting Userspace" = "Rebooting Userspace";
-"Patchfinding" = "Patchfinding (1/11)";
-"Exploiting Kernel (%@)" = "Running Exploit (2/11)";
-"Bypassing PAC (%@)" = "Bypassing PAC (3/11)";
-"Bypassing PPL (%@)" = "Bypassing PPL (4/11))";
+"Patchfinding" = "Patchfinding (1/12)";
+"Exploiting Kernel (%@)" = "Running Exploit (2/12)";
+"Bypassing PAC (%@)" = "Bypassing PAC (3/12)";
+"Bypassing PPL (%@)" = "Bypassing PPL (4/12))";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (12/12)";
+"Updating BaseBin" = "Updating BaseBin (8/12)";
 
 // Package Manager selection
 "Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
