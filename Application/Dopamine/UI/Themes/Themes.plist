@@ -124,5 +124,23 @@
 		<key>titleShadow</key>
 		<true/>
 	</dict>
+	<dict>
+		<key>key</key>
+		<string>trans</string>
+		<key>icon</key>
+		<string>AppIcon_ElleKit</string>
+		<key>name</key>
+		<string>Trans</string>
+		<key>image</key>
+		<string>Background_Trans.jpg</string>
+		<key>actionMenuColor</key>
+		<string>3F610C71</string>
+		<key>windowColor</key>
+		<string>6009040A</string>
+		<key>blur</key>
+		<integer>30</integer>
+		<key>titleShadow</key>
+		<true/>
+	</dict>
 </array>
 </plist>
