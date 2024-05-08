@@ -142,5 +142,23 @@
 		<key>titleShadow</key>
 		<true/>
 	</dict>
+	<dict>
+		<key>key</key>
+		<string>starship</string>
+		<key>icon</key>
+		<string>AppIcon_Purple</string>
+		<key>name</key>
+		<string>Starship</string>
+		<key>image</key>
+		<string>Background_Starship.jpg</string>
+		<key>actionMenuColor</key>
+		<string>4F150C71</string>
+		<key>windowColor</key>
+		<string>6008040A</string>
+		<key>blur</key>
+		<integer>10</integer>
+		<key>titleShadow</key>
+		<false/>
+	</dict>
 </array>
 </plist>

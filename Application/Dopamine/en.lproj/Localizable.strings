@@ -107,7 +107,7 @@
 "Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/12)";
 "Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/12)";
 "Checking For Duplicate Apps" = "Checking For Duplicate Apps (12/12)";
-"Updating BaseBin" = "Updating BaseBin (8/12)";
+"Updating BaseBin" = "Updating Basebins (8/12)";
 
 // Package Manager selection
 "Status_Title_Select_Package_Managers" = "Select Package Manager(s)";

@@ -386,7 +386,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (void)prepareBootstrapWithCompletion:(void (^)(NSError *))completion
 {
-    [[DOUIManager sharedInstance] sendLog:@"Updating BaseBin (8/12)" debug:NO];
+    [[DOUIManager sharedInstance] sendLog:@"Updating Basebins (8/12)" debug:NO];
 
     // Ensure /private/preboot is mounted writable (Not writable by default on iOS <=15)
     NSError *error = [self ensurePrivatePrebootIsWritable];
