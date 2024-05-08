@@ -103,9 +103,9 @@
 "Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/12)";
 "Rebooting Userspace" = "Rebooting Userspace";
 "Patchfinding" = "Patchfinding (1/12)";
-"Exploiting Kernel (%@)" = "Running Exploit (2/12)";
-"Bypassing PAC (%@)" = "Bypassing PAC (3/12)";
-"Bypassing PPL (%@)" = "Bypassing PPL (4/12))";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/12)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/12)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/12)";
 "Checking For Duplicate Apps" = "Checking For Duplicate Apps (12/12)";
 "Updating BaseBin" = "Updating BaseBin (8/12)";
 
