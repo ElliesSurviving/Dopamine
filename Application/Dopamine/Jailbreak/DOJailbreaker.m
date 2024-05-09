@@ -578,7 +578,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     //exec_cmd_trusted(JBRootPath("/usr/bin/launchctl"), "bootstrap", "system", JBRootPath("/basebin/LaunchDaemons"), NULL);
     // Note: This causes the app to freeze in some instances due to launchd only having physrw_pte, we might want to only do it when neccessary
     // It's only neccessary when we don't immediately userspace reboot
-    [self rebootalertthing];
     printf("Done!\n");
 }
 
