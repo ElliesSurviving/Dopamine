@@ -237,7 +237,6 @@
             }
             else {
                 // No errors
-                [jailbreaker rebootalertthing];
                 [[DOUIManager sharedInstance] completeJailbreak];
                 [self fadeToBlack: ^{
                     [jailbreaker finalize];
