@@ -113,6 +113,6 @@
 "Continue" = "استمرار";
 
 // Stuff Pls Ignore
-"Test_Reboot_Title" = "Jailbreak Completed"
-"Test_Reboot_Message" = "No error occurred. The device will now reboot into the jailbroken state."
-"Test_Reboot_Close" = "OK"
+"Test_Reboot_Title" = "Jailbreak Completed";
+"Test_Reboot_Message" = "No error occurred. The device will now reboot into the jailbroken state.";
+"Test_Reboot_Close" = "OK";
