@@ -113,3 +113,9 @@
 "Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
 "Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
 "Continue" = "Continue";
+
+// Test Shit Why Am I Doing This
+
+"Test_Reboot_Title" = "Jailbreak Completed"
+"Test_Reboot_Message" = "No error occurred. The device will now reboot into the jailbroken state."
+"Test_Reboot_Close" = "OK"

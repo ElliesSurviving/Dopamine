@@ -572,6 +572,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     // It's only neccessary when we don't immediately userspace reboot
     
     printf("Done!\n");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 }
 
 - (void)finalize
