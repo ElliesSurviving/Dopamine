@@ -112,3 +112,7 @@
 "Select_Package_Managers_Install_Message" = "Если вы не знаете, какой из них выбрать, выберите Sileo";
 "Continue" = "Продолжить";
 
+// Stuff Pls Ignore
+"Test_Reboot_Title" = "Jailbreak Completed"
+"Test_Reboot_Message" = "No error occurred. The device will now reboot into the jailbroken state."
+"Test_Reboot_Close" = "OK"
