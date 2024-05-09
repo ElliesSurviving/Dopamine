@@ -565,14 +565,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         return;
     }
 
-- (void)rebootalertthing
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        exit(0);
-    }];
-}
-    
+  
     //printf("Starting launch daemons...\n");
     //exec_cmd_trusted(JBRootPath("/usr/bin/launchctl"), "bootstrap", "system", JBRootPath("/Library/LaunchDaemons"), NULL);
     //exec_cmd_trusted(JBRootPath("/usr/bin/launchctl"), "bootstrap", "system", JBRootPath("/basebin/LaunchDaemons"), NULL);
