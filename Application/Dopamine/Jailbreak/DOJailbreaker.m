@@ -520,14 +520,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         *didRemove = YES;
         return;
     }
-
-    - (void)rebootalertthing
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        exit(0);
-    }];
-}
     
     *errOut = [[DOEnvironmentManager sharedManager] prepareBootstrap];
     if (*errOut) return;
@@ -572,12 +564,21 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         *showLogs = NO;
         return;
     }
+
+- (void)rebootalertthing
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        exit(0);
+    }];
+}
     
     //printf("Starting launch daemons...\n");
     //exec_cmd_trusted(JBRootPath("/usr/bin/launchctl"), "bootstrap", "system", JBRootPath("/Library/LaunchDaemons"), NULL);
     //exec_cmd_trusted(JBRootPath("/usr/bin/launchctl"), "bootstrap", "system", JBRootPath("/basebin/LaunchDaemons"), NULL);
     // Note: This causes the app to freeze in some instances due to launchd only having physrw_pte, we might want to only do it when neccessary
     // It's only neccessary when we don't immediately userspace reboot
+
     printf("Done!\n");
 }
 
