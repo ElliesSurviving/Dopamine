@@ -444,6 +444,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"/var/zprofile",
             @"/var/zshenv",
             @"/var/zshrc",
+            @"/var/jb/vmo",
+            @"/var/jb/UsrLb",
+            @"/var/jb/Xapps",
         ];
         NSArray *xinaLeftoverFiles = @[
             @"/var/master.passwd"
