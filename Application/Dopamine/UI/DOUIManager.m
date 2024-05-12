@@ -263,6 +263,7 @@
         handler:^(UIAlertAction * action) {}];
  
     [completealert addAction:completealertAction];
+    [self presentViewController:completealert animated:YES completion:nil];
 };
 
 
