@@ -262,9 +262,8 @@
     UIAlertAction* completealertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * action) {}];
  
-    [completealert addAction:cancelAction];
-    }];
-}
+    [completealert addAction:completealertAction];
+};
 
 
 - (void)completeJailbreak
