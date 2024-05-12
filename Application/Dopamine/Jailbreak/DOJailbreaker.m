@@ -417,6 +417,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d", r]}];
     }
+    return nil;
 }
 
 - (NSError *)BindFonts
@@ -425,6 +426,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
     }
+    return nil;
 }
 
 - (NSError *)ensureNoDuplicateApps
