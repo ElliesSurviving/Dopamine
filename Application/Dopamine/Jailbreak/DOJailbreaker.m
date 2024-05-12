@@ -491,11 +491,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         }
     }
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        exit(0);
-    }];
-    
     return nil;
 }
 
@@ -581,6 +576,10 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Fonts Mount") debug:NO];
     *errOut = [self BindFonts];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        exit(0);
+    }];
     if (*errOut) return;
 
     // Unsandbox iconservicesagent so that app icons can work
