@@ -593,7 +593,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         *showLogs = NO;
         return;
 
-    [[DOUIManager sharedInstance] JailbreakCompleteAlert];
+    [[DOUIManager sharedManager] JailbreakCompleteAlert];
     }
 
   
