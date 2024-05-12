@@ -258,9 +258,11 @@
 
 - (void)JailbreakCompleteAlert
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        exit(0);
+    UIAlertController* completealert = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* completealertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * action) {}];
+ 
+    [completealert addAction:cancelAction];
     }];
 }
 

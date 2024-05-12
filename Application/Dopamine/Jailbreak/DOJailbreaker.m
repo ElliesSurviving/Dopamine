@@ -592,7 +592,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (*errOut) {
         *showLogs = NO;
         return;
-    [[DOUIManager sharedInstance] JailbreakCompleteAlert];
+        [[DOUIManager sharedInstance] presentViewController:completealert animated:YES completion:nil]
     }
 
   
