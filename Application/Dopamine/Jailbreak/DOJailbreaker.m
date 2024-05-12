@@ -403,6 +403,20 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitFakeLib userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fakelib failed with error: %d", r]}];
     }
+
+- (NSError *)BindCores
+{
+    r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "cores_mount", NULL);
+    if (r != 0) {
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d", r]}];
+}
+
+- (NSError *)BindFonts
+{
+    r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "fonts_mount", NULL);
+    if (r != 0) {
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
+}
     
     // Now that fakelib is up, we want to make systemhook inject into any binary we spawn
     setenv("DYLD_INSERT_LIBRARIES", "/usr/lib/systemhook.dylib", 1);
@@ -554,7 +568,15 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Bind Mount") debug:NO];
     *errOut = [self createFakeLib];
     if (*errOut) return;
-    
+
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Cores Mount") debug:NO];
+    *errOut = [self BindCores];
+    if (*errOut) return;
+
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Fonts Mount") debug:NO];
+    *errOut = [self BindFonts];
+    if (*errOut) return;
+
     // Unsandbox iconservicesagent so that app icons can work
     exec_cmd_trusted(JBRootPath("/usr/bin/killall"), "-9", "iconservicesagent", NULL);
     
