@@ -322,14 +322,6 @@
     });
 }
 
-- (void)JailbreakCompleteAlert
-{
-    UIAlertController* completealert = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* completealertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
- 
-    [completealert addAction:completealertAction];
-    [self presentViewController:completealert animated:YES completion:nil];
-};
 
 - (void)fadeToBlack:(void (^)(void))completion
 {
