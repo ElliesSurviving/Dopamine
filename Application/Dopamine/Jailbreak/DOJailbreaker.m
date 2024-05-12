@@ -499,13 +499,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     return [[DOEnvironmentManager sharedManager] finalizeBootstrap];
 }
 
-- (void *)JailbreakCompleteAlert
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        exit(0);
-    }];
-}
 
 - (void)runWithError:(NSError **)errOut didRemoveJailbreak:(BOOL*)didRemove showLogs:(BOOL *)showLogs
 {
@@ -599,8 +592,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (*errOut) {
         *showLogs = NO;
         return;
-    *errOut = [self JailbreakCompleteAlert];
-    if (*errOut) return;
+
+    [[DOUIManager sharedInstance] JailbreakCompleteAlert];
     }
 
   
