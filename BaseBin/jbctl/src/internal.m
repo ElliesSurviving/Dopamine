@@ -118,6 +118,7 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 	}
 	else if (!strcmp(command, "fakelib_mount")) {
 		printf("Applying mount...\n");
+		mount_unsandboxed("bindfs", "/cores", MNT_RDONLY, (void *)JBRootPath("/cores"));
 		return mount_unsandboxed("bindfs", "/usr/lib", MNT_RDONLY, (void *)JBRootPath("/basebin/.fakelib"));
 	}
 	else if (!strcmp(command, "startup")) {
