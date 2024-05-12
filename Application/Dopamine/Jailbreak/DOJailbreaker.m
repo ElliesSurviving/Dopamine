@@ -416,6 +416,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "cores_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d", r]}];
+    }
 }
 
 - (NSError *)BindFonts
@@ -423,6 +424,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "fonts_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
+    }
 }
 
 - (NSError *)ensureNoDuplicateApps
