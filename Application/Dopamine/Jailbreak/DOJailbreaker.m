@@ -55,7 +55,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     JBErrorCodeFailedLaunchdInjection        = -11,
     JBErrorCodeFailedInitProtection          = -12,
     JBErrorCodeFailedInitFakeLib             = -13,
-    JBErrorCodeFailedDuplicateApps           = -14,
+    JBErrorCodeFailedBindCores               = -14,
+    JBErrorCodeFailedBindFonts               = -15,
+    JBErrorCodeFailedDuplicateApps           = -16,
 };
 
 @implementation DOJailbreaker
