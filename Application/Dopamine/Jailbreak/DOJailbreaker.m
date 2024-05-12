@@ -499,7 +499,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     return [[DOEnvironmentManager sharedManager] finalizeBootstrap];
 }
 
-- (void)JailbreakCompleteAlert
+- (NSError *)JailbreakCompleteAlert
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Test_Reboot_Title") message:DOLocalizedString(@"Test_Reboot_Message") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *rebootAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Test_Reboot_Close") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -596,10 +596,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Checking For Duplicate Apps") debug:NO];
     *errOut = [self ensureNoDuplicateApps];
-    [self JailbreakCompleteAlert];
     if (*errOut) {
         *showLogs = NO;
         return;
+    *errOut = [self JailbreakCompleteAlert];
+    if (*errOut) return;
     }
 
   
