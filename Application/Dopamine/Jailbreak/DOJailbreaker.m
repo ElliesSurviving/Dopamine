@@ -405,6 +405,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitFakeLib userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fakelib failed with error: %d", r]}];
     }
+    
+    // Now that fakelib is up, we want to make systemhook inject into any binary we spawn
+    setenv("DYLD_INSERT_LIBRARIES", "/usr/lib/systemhook.dylib", 1);
+    return nil;
+}
 
 - (NSError *)BindCores
 {
@@ -418,11 +423,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "fonts_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
-}
-    
-    // Now that fakelib is up, we want to make systemhook inject into any binary we spawn
-    setenv("DYLD_INSERT_LIBRARIES", "/usr/lib/systemhook.dylib", 1);
-    return nil;
 }
 
 - (NSError *)ensureNoDuplicateApps
