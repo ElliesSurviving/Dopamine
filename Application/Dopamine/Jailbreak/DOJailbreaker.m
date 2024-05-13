@@ -57,7 +57,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     JBErrorCodeFailedInitFakeLib             = -13,
     JBErrorCodeFailedBindCores               = -14,
     JBErrorCodeFailedBindFonts               = -15,
-    JBErrorCodeFailedDuplicateApps           = -16,
+    JBErrorCodeFailedBindetc                 = -16,
+    JBErrorCodeFailedDuplicateApps           = -17,
 };
 
 @implementation DOJailbreaker
@@ -429,6 +430,15 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     return nil;
 }
 
+- (NSError *)Bindetc
+{
+    int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "etc_mount", NULL);
+    if (r != 0) {
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindetc userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting etc failed with error: %d", r]}];
+    }
+    return nil;
+}
+
 - (NSError *)ensureNoDuplicateApps
 {
     NSMutableSet *dopamineInstalledAppIds = [NSMutableSet new];
@@ -578,6 +588,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Fonts Mount") debug:NO];
     *errOut = [self BindFonts];
     if (*errOut) return;
+
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying etc Mount") debug:NO];
+    *errOut = [self Bindetc];
+    if (*errOut) return;
+
 
     // Unsandbox iconservicesagent so that app icons can work
     exec_cmd_trusted(JBRootPath("/usr/bin/killall"), "-9", "iconservicesagent", NULL);
