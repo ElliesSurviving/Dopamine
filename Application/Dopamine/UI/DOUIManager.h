@@ -46,7 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setPackageManager:(NSString*)key enabled:(BOOL)enabled;
 - (NSString *)localizedStringForKey:(NSString*)key;
 
-@interface DOMainViewController : UIViewController <DOActionMenuDelegate>
 
 @end
 

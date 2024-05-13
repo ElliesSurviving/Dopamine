@@ -96,7 +96,7 @@
 "Initializing Environment" = "Initializing Jailbreak (10/14)";
 "Initializing Protection" = "Initializing Protection";
 "Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
-"Applying Bind Mount" = "Applying fakelib Mount (11/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
 "Removing Jailbreak" = "Restoring RootFS";
 "Elevating Privileges" = "Elevating Privileges (7/14)";
 "Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
