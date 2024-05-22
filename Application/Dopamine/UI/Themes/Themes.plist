@@ -196,6 +196,7 @@
 		<key>titleShadow</key>
 		<true/>
 	</dict>
+	<dict>
 		<dict>
 		<key>key</key>
 		<string>overwatch</string>
@@ -214,7 +215,7 @@
 		<key>titleShadow</key>
 		<true/>
 	</dict>
-		<dict>
+	<dict>
 		<key>key</key>
 		<string>lux</string>
 		<key>icon</key>
@@ -231,7 +232,8 @@
 		<integer>0</integer>
 		<key>titleShadow</key>
 		<true/>
-			<dict>
+	</dict>
+	<dict>
 		<key>key</key>
 		<string>misty</string>
 		<key>icon</key>
@@ -248,7 +250,6 @@
 		<integer>0</integer>
 		<key>titleShadow</key>
 		<true/>
-	</dict>
 	</dict>
 </array>
 </plist>
