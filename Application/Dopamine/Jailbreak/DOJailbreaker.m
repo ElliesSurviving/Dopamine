@@ -516,9 +516,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     BOOL tweaksEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"tweakInjectionEnabled" fallback:YES];
     BOOL idownloadEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"idownloadEnabled" fallback:NO];
     BOOL appJITEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"appJITEnabled" fallback:YES];
-    Class _SBWifiManager = objc_getClass("SBWiFiManager");
 
-    [[_SBWifiManager sharedInstance] setWiFiEnabled:NO];
 
     *errOut = [self gatherSystemInformation];
     if (*errOut) return;
@@ -595,8 +593,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying etc Mount") debug:NO];
     *errOut = [self Bindetc];
     if (*errOut) return;
-
-    [[_SBWifiManager sharedInstance] setWiFiEnabled:YES];
 
     // Unsandbox iconservicesagent so that app icons can work
     exec_cmd_trusted(JBRootPath("/usr/bin/killall"), "-9", "iconservicesagent", NULL);
