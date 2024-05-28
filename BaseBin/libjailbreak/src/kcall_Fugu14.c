@@ -19,14 +19,14 @@ void pac_loop(void);
 
 uint64_t mapKernelPage(uint64_t addr)
 {
-    uint64_t page       = addr & ~0x3FFFULL;
-    uint64_t off        = addr & 0x3FFFULL;
-    uint64_t translated = kvtophys(page);
-    void *map = NULL;
-    if (kmap(translated, 0x4000, &map) == 0) {
-        return ((uint64_t)map) + off;
-    }
-    return -1;
+ 	  uint64_t page       = addr & ~0x3FFFULL;
+  	  uint64_t off        = addr & 0x3FFFULL;
+  	  uint64_t translated = kvtophys(page);
+  	  void *map = NULL;
+  	  if (kmap(translated, 0x4000, &map) == 0) {
+ 	       return ((uint64_t)map) + off;
+  	  }
+  	  return -1;
 }
 
 uint64_t getUserReturnThreadContext(void)
