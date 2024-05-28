@@ -57,8 +57,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     JBErrorCodeFailedInitFakeLib             = -13,
     JBErrorCodeFailedBindCores               = -14,
     JBErrorCodeFailedBindFonts               = -15,
-    JBErrorCodeFailedBindLocale              = -16,
-    JBErrorCodeFailedDuplicateApps           = -17,
+    JBErrorCodeFailedDuplicateApps           = -16,
 };
 
 @implementation DOJailbreaker
@@ -426,15 +425,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "fonts_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
-    }
-    return nil;
-}
-
-- (NSError *)BindLocale
-{
-    int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "locale_mount", NULL);
-    if (r != 0) {
-        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindLocale userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting locale failed with error: %d", r]}];
     }
     return nil;
 }

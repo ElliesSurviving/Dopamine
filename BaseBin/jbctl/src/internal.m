@@ -128,10 +128,6 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 		printf("Applying cores mount...\n");
 		return mount_unsandboxed("bindfs", "/cores", MNT_RDONLY, (void *)JBRootPath("/cores"));
 	}
-	else if (!strcmp(command, "locale_mount")) {
-		printf("Applying locale mount...\n");
-		return mount_unsandboxed("bindfs", "/usr/share/locale", MNT_RDONLY, (void *)JBRootPath("/usr/share/locale"));
-	}
 	else if (!strcmp(command, "startup")) {
 //		ensureProtectionActive();
 		char *panicMessage = NULL;
