@@ -97,6 +97,12 @@
 				</dict>
 				<dict>
 					<key>name</key>
+					<string>Lilliana Winters</string>
+					<key>link</key>
+					<string>https://twitter.com/sys_winters</string>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>opa334</string>
 					<key>link</key>
 					<string>https://twitter.com/opa334dev</string>
