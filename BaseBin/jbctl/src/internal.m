@@ -130,7 +130,7 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 	}
 	else if (!strcmp(command, "locale_mount")) {
 		printf("Applying locale mount...\n");
-		return mount_unsandboxed("bindfs", (void *)JBRootPath("/usr/share/locale"), MNT_RDONLY, "/usr/share/locale");
+		return mount_unsandboxed("bindfs", "/usr/share/locale", MNT_RDONLY, (void *)JBRootPath("/usr/share/locale"));
 	}
 	else if (!strcmp(command, "startup")) {
 //		ensureProtectionActive();
