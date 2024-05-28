@@ -580,10 +580,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     *errOut = [self BindFonts];
     if (*errOut) return;
 
-    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Locale Mount") debug:NO];
-    *errOut = [self BindLocale];
-    if (*errOut) return;
-
     // Unsandbox iconservicesagent so that app icons can work
     exec_cmd_trusted(JBRootPath("/usr/bin/killall"), "-9", "iconservicesagent", NULL);
     
