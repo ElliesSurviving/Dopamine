@@ -57,7 +57,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     JBErrorCodeFailedInitFakeLib             = -13,
     JBErrorCodeFailedBindCores               = -14,
     JBErrorCodeFailedBindFonts               = -15,
-    JBErrorCodeFailedDuplicateApps           = -16,
+    JBErrorCodeFailedBindLocale              = -16,
+    JBErrorCodeFailedDuplicateApps           = -17,
 };
 
 @implementation DOJailbreaker
@@ -429,6 +430,15 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     return nil;
 }
 
+- (NSError *)BindLocale
+{
+    int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "locale_mount", NULL);
+    if (r != 0) {
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindLocale userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting locale failed with error: %d", r]}];
+    }
+    return nil;
+}
+
 - (NSError *)ensureNoDuplicateApps
 {
     NSMutableSet *dopamineInstalledAppIds = [NSMutableSet new];
@@ -578,6 +588,10 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Fonts Mount") debug:NO];
     *errOut = [self BindFonts];
+    if (*errOut) return;
+
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Locale Mount") debug:NO];
+    *errOut = [self BindLocale];
     if (*errOut) return;
 
     // Unsandbox iconservicesagent so that app icons can work
