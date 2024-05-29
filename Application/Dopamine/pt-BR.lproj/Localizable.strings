@@ -1,116 +1,120 @@
-"Credits_Made_By" = "Desenvolvido por opa334, évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
-"Status_Title_Jailbreaking" = "Executando o Jailbreak";
-"Log_Error" = "Sem sucesso";
+"Status_Title_Jailbreaking" = "Jailbreaking";
+"Log_Error" = "Error";
 
 // Jailbreak Button
 "Button_Jailbreak_Title" = "Jailbreak";
-"Status_Title_Jailbroken" = "Jailbreak concluído!";
-/*Unsupported*/
+"Status_Title_Jailbroken" = "Jailbroken";
+"Unsupported" = "Unsupported";
 
 // Action Menu
-"Menu_Settings_Title" = "Configurações";
-"Menu_Restart_SpringBoard_Title" = "Reiniciar SpringBoard";
-"Menu_Reboot_Userspace_Title" = "Reiniciar 'Userspace'";
-"Menu_Credits_Title" = "Créditos";
+"Menu_Settings_Title" = "Settings";
+"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Reboot_Userspace_Title" = "Reboot Userspace";
+"Menu_Credits_Title" = "Credits";
 
 // Updating
-"Button_Update" = "Atualizar";
-"Button_Update_Available" = "Atualização disponível";
-"Button_Update_Environment" = "Atualizar o 'Ambiente' do Jailbreak";
+"Button_Update" = "Update";
+"Button_Update_Available" = "Update Available";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
-"Update_Status_Downloading" = "Baixando atualização...";
-"Update_Status_Subtitle_Please_Wait" = "Aguarde o download todos os arquivos";
-"Update_Status_Installing" = "Instalando atualização...";
-"Update_Status_Subtitle_Restart_Soon" = "O dispostivo reiniciará em breve";
-"Title_Changelog" = "Histórico de mudanças";
-"Changelog_Unavailable_Text" = "Histórico de mudanças indisponível";
+"Update_Status_Downloading" = "Downloading update...";
+"Update_Status_Subtitle_Please_Wait" = "Please wait while files finish downloading";
+"Update_Status_Installing" = "Installing update...";
+"Update_Status_Subtitle_Restart_Soon" = "The device will restart soon";
+"Title_Changelog" = "Changelog";
+"Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-/*Removed_Jailbreak_Alert_Title*/
-/*Removed_Jailbreak_Alert_Message*/
-/*Button_Close*/
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
+"Button_Close" = "Close";
 
 // Error View
-/*Button_Share*/
-/*Button_Reboot*/
+"Button_Share" = "Share";
+"Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "Injeção de Tweaks";
-"Settings_iDownload" = "iDownload (Terminal de desenvolvedor)";
-"Settings_Verbose_Logs" = "Logs do Verbose";
-/*Settings_Apps_JIT*/
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "Remover o Jailbreak";
-"Button_Hide_Jailbreak" = "Ocultar o Jailbreak";
-"Button_Unhide_Jailbreak" = "Deixar de ocultar o Jailbreak";
-/*Button_Refresh_Jailbreak_Apps*/
-"Button_Reinstall_Package_Managers" = "Reinstalar Gerenciadores de Pacotes";
-/*Button_Change_Mobile_Password*/
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
+"Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "\"Ocultar o Jailbreak\" remove temporariamente os arquivos do Jailbreak até a próxima execução";
-"Hint_Hide_Jailbreak_Jailbroken" = "\"Ocultar o Jailbreak\" desabilita parcialmente o Jailbreak e tenta deixá-lo mais difícil de ser detectado. Entretando, não é completamente efetivo.";
-/*Section_Jailbreak_Settings*/
-/*Section_Actions*/
-/*Section_Customization*/
-/*Section_Exploits*/
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
+"Section_Jailbreak_Settings" = "Jailbreak Settings";
+"Section_Actions" = "Actions";
+"Section_Customization" = "Customization";
+"Section_Exploits" = "Exploits";
 
 // Settings Alerts
-/*Alert_Tweak_Injection_Toggled_Title*/
-"Alert_Tweak_Injection_Toggled_Body" = "Para que as mudanças sejam aplicadas, é necessário reiniciar o 'Userspace'. Reiniciar agora?";
-/*Alert_Tweak_Injection_Toggled_Reboot_Now*/
-/*Alert_Tweak_Injection_Toggled_Reboot_Later*/
-"Alert_Remove_Jailbreak_Title" = "Remover o Jailbreak";
-"Alert_Remove_Jailbreak_Pressed_Body" = "Remover o Jailbreak irá deletar todos arquivos do Jailbreak, porém todos aplicativos, arquivos e informações se manterão. Você tem certeza que deseja continuar? Não será possível reverter isso.";
-/*Alert_Remove_Jailbreak_Enabled_Body*/
-/*Alert_Change_Mobile_Password_Body*/
-/*Password_Placeholder*/
-/*Repeat_Password_Placeholder*/
-/*Button_Change*/
-"Button_Cancel" = "Cancelar";
-/*Button_Continue*/
+"Alert_Tweak_Injection_Toggled_Title" = "Userspace Reboot Required";
+"Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
+"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
+"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
+"Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
+"Password_Placeholder" = "Password";
+"Repeat_Password_Placeholder" = "Repeat Password";
+"Button_Change" = "Change";
+"Button_Cancel" = "Cancel";
+"Button_Continue" = "Continue";
 
 // Duplicate Apps Errors
-/*Duplicate_Apps_Error_Dopamine_App*/
-/*Duplicate_Apps_Error_User_App*/
-/*Duplicate_Apps_Error_Icon_Cache*/
+"Duplicate_Apps_Error_Dopamine_App" = "There are multiple apps with the identifier \"%@\" inside Dopamines application directory (\"%@\"). Cannot continue.";
+"Duplicate_Apps_Error_User_App" = "The apps with the identifiers %@ exist in Dopamines application directory (\"%@\") but are also installed separately on the system. Cannot continue.";
+"Duplicate_Apps_Error_Icon_Cache" = "The app with the identifier \"%@\" exists in the Dopamine application directory (\"%@\") but is also registered in icon cache under a different path (\"%@\"). Cannot continue.";
 
 // Settings Lists
-/*Theme*/
-/*Kernel Exploit*/
-/*PPL Bypass*/
-/*PAC Bypass*/
-/*None*/
-/*Recommended*/
+"Theme" = "Theme";
+"Kernel Exploit" = "Kernel Exploit";
+"PPL Bypass" = "PPL Bypass";
+"PAC Bypass" = "PAC Bypass";
+"None" = "Disabled";
+"Recommended" = "Recommended";
 
 // Credits
 "Credits_Button_Discord" = "Discord";
-"Credits_Button_License" = "Licenças";
-"Credits_Button_Source_Code" = "Código-Fonte";
+"Credits_Button_License" = "Licenses";
+"Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Iniciando o Ambiente do Jailbreak";
-/*Initializing Protection*/
-/*Loading BaseBin TrustCache*/
-/*Applying Bind Mount*/
-/*Removing Jailbreak*/
-/*Elevating Privileges*/
-/*Cleaning Up Exploits*/
-/*Building Phys R/W Primitive*/
-/*Rebooting Userspace*/
-"Patchfinding" = "Patchfinding";
-/*Exploiting Kernel (%@)*/
-/*Bypassing PAC (%@)*/
-/*Bypassing PPL (%@)*/
+"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Protection" = "Initializing Protection";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/14)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
+"Rebooting Userspace" = "Rebooting Userspace";
+"Patchfinding" = "Patchfinding (1/14)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
+"Updating BaseBin" = "Updating Basebins (8/14)";
+"Applying Cores Mount" = "Binding Cores (12/14)";
+"Applying Fonts Mount" = "Binding Fonts (13/14)";
 
 // Package Manager selection
-"Status_Title_Select_Package_Managers" = "Escolha o(s) Gerenciador(es) de Pacotes";
-"Select_Package_Managers_Install_Message" = "Se estiver em dúvida, selecione o Sileo";
-"Continue" = "Continuar";
+"Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
+"Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
+"Continue" = "Continue";
 
 // Stuff Pls Ignore
 "Test_Reboot_Title" = "Jailbreak Completed";

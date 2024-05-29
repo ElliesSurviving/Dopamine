@@ -1,116 +1,120 @@
-"Credits_Made_By" = "作者：opa334, évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
-"Status_Title_Jailbreaking" = "正在越獄";
-"Log_Error" = "失敗";
+"Status_Title_Jailbreaking" = "Jailbreaking";
+"Log_Error" = "Error";
 
 // Jailbreak Button
-"Button_Jailbreak_Title" = "越獄";
-"Status_Title_Jailbroken" = "已越獄";
-/*Unsupported*/
+"Button_Jailbreak_Title" = "Jailbreak";
+"Status_Title_Jailbroken" = "Jailbroken";
+"Unsupported" = "Unsupported";
 
 // Action Menu
-"Menu_Settings_Title" = "設置";
-"Menu_Restart_SpringBoard_Title" = "註銷";
-"Menu_Reboot_Userspace_Title" = "用戶空間重啟";
-"Menu_Credits_Title" = "關於";
+"Menu_Settings_Title" = "Settings";
+"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Reboot_Userspace_Title" = "Reboot Userspace";
+"Menu_Credits_Title" = "Credits";
 
 // Updating
-"Button_Update" = "更新";
-"Button_Update_Available" = "可更新";
-"Button_Update_Environment" = "更新環境";
+"Button_Update" = "Update";
+"Button_Update_Available" = "Update Available";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
-"Update_Status_Downloading" = "正在下載更新…";
-"Update_Status_Subtitle_Please_Wait" = "請等待完成下載";
-"Update_Status_Installing" = "正在安裝更新…";
-"Update_Status_Subtitle_Restart_Soon" = "裝置即將重新啟動";
-"Title_Changelog" = "變更日誌";
-"Changelog_Unavailable_Text" = "變更日誌不可用";
+"Update_Status_Downloading" = "Downloading update...";
+"Update_Status_Subtitle_Please_Wait" = "Please wait while files finish downloading";
+"Update_Status_Installing" = "Installing update...";
+"Update_Status_Subtitle_Restart_Soon" = "The device will restart soon";
+"Title_Changelog" = "Changelog";
+"Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-/*Removed_Jailbreak_Alert_Title*/
-/*Removed_Jailbreak_Alert_Message*/
-/*Button_Close*/
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
+"Button_Close" = "Close";
 
 // Error View
-/*Button_Share*/
-/*Button_Reboot*/
+"Button_Share" = "Share";
+"Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "插件注入";
-"Settings_iDownload" = "iDownload (开发商终端)";
-"Settings_Verbose_Logs" = "詳細日誌";
-/*Settings_Apps_JIT*/
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "清除越獄";
-"Button_Hide_Jailbreak" = "隱藏越獄";
-"Button_Unhide_Jailbreak" = "解除隱藏越獄";
-/*Button_Refresh_Jailbreak_Apps*/
-"Button_Reinstall_Package_Managers" = "重新安裝包管理器（越獄商店）";
-/*Button_Change_Mobile_Password*/
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
+"Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "「隱藏越獄」將在下次越獄前臨時移除越獄相關的文件";
-"Hint_Hide_Jailbreak_Jailbroken" = "已越獄時，「隱藏越獄」將部分禁用越獄功能以增加探測越獄的難度。但是，這並非總是有效，也沒有隱藏所有東西。";
-/*Section_Jailbreak_Settings*/
-/*Section_Actions*/
-/*Section_Customization*/
-/*Section_Exploits*/
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
+"Section_Jailbreak_Settings" = "Jailbreak Settings";
+"Section_Actions" = "Actions";
+"Section_Customization" = "Customization";
+"Section_Exploits" = "Exploits";
 
 // Settings Alerts
-/*Alert_Tweak_Injection_Toggled_Title*/
-"Alert_Tweak_Injection_Toggled_Body" = "為使變更生效需用戶空間重啟，即可執行否？";
-/*Alert_Tweak_Injection_Toggled_Reboot_Now*/
-/*Alert_Tweak_Injection_Toggled_Reboot_Later*/
-"Alert_Remove_Jailbreak_Title" = "清除越獄";
-"Alert_Remove_Jailbreak_Pressed_Body" = "清除越獄將移除所有和越獄相關的文件，但將保留普通 App、文件、數據。請注意，此操作無法撤銷。確認清除越獄嗎？";
-/*Alert_Remove_Jailbreak_Enabled_Body*/
-/*Alert_Change_Mobile_Password_Body*/
-/*Password_Placeholder*/
-/*Repeat_Password_Placeholder*/
-/*Button_Change*/
-"Button_Cancel" = "取消";
-/*Button_Continue*/
+"Alert_Tweak_Injection_Toggled_Title" = "Userspace Reboot Required";
+"Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
+"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
+"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
+"Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
+"Password_Placeholder" = "Password";
+"Repeat_Password_Placeholder" = "Repeat Password";
+"Button_Change" = "Change";
+"Button_Cancel" = "Cancel";
+"Button_Continue" = "Continue";
 
 // Duplicate Apps Errors
-/*Duplicate_Apps_Error_Dopamine_App*/
-/*Duplicate_Apps_Error_User_App*/
-/*Duplicate_Apps_Error_Icon_Cache*/
+"Duplicate_Apps_Error_Dopamine_App" = "There are multiple apps with the identifier \"%@\" inside Dopamines application directory (\"%@\"). Cannot continue.";
+"Duplicate_Apps_Error_User_App" = "The apps with the identifiers %@ exist in Dopamines application directory (\"%@\") but are also installed separately on the system. Cannot continue.";
+"Duplicate_Apps_Error_Icon_Cache" = "The app with the identifier \"%@\" exists in the Dopamine application directory (\"%@\") but is also registered in icon cache under a different path (\"%@\"). Cannot continue.";
 
 // Settings Lists
-/*Theme*/
-/*Kernel Exploit*/
-/*PPL Bypass*/
-/*PAC Bypass*/
-/*None*/
-/*Recommended*/
+"Theme" = "Theme";
+"Kernel Exploit" = "Kernel Exploit";
+"PPL Bypass" = "PPL Bypass";
+"PAC Bypass" = "PAC Bypass";
+"None" = "Disabled";
+"Recommended" = "Recommended";
 
 // Credits
 "Credits_Button_Discord" = "Discord";
-"Credits_Button_License" = "許可證";
-"Credits_Button_Source_Code" = "原始碼";
+"Credits_Button_License" = "Licenses";
+"Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "初始化環境";
-/*Initializing Protection*/
-/*Loading BaseBin TrustCache*/
-/*Applying Bind Mount*/
-/*Removing Jailbreak*/
-/*Elevating Privileges*/
-/*Cleaning Up Exploits*/
-/*Building Phys R/W Primitive*/
-/*Rebooting Userspace*/
-"Patchfinding" = "Patchfinding";
-/*Exploiting Kernel (%@)*/
-/*Bypassing PAC (%@)*/
-/*Bypassing PPL (%@)*/
+"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Protection" = "Initializing Protection";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/14)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
+"Rebooting Userspace" = "Rebooting Userspace";
+"Patchfinding" = "Patchfinding (1/14)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
+"Updating BaseBin" = "Updating Basebins (8/14)";
+"Applying Cores Mount" = "Binding Cores (12/14)";
+"Applying Fonts Mount" = "Binding Fonts (13/14)";
 
 // Package Manager selection
-"Status_Title_Select_Package_Managers" = "選定包管理器（越獄商店）";
-"Select_Package_Managers_Install_Message" = "若不確定如何選擇，請使用 Sileo";
-"Continue" = "繼續";
+"Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
+"Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
+"Continue" = "Continue";
 
 // Stuff Pls Ignore
 "Test_Reboot_Title" = "Jailbreak Completed";

@@ -1,8 +1,8 @@
-"Credits_Made_By" = "Made by opa334, évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
 "Status_Title_Jailbreaking" = "Jailbreaking";
-"Log_Error" = "エラー";
+"Log_Error" = "Error";
 
 // Jailbreak Button
 "Button_Jailbreak_Title" = "Jailbreak";
@@ -10,107 +10,111 @@
 "Unsupported" = "Unsupported";
 
 // Action Menu
-"Menu_Settings_Title" = "設定";
-"Menu_Restart_SpringBoard_Title" = "SpringBoardを再起動";
-"Menu_Reboot_Userspace_Title" = "Userspaceを再起動";
-"Menu_Credits_Title" = "クレジット";
+"Menu_Settings_Title" = "Settings";
+"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Reboot_Userspace_Title" = "Reboot Userspace";
+"Menu_Credits_Title" = "Credits";
 
 // Updating
-"Button_Update" = "アップデート";
-"Button_Update_Available" = "アップデートがあります";
-"Button_Update_Environment" = "環境をアップデート";
+"Button_Update" = "Update";
+"Button_Update_Available" = "Update Available";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
-"Update_Status_Downloading" = "アップデートをダウンロード中...";
-"Update_Status_Subtitle_Please_Wait" = "ファイルのダウンロードが完了するまでお待ちください";
-"Update_Status_Installing" = "アップデートをインストール中...";
-"Update_Status_Subtitle_Restart_Soon" = "デバイスはすぐに再起動します";
-"Title_Changelog" = "更新履歴";
-"Changelog_Unavailable_Text" = "更新履歴は利用できません";
+"Update_Status_Downloading" = "Downloading update...";
+"Update_Status_Subtitle_Please_Wait" = "Please wait while files finish downloading";
+"Update_Status_Installing" = "Installing update...";
+"Update_Status_Subtitle_Restart_Soon" = "The device will restart soon";
+"Title_Changelog" = "Changelog";
+"Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-"Removed_Jailbreak_Alert_Title" = "Jailbreak環境は削除されました";
-"Removed_Jailbreak_Alert_Message" = "Jailbreak環境の削除に成功しました. デバイスの再起動をお勧めします。";
-"Button_Close" = "閉じる";
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
+"Button_Close" = "Close";
 
 // Error View
-"Button_Share" = "共有";
-"Button_Reboot" = "再起動";
+"Button_Share" = "Share";
+"Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "Tweak Injection";
-"Settings_iDownload" = "iDownload (開発者用シェル)";
-"Settings_Verbose_Logs" = "詳細なログ";
-/*Settings_Apps_JIT*/
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "Jailbreak環境の削除";
-"Button_Hide_Jailbreak" = "Jailbreakを隠す";
-"Button_Unhide_Jailbreak" = "Jailbreak環境を戻す";
-"Button_Refresh_Jailbreak_Apps" = "Jailbreakアプリを更新 (UICache)";
-"Button_Reinstall_Package_Managers" = "パッケージマネージャーを再インストール";
-/*Button_Change_Mobile_Password*/
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
+"Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "\"Jailbreakを隠す\"は、次のjailbreakの実行までjailbreak関連のファイルを一時的に隠します";
-"Hint_Hide_Jailbreak_Jailbroken" = "\"Jailbreakを隠す\"は、jailbreakを部分的に無効にして、jailbreak検出をより困難にすることを目的としています。しかし、この機能ではすべてを完全に隠せるわけではありません。";
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
 "Section_Jailbreak_Settings" = "Jailbreak Settings";
 "Section_Actions" = "Actions";
 "Section_Customization" = "Customization";
 "Section_Exploits" = "Exploits";
 
 // Settings Alerts
-"Alert_Tweak_Injection_Toggled_Title" = "Userspaceの再起動が必要です";
-"Alert_Tweak_Injection_Toggled_Body" = "この変更を適用するためには、userspaceを再起動する必要があります。今すぐ再起動をしてもよろしいですか？";
-"Alert_Tweak_Injection_Toggled_Reboot_Now" = "今すぐ再起動";
-"Alert_Tweak_Injection_Toggled_Reboot_Later" = "後で再起動";
-"Alert_Remove_Jailbreak_Title" = "Jailbreak環境を削除";
-"Alert_Remove_Jailbreak_Pressed_Body" = "Jailbreak環境を削除すると、jailbreak関連のファイルはすべて削除されますが、通常のアプリケーション、ファイル、データはすべて保持されます。本当に続けてもよろしいですか？この操作を元に戻すことはできません。";
-"Alert_Remove_Jailbreak_Enabled_Body" = "\"Jailbreak環境を削除\"を有効にすると、次回のjailbreak実行時にjailbreak関連ファイルはすべて削除されますが、通常のアプリ、ファイル、データはすべて保持されます。本当に続けてもよろしいですか？この操作を元に戻すことはできません。";
-/*Alert_Change_Mobile_Password_Body*/
-/*Password_Placeholder*/
-/*Repeat_Password_Placeholder*/
-/*Button_Change*/
-"Button_Cancel" = "キャンセル";
-"Button_Continue" = "続ける";
+"Alert_Tweak_Injection_Toggled_Title" = "Userspace Reboot Required";
+"Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
+"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
+"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
+"Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
+"Password_Placeholder" = "Password";
+"Repeat_Password_Placeholder" = "Repeat Password";
+"Button_Change" = "Change";
+"Button_Cancel" = "Cancel";
+"Button_Continue" = "Continue";
 
 // Duplicate Apps Errors
-"Duplicate_Apps_Error_Dopamine_App" = "バンドルID \"%@\" を持つアプリケーションはDopamine用アプリケーションディレクトリ(\"%@\")内に複数存在しています。この作業を続行できません。";
-"Duplicate_Apps_Error_User_App" = "バンドルID \"%@\" を持つアプリケーションはDopamine用アプリケーションディレクトリ(\"%@\")内に存在しますが、システムにも別々にインストールされています。この作業を続行できません。";
-"Duplicate_Apps_Error_Icon_Cache" = "バンドルID \"%@\" を持つアプリケーションはDopamine用アプリケーションディレクトリ(\"%@\")内に存在しますが、アイコンキャッシュには別のパス(\"%@\")で登録されています。この作業を続行できません。";
+"Duplicate_Apps_Error_Dopamine_App" = "There are multiple apps with the identifier \"%@\" inside Dopamines application directory (\"%@\"). Cannot continue.";
+"Duplicate_Apps_Error_User_App" = "The apps with the identifiers %@ exist in Dopamines application directory (\"%@\") but are also installed separately on the system. Cannot continue.";
+"Duplicate_Apps_Error_Icon_Cache" = "The app with the identifier \"%@\" exists in the Dopamine application directory (\"%@\") but is also registered in icon cache under a different path (\"%@\"). Cannot continue.";
 
 // Settings Lists
-"Theme" = "テーマ";
+"Theme" = "Theme";
 "Kernel Exploit" = "Kernel Exploit";
 "PPL Bypass" = "PPL Bypass";
 "PAC Bypass" = "PAC Bypass";
-/*None*/
-/*Recommended*/
+"None" = "Disabled";
+"Recommended" = "Recommended";
 
 // Credits
 "Credits_Button_Discord" = "Discord";
-"Credits_Button_License" = "ライセンス";
-"Credits_Button_Source_Code" = "ソースコード";
+"Credits_Button_License" = "Licenses";
+"Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Initializing Jailbreak Environment";
-/*Initializing Protection*/
-"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache";
-"Applying Bind Mount" = "Applying Bind Mount";
-"Removing Jailbreak" = "Removing Jailbreak";
-"Elevating Privileges" = "Elevating Privileges";
-"Cleaning Up Exploits" = "Cleaning Up Exploits";
-"Building Phys R/W Primitive" = "Building Phys R/W Primitive";
+"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Protection" = "Initializing Protection";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/14)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
 "Rebooting Userspace" = "Rebooting Userspace";
-"Patchfinding" = "Patchfinding";
-"Exploiting Kernel (%@)" = "Exploiting Kernel (%@)";
-"Bypassing PAC (%@)" = "Bypassing PAC (%@)";
-"Bypassing PPL (%@)" = "Bypassing PPL (%@)";
+"Patchfinding" = "Patchfinding (1/14)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
+"Updating BaseBin" = "Updating Basebins (8/14)";
+"Applying Cores Mount" = "Binding Cores (12/14)";
+"Applying Fonts Mount" = "Binding Fonts (13/14)";
 
 // Package Manager selection
-"Status_Title_Select_Package_Managers" = "パッケージマネージャーを選択";
-"Select_Package_Managers_Install_Message" = "どちらを選択するか迷った場合は、Sileoを選択してください";
-"Continue" = "続ける";
+"Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
+"Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
+"Continue" = "Continue";
 
 // Stuff Pls Ignore
 "Test_Reboot_Title" = "Jailbreak Completed";

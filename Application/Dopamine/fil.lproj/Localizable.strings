@@ -1,4 +1,4 @@
-"Credits_Made_By" = "Ginawa ito ni opa334 at évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
 "Status_Title_Jailbreaking" = "Jailbreaking";
@@ -7,110 +7,114 @@
 // Jailbreak Button
 "Button_Jailbreak_Title" = "Jailbreak";
 "Status_Title_Jailbroken" = "Jailbroken";
-"Unsupported" = "Hindi suportado";
+"Unsupported" = "Unsupported";
 
 // Action Menu
-"Menu_Settings_Title" = "Opsiyon";
-"Menu_Restart_SpringBoard_Title" = "i-Restart ang SpringBoard";
-"Menu_Reboot_Userspace_Title" = "i-Reboot ang Userspace";
-"Menu_Credits_Title" = "Mga Kredito";
+"Menu_Settings_Title" = "Settings";
+"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Reboot_Userspace_Title" = "Reboot Userspace";
+"Menu_Credits_Title" = "Credits";
 
 // Updating
-"Button_Update" = "i-Update";
-"Button_Update_Available" = "Meroong available na bagong update";
-"Button_Update_Environment" = "i-Update ang Environment";
+"Button_Update" = "Update";
+"Button_Update_Available" = "Update Available";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
-"Update_Status_Downloading" = "Dina-Download ang bagong update...";
-"Update_Status_Subtitle_Please_Wait" = "Antayin ang pag-dodownload ng mga files";
-"Update_Status_Installing" = "Ini-install ang update...";
-"Update_Status_Subtitle_Restart_Soon" = "Ang device ay mag-rerestart maya-maya";
-"Title_Changelog" = "Mga Pagbabago";
-"Changelog_Unavailable_Text" = "Ang mga Pagbabago ay hindi available";
+"Update_Status_Downloading" = "Downloading update...";
+"Update_Status_Subtitle_Please_Wait" = "Please wait while files finish downloading";
+"Update_Status_Installing" = "Installing update...";
+"Update_Status_Subtitle_Restart_Soon" = "The device will restart soon";
+"Title_Changelog" = "Changelog";
+"Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-"Removed_Jailbreak_Alert_Title" = "Tinanggal ang Jailbreak";
-"Removed_Jailbreak_Alert_Message" = "Matagumpay na tinanggal ang Jailbreak. Ini-rerekomenda ang pag-reboot ng device.";
-"Button_Close" = "Isara";
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
+"Button_Close" = "Close";
 
 // Error View
-"Button_Share" = "Ibahagi";
-"Button_Reboot" = "i-Reboot";
+"Button_Share" = "Share";
+"Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "Tweak Injection";
-"Settings_iDownload" = "iDownload (Terminal ng Developer)";
-"Settings_Verbose_Logs" = "Mga Verbose Logs";
-/*Settings_Apps_JIT*/
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "Tanggalin ang Jailbreak";
-"Button_Hide_Jailbreak" = "Itago ang Jailbreak";
-"Button_Unhide_Jailbreak" = "Ihinto ang pag-tatago ng Jailbreak";
-"Button_Refresh_Jailbreak_Apps" = "i-Refresh ang mga Apps ng Jailbreak";
-"Button_Reinstall_Package_Managers" = "i-Reinstall ang mga Package Managers";
-/*Button_Change_Mobile_Password*/
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
+"Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "\"Itago ang Jailbreak\" pansamantalang itatago ang mga file na nauugnay sa Jailbreak hanggang sa susunod na re-jailbreak";
-"Hint_Hide_Jailbreak_Jailbroken" = "\"Itago ang Jailbreak\" bahagyang hindi paganahin ang Jailbreak at naglalayong gawing mas mahirap ang pagtuklas nito. Gayunpaman, hindi ito ganap na epektibo at hindi ma-itago ang lahat.";
-"Section_Jailbreak_Settings" = "Mga Settings ng Jailbreak";
-"Section_Actions" = "Mga Aksyon";
-"Section_Customization" = "Mga Customization";
-"Section_Exploits" = "Mga Exploits";
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
+"Section_Jailbreak_Settings" = "Jailbreak Settings";
+"Section_Actions" = "Actions";
+"Section_Customization" = "Customization";
+"Section_Exploits" = "Exploits";
 
 // Settings Alerts
-"Alert_Tweak_Injection_Toggled_Title" = "Kinakailangan ang Userspace Reboot";
-"Alert_Tweak_Injection_Toggled_Body" = "Ang Reboot ng Userspace ay kinakailangan upang mailapat ang mga pagbabago. Gusto mo bang gawin ito ngayon?.";
-"Alert_Tweak_Injection_Toggled_Reboot_Now" = "i-Reboot na ngayon";
-"Alert_Tweak_Injection_Toggled_Reboot_Later" = "i-Reboot mamaya";
-"Alert_Remove_Jailbreak_Title" = "Tanggalin ang Jailbreak";
-"Alert_Remove_Jailbreak_Pressed_Body" = "Ang pag-tatanggal ng Jailbreak ay magtatanggal ng lahat ng file na nauugnay sa Jailbreak, ngunit lahat ng regular na app, file at data ay mananatili. Sigurado ka bang gusto mong magpatuloy? Hindi mo maa-undo ang pagtanggal nito.";
-"Alert_Remove_Jailbreak_Enabled_Body" = "Kapag na-enable ang \"Tanggalin ang Jailbreak\" ay tatanggalin ang lahat ng file na nauugnay sa Jailbreak sa susunod na Jailbreak, ngunit lahat ng regular na app, file at data ay mananatili. Sigurado ka bang gusto mong magpatuloy? Hindi mo maa-undo ang pagtanggal nito.";
-/*Alert_Change_Mobile_Password_Body*/
-/*Password_Placeholder*/
-/*Repeat_Password_Placeholder*/
-/*Button_Change*/
-"Button_Cancel" = "Wag ituloy";
-"Button_Continue" = "Ituloy";
+"Alert_Tweak_Injection_Toggled_Title" = "Userspace Reboot Required";
+"Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
+"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
+"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
+"Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
+"Password_Placeholder" = "Password";
+"Repeat_Password_Placeholder" = "Repeat Password";
+"Button_Change" = "Change";
+"Button_Cancel" = "Cancel";
+"Button_Continue" = "Continue";
 
 // Duplicate Apps Errors
-"Duplicate_Apps_Error_Dopamine_App" = "Mayroong maraming app na may identifier na \"%@\" sa loob ng Dopamines application directory (\"%@\"), kaya hindi pwedeng makapag-patuloy.";
-"Duplicate_Apps_Error_User_App" = "Ang mga app na may mga identifier na %@ ay umiiral sa Dopamines application directory (\"%@\") ngunit naka-install din nang hiwalay sa system, kaya hindi pwedeng makapag-patuloy.";
-"Duplicate_Apps_Error_Icon_Cache" = "Ang app na may identifier na \"%@\" ay umiiral sa Dopamine application directory (\"%@\") ngunit nakarehistro din sa icon cache sa ilalim ng ibang landas (\"%@\"), kaya hindi pwedeng makapag-patuloy.";
+"Duplicate_Apps_Error_Dopamine_App" = "There are multiple apps with the identifier \"%@\" inside Dopamines application directory (\"%@\"). Cannot continue.";
+"Duplicate_Apps_Error_User_App" = "The apps with the identifiers %@ exist in Dopamines application directory (\"%@\") but are also installed separately on the system. Cannot continue.";
+"Duplicate_Apps_Error_Icon_Cache" = "The app with the identifier \"%@\" exists in the Dopamine application directory (\"%@\") but is also registered in icon cache under a different path (\"%@\"). Cannot continue.";
 
 // Settings Lists
-"Theme" = "Mga Theme";
-"Kernel Exploit" = "Mga Kernel Exploit";
+"Theme" = "Theme";
+"Kernel Exploit" = "Kernel Exploit";
 "PPL Bypass" = "PPL Bypass";
 "PAC Bypass" = "PAC Bypass";
-/*None*/
-/*Recommended*/
+"None" = "Disabled";
+"Recommended" = "Recommended";
 
 // Credits
 "Credits_Button_Discord" = "Discord";
-"Credits_Button_License" = "Lisensya";
+"Credits_Button_License" = "Licenses";
 "Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Sinisimulan ang Jailbreak Environment";
-/*Initializing Protection*/
-"Loading BaseBin TrustCache" = "Nilo-load ang BaseBin TrustCache";
-"Applying Bind Mount" = "Paglalapat ng Bind Mount";
-"Removing Jailbreak" = "Tinatatanggal ang Jailbreak";
-"Elevating Privileges" = "Pagtataas ng mga Privileges";
-"Cleaning Up Exploits" = "Paglilinis ng mga Exploits";
-"Building Phys R/W Primitive" = "Pagtatayo ng Phys R/W Primitive";
-"Rebooting Userspace" = "Nire-Reboot ang Userspace";
-"Patchfinding" = "Patchfinding";
-"Exploiting Kernel (%@)" = "Ini-Exploit ang Kernel";
-"Bypassing PAC (%@)" = "Bina-Bypass ang PAC (%@)";
-"Bypassing PPL (%@)" = "Bina-Bypass ang PPL";
+"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Protection" = "Initializing Protection";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/14)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
+"Rebooting Userspace" = "Rebooting Userspace";
+"Patchfinding" = "Patchfinding (1/14)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
+"Updating BaseBin" = "Updating Basebins (8/14)";
+"Applying Cores Mount" = "Binding Cores (12/14)";
+"Applying Fonts Mount" = "Binding Fonts (13/14)";
 
 // Package Manager selection
-"Status_Title_Select_Package_Managers" = "Pumili ng mga Package Manager(s)";
-"Select_Package_Managers_Install_Message" = "Kung hindi ka sigurado kung alin ang pipiliin, piliin ang Sileo";
-"Continue" = "Magpatuloy";
+"Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
+"Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
+"Continue" = "Continue";
 
 // Stuff Pls Ignore
 "Test_Reboot_Title" = "Jailbreak Completed";

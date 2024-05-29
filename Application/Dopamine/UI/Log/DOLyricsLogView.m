@@ -96,7 +96,7 @@
         return;
     }
 
-    [self showLog:@"Done"];
+    [self showLog:@"Rebooting Userspace"];
     [self.stackView.arrangedSubviews makeObjectsPerformSelector:@selector(setSuccess)];
 }
 

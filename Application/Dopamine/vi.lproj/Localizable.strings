@@ -1,116 +1,120 @@
-"Credits_Made_By" = "Được tạo bởi opa334, évelyne";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
-"Status_Title_Jailbreaking" = "Đang Jailbreak";
-"Log_Error" = "Không thành công";
+"Status_Title_Jailbreaking" = "Jailbreaking";
+"Log_Error" = "Error";
 
 // Jailbreak Button
 "Button_Jailbreak_Title" = "Jailbreak";
-"Status_Title_Jailbroken" = "Đã Jailbreak";
-"Unsupported" = "Không hỗ trợ";
+"Status_Title_Jailbroken" = "Jailbroken";
+"Unsupported" = "Unsupported";
 
 // Action Menu
-"Menu_Settings_Title" = "Cài đặt";
-"Menu_Restart_SpringBoard_Title" = "Khởi động lại SpringBoard";
-"Menu_Reboot_Userspace_Title" = "Khởi động lại Userspace";
-"Menu_Credits_Title" = "Tác giả";
+"Menu_Settings_Title" = "Settings";
+"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Reboot_Userspace_Title" = "Reboot Userspace";
+"Menu_Credits_Title" = "Credits";
 
 // Updating
-"Button_Update" = "Cập nhật";
-"Button_Update_Available" = "Có bản cập nhật mới";
-"Button_Update_Environment" = "Cập nhật môi trường Jailbreak";
+"Button_Update" = "Update";
+"Button_Update_Available" = "Update Available";
+"Button_Update_Environment" = "Update Basebins";
 
 // Update View
-"Update_Status_Downloading" = "Đang tải bản cập nhật...";
-"Update_Status_Subtitle_Please_Wait" = "Đang tải xuống các tệp thiết yếu, xin hãy kiên nhẫn";
-"Update_Status_Installing" = "Đang cài bản cập nhật...";
-"Update_Status_Subtitle_Restart_Soon" = "Thiết bị sẽ khởi động lại";
-"Title_Changelog" = "Nhật ký sửa đổi";
-"Changelog_Unavailable_Text" = "Không có nhật ký sửa đổi";
+"Update_Status_Downloading" = "Downloading update...";
+"Update_Status_Subtitle_Please_Wait" = "Please wait while files finish downloading";
+"Update_Status_Installing" = "Installing update...";
+"Update_Status_Subtitle_Restart_Soon" = "The device will restart soon";
+"Title_Changelog" = "Changelog";
+"Changelog_Unavailable_Text" = "Changelog Unavailable";
 
 // Removed Jailbreak Alert
-"Removed_Jailbreak_Alert_Title" = "Đã gỡ Jailbreak";
-"Removed_Jailbreak_Alert_Message" = "Gỡ bỏ Jailbreak thành công. Bạn nên khởi động lại thiết bị.";
-"Button_Close" = "Đóng";
+"Removed_Jailbreak_Alert_Title" = "Restored RootFS";
+"Removed_Jailbreak_Alert_Message" = "Successfully restored rootfs. Rebooting the device is recommended.";
+"Button_Close" = "Close";
 
 // Error View
-"Button_Share" = "Chia sẻ lỗi";
-"Button_Reboot" = "Khởi động lại";
+"Button_Share" = "Share";
+"Button_Reboot" = "Reboot";
 
 // Settings Toggles
-"Settings_Tweak_Injection" = "Cho phép chạy Tweak";
-"Settings_iDownload" = "iDownload (nhà phát triển)";
-"Settings_Verbose_Logs" = "Hiện Log dạng phức tạp";
-"Settings_Apps_JIT" = "Bật JIT";
+"Settings_Tweak_Injection" = "Enable Tweak Injection";
+"Settings_iDownload" = "Enable iDownloadd";
+"Settings_Verbose_Logs" = "Enable Verbose Logging";
+"Settings_Apps_JIT" = "Enable JIT in Apps";
 
 // Settings Buttons
-"Button_Remove_Jailbreak" = "Gỡ Jailbreak";
-"Button_Hide_Jailbreak" = "Ẩn Jailbreak";
-"Button_Unhide_Jailbreak" = "Bỏ ẩn Jailbreak";
-"Button_Refresh_Jailbreak_Apps" = "Làm mới các app Jailbreak";
-"Button_Reinstall_Package_Managers" = "Cài lại các trình quản lý gói";
-"Button_Change_Mobile_Password" = "Đổi mật khẩu \"mobile\"";
+"Button_Remove_Jailbreak" = "Restore RootFS";
+"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
+"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
+"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
+"Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
 // Settings Hints
-"Hint_Hide_Jailbreak" = "Tùy chọn \"Ẩn Jailbreak\" sẽ tạm thời xóa các tệp liên quan đến jailbreak và khôi phục lại các tệp này khi bạn jailbreak vào lần tới.";
-"Hint_Hide_Jailbreak_Jailbroken" = "Tùy chọn \"Ẩn Jailbreak\" sẽ tắt một số chức năng nhằm tránh phát hiện jailbreak trong các ứng dụng. Tuy nhiên, tính năng này không phải là hoàn hảo và không thể hoàn toàn ẩn jailbreak khỏi mọi ứng dụng.";
-"Section_Jailbreak_Settings" = "Thiết đặt Jailbreak";
-"Section_Actions" = "Tác vụ";
-"Section_Customization" = "Tùy biến";
-"Section_Exploits" = "Khai thác";
+"Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
+"Hint_Hide_Jailbreak_Jailbroken" = "\"Hide Jailbreak Root\" partially disables the jailbreak and aims to make detection more challenging. However, it is not entirely effective and does not conceal everything.";
+"Section_Jailbreak_Settings" = "Jailbreak Settings";
+"Section_Actions" = "Actions";
+"Section_Customization" = "Customization";
+"Section_Exploits" = "Exploits";
 
 // Settings Alerts
-"Alert_Tweak_Injection_Toggled_Title" = "Khởi động lại Userspace";
-"Alert_Tweak_Injection_Toggled_Body" = "Cần khởi động lại Userspace để áp dụng các thay đổi. Bạn muốn khởi động lại ngay bây giờ hay để sau?";
-"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Khởi động lại ngay";
-"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Để sau";
-"Alert_Remove_Jailbreak_Title" = "Gỡ bỏ Jailbreak";
-"Alert_Remove_Jailbreak_Pressed_Body" = "Việc này sẽ xóa toàn bộ các tệp liên quan đến jailbreak. Các ứng dụng, tệp và dữ liệu thông thường sẽ vẫn được giữ nguyên. Bạn sẽ không thể hoàn tác sau khi nhấn \"Tiếp tục\".";
-"Alert_Remove_Jailbreak_Enabled_Body" = "Tùy chọn này sẽ xóa toàn bộ các tệp liên quan đến jailbreak khi bạn thực hiện jailbreak vào lần tới. Các ứng dụng, tệp và dữ liệu thông thường sẽ vẫn được giữ nguyên. Bạn sẽ không thể hoàn tác sau khi nhấn \"Tiếp tục\".";
-"Alert_Change_Mobile_Password_Body" = "Thiết đặt mật khẩu của người dùng \"mobile\", có thể sử dụng để lấy quyền root thông qua sudo. Nếu muốn đặt mật khẩu root, bạn có thể thực hiện bằng lệnh \"sudo passwd root\" trong terminal.";
-"Password_Placeholder" = "Nhập mật khẩu";
-"Repeat_Password_Placeholder" = "Nhập lại mật khẩu";
-"Button_Change" = "Đổi";
-"Button_Cancel" = "Hủy bỏ";
-"Button_Continue" = "Tiếp tục";
+"Alert_Tweak_Injection_Toggled_Title" = "Userspace Reboot Required";
+"Alert_Tweak_Injection_Toggled_Body" = "A userspace reboot is neccessary to apply the changes. Do you want to do it now?";
+"Alert_Tweak_Injection_Toggled_Reboot_Now" = "Reboot Now";
+"Alert_Tweak_Injection_Toggled_Reboot_Later" = "Reboot Later";
+"Alert_Remove_Jailbreak_Title" = "Restore RootFS";
+"Alert_Remove_Jailbreak_Pressed_Body" = "Removing jailbreak will delete all jailbreak-related files, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Remove_Jailbreak_Enabled_Body" = "Enabling \"Remove Jailbreak Root\" will delete all jailbreak-related files on the next jailbreak, but all regular apps, files and data will be kept. Are you sure you want to continue? You can't undo this action.";
+"Alert_Change_Mobile_Password_Body" = "Set the password of the \"mobile\" user on your device, this can also be used for root access using sudo. If you want to set the root password, you can do so from a mobile shell using the command \"sudo passwd root\"";
+"Password_Placeholder" = "Password";
+"Repeat_Password_Placeholder" = "Repeat Password";
+"Button_Change" = "Change";
+"Button_Cancel" = "Cancel";
+"Button_Continue" = "Continue";
 
 // Duplicate Apps Errors
-"Duplicate_Apps_Error_Dopamine_App" = "Có nhiều ứng dụng với cùng một tên định danh \"%@\" được cài đặt trong thư mục ứng dụng của Dopamine (\"%@\"). Không thể tiếp tục.";
-"Duplicate_Apps_Error_User_App" = "Ứng dụng có tên định danh \"%@\" đã được cài đặt trong thư mục ứng dụng của Dopamine (\"%@\"), nhưng đồng thời cũng đã được cài đặt trên hệ thống. Không thể tiếp tục.";
-"Duplicate_Apps_Error_Icon_Cache" = "Ứng dụng có tên định danh \"%@\" đã được cài đặt trong thư mục ứng dụng của Dopamine (\"%@\"), nhưng lại được ghi bên trong icon cache với một đường dẫn khác (\"%@\"). Không thể tiếp tục.";
+"Duplicate_Apps_Error_Dopamine_App" = "There are multiple apps with the identifier \"%@\" inside Dopamines application directory (\"%@\"). Cannot continue.";
+"Duplicate_Apps_Error_User_App" = "The apps with the identifiers %@ exist in Dopamines application directory (\"%@\") but are also installed separately on the system. Cannot continue.";
+"Duplicate_Apps_Error_Icon_Cache" = "The app with the identifier \"%@\" exists in the Dopamine application directory (\"%@\") but is also registered in icon cache under a different path (\"%@\"). Cannot continue.";
 
 // Settings Lists
-"Theme" = "Chủ đề";
-"Kernel Exploit" = "Lỗ hổng Kernel";
-"PPL Bypass" = "Lỗ hổng PPL";
-"PAC Bypass" = "Lỗ hổng PAC";
-"None" = "Không có";
-"Recommended" = "Đề xuất";
+"Theme" = "Theme";
+"Kernel Exploit" = "Kernel Exploit";
+"PPL Bypass" = "PPL Bypass";
+"PAC Bypass" = "PAC Bypass";
+"None" = "Disabled";
+"Recommended" = "Recommended";
 
 // Credits
 "Credits_Button_Discord" = "Discord";
-"Credits_Button_License" = "Giấy phép";
-"Credits_Button_Source_Code" = "Mã nguồn";
+"Credits_Button_License" = "Licenses";
+"Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Khởi tạo môi trường Jailbreak";
-"Initializing Protection" = "Khởi tạo quy trình bảo vệ";
-"Loading BaseBin TrustCache" = "Đang tải TrustCache BaseBin";
-"Applying Bind Mount" = "Đang gắn Bind Mount";
-"Removing Jailbreak" = "Đang gỡ bỏ Jailbreak";
-"Elevating Privileges" = "Đang thực hiện nâng quyền";
-"Cleaning Up Exploits" = "Đang dọn dẹp khai thác";
-"Building Phys R/W Primitive" = "Đang dựng Phys R/W Primitive";
-"Rebooting Userspace" = "Đang kh.động lại Userspace";
-"Patchfinding" = "Đang chạy Patchfinding";
-"Exploiting Kernel (%@)" = "Kh.thác lỗ hổng Kernel (%@)";
-"Bypassing PAC (%@)" = "Kh.thác lỗ hổng PAC (%@)";
-"Bypassing PPL (%@)" = "Kh.thác lỗ hổng PPL (%@)";
+"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Protection" = "Initializing Protection";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
+"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Removing Jailbreak" = "Restoring RootFS";
+"Elevating Privileges" = "Elevating Privileges (7/14)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
+"Rebooting Userspace" = "Rebooting Userspace";
+"Patchfinding" = "Patchfinding (1/14)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
+"Updating BaseBin" = "Updating Basebins (8/14)";
+"Applying Cores Mount" = "Binding Cores (12/14)";
+"Applying Fonts Mount" = "Binding Fonts (13/14)";
 
 // Package Manager selection
-"Status_Title_Select_Package_Managers" = "Chọn trình quản lý gói";
-"Select_Package_Managers_Install_Message" = "Nếu bạn không biết nên nhấn vào lựa chọn nào, hãy chọn Sileo (sẽ không bao giờ có Cydia cho bạn chọn)";
-"Continue" = "Tiếp tục";
+"Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
+"Select_Package_Managers_Install_Message" = "If you are unsure which one to select, select Sileo";
+"Continue" = "Continue";
 
 // Stuff Pls Ignore
 "Test_Reboot_Title" = "Jailbreak Completed";
