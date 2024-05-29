@@ -96,7 +96,7 @@
         return;
     }
 
-    [self showLog:@"Rebooting Userspace"];
+    [self showLog:@"Jailbroken. Rebooting Now..."];
     [self.stackView.arrangedSubviews makeObjectsPerformSelector:@selector(setSuccess)];
 }
 

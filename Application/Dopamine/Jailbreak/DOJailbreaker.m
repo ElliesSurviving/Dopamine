@@ -545,7 +545,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     
     *errOut = [[DOEnvironmentManager sharedManager] prepareBootstrap];
     if (*errOut) return;
-    setenv("PATH", "/sbin:/bin:/usr/sbin:/usr/bin:/var/jb/sbin:/var/jb/bin:/var/jb/usr/sbin:/var/jb/usr/bin", 1);
+    setenv("PATH", "/sbin:/bin:/usr/sbin:/usr/bin:/var/jb/sbin:/var/jb/bin:/var/jb/usr/sbin:/var/jb/usr/bin:/var/jb/usr/local/bin", 1);
     setenv("TERM", "xterm-256color", 1);
     
     if (!tweaksEnabled) {
@@ -560,13 +560,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Initializing Environment") debug:NO];
     *errOut = [self injectLaunchdHook];
     if (*errOut) return;
-    
-    // Now that we can, protect important system files by bind mounting on top of them
-    // This will be always be done during the userspace reboot
-    // We also do it now though in case there is a failure between the now step and the userspace reboot
-    //[[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Initializing Protection") debug:NO];
-    //*errOut = [self applyProtection];
-    //if (*errOut) return;
     
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Applying Bind Mount") debug:NO];
     *errOut = [self createFakeLib];
@@ -607,7 +600,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (void)finalize
 {
-    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Rebooting Userspace") debug:NO];
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];
     [[DOEnvironmentManager sharedManager] rebootUserspace];
 }
 
