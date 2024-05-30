@@ -18,6 +18,8 @@
 #import "NSData+Hex.h"
 #import <IOKit/IOKitLib.h>
 #import <sys/sysctl.h>
+#import <mach-o/dyld.h>
+#import <libjailbreak/codesign.h>
 
 #define LIBKRW_DOPAMINE_BUNDLED_VERSION @"2.0.1"
 #define LIBROOT_DOPAMINE_BUNDLED_VERSION @"1.0.1"
@@ -436,24 +438,22 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     NSString *installedPath = NSJBRootPath(@"/.installed_dopamine");
     error = [self createSymlinkAtPath:@"/var/jb" toPath:NSJBRootPath(@"/") createIntermediateDirectories:YES];
     // most likely about to get half these symlinks wrong but the ones ik which will be wrong arent used by xinam1ne anyways so *aesthetics* dont judge me ~ lilliana
+    error = [[NSFileManager defaultManager] moveItemAtPath:@"/var/lib/apt" toPath:@"/var/aptbackup"]; // turns out apt is important so back this up first ~ lilliana
+    error = [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib"]; // var lib is usually filled with shit so get rid of it before making the link ~ lilliana
+    error = [[DOEnvironmentManager sharedManager] bullshitsymlinks];
     error = [self createSymlinkAtPath:@"/var/alternatives" toPath:NSJBRootPath(@"/etc/alternatives") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/ap" toPath:NSJBRootPath(@"/etc/apt") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/ap" toPath:NSJBRootPath(@"/etc/ap") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/bash" toPath:NSJBRootPath(@"/bin/bash") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/bin" toPath:NSJBRootPath(@"/usr/bin") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/bzip2" toPath:NSJBRootPath(@"/usr/bin/bzip2") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/usr/cache")]; //i know for a fact this dont exist on rego procursus ~ lilliana
     error = [self createSymlinkAtPath:@"/var/cache" toPath:NSJBRootPath(@"/usr/cache") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/dpkg" toPath:NSJBRootPath(@"/etc/dpkg") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/etc" toPath:NSJBRootPath(@"/etc") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/gzip" toPath:NSJBRootPath(@"/usr/bin/gzip") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/LIB" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] moveItemAtPath:@"/var/lib/apt" toPath:@"/var/aptbackup"]; // turns out apt is important so back this up first ~ lilliana
-    error = [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib"]; // var lib is usually filled with shit so get rid of it before making the link ~ lilliana
     error = [self createSymlinkAtPath:@"/var/lib" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
     error = [[NSFileManager defaultManager] moveItemAtPath:@"/var/aptbackup" toPath:@"/var/lib/apt"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/ex"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/misc"];
     error = [self createSymlinkAtPath:@"/var/lib/dpkg" toPath:NSJBRootPath(@"/Library/dpkg") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/Lib" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/libexec" toPath:NSJBRootPath(@"/usr/libexec") createIntermediateDirectories:YES];
@@ -474,7 +474,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     error = [self createSymlinkAtPath:@"/var/LIY" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/sudo_logsrvd.conf" toPath:NSJBRootPath(@"/etc/sudo_logsrvd.conf") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/sy" toPath:NSJBRootPath(@"/System") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Library/Themes")];
     error = [self createSymlinkAtPath:@"/var/Themes" toPath:NSJBRootPath(@"/Library/Themes") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/ubi" toPath:NSJBRootPath(@"/usr/bin") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/ulb" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
@@ -487,31 +486,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     error = [self createSymlinkAtPath:@"/var/zsh" toPath:NSJBRootPath(@"/bin/zsh") createIntermediateDirectories:YES];
     error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/var")];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/var") toPath:@"/var" createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives/partial"];
     error = [[NSData data] writeToFile:@"/var/cache/apt/archives/lock" atomically:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg/log"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/locate"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lock"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mnt"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/null"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/opt"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/select"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/backups"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/spool"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/crash"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/games"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mail"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/www"];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/yp"];
     error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/dev")];
     error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/tmp")];
     error = [self createSymlinkAtPath:@"/var/jb/dev" toPath:@"/dev" createIntermediateDirectories:YES];
@@ -519,23 +494,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     error = [self createSymlinkAtPath:@"/var/mobile/Library" toPath:NSJBRootPath(@"/UsrLb") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:@"/var/mobile" toPath:NSJBRootPath(@"/vmo") createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/tmp") toPath:@"/var/tmp" createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private/system_data")];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/private/preboot") toPath:@"/private/preboot" createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/private/var") toPath:@"/var" createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/private/xarts") toPath:@"/private/xarts" createIntermediateDirectories:YES];
     error = [[NSFileManager defaultManager] moveItemAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc")];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/AppleInternal")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Developer")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/cores")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.mb")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.ba")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.fseventsd")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Cryptexes")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Applications")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Developer")];
-    error = [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/DriverKit")];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/System/Cryptexes/App") toPath:@"/private/preboot/Cryptexes/App" createIntermediateDirectories:YES];
     error = [self createSymlinkAtPath:NSJBRootPath(@"/System/Cryptexes/OS") toPath:@"/private/preboot/Cryptexes/OS" createIntermediateDirectories:YES];
     error = [[NSData data] writeToFile:NSJBRootPath(@"/.file") atomically:YES];
