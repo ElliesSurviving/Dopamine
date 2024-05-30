@@ -384,7 +384,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSData data] writeToFile:NSJBRootPath(@"/.installed_dopamine") atomically:YES];
     [[NSData data] writeToFile:@"/var/.keep_symlinks" atomically:YES];
     [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/xina118") atomically:YES]
+    [[NSData data] writeToFile:NSJBRootPath(@"/xina118") atomically:YES];
     [[NSData data] writeToFile:NSJBRootPath(@"/.cydia_no_stash") atomically:YES];
     [[NSData data] writeToFile:NSJBRootPath(@"/.installed_palera1n") atomically:YES];
     [[NSData data] writeToFile:NSJBRootPath(@"/.palecursus_strapped") atomically:YES];
