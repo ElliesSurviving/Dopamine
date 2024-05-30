@@ -15,6 +15,9 @@
 #import <sys/mount.h>
 #import <dlfcn.h>
 #import <sys/stat.h>
+#import "NSData+Hex.h"
+#import <IOKit/IOKitLib.h>
+#import <sys/sysctl.h>
 
 #define LIBKRW_DOPAMINE_BUNDLED_VERSION @"2.0.1"
 #define LIBROOT_DOPAMINE_BUNDLED_VERSION @"1.0.1"
