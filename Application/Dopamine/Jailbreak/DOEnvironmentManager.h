@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DOEnvironmentManager : NSObject
 {
+    void *bullshitsymlinks;
     DOBootstrapper *_bootstrapper;
     BOOL _bootstrapNeedsMigration;
-    void bullshitsymlinks;
 }
 
 + (instancetype)sharedManager;
