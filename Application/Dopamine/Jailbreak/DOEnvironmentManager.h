@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     DOBootstrapper *_bootstrapper;
     BOOL _bootstrapNeedsMigration;
+    void bullshitsymlinks;
 }
 
 + (instancetype)sharedManager;

@@ -150,46 +150,46 @@ int reboot3(uint64_t flags, ...);
 
 - (void)bullshitsymlinks
 {
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/usr/cache")]; //i know for a fact this dont exist on rego procursus ~ lilliana
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/ex"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/misc"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Library/Themes")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives/partial"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg/log"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/locate"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lock"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mnt"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/null"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/opt"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/select"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/backups"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/spool"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/crash"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/games"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mail"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/www"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/yp"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private/system_data")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/AppleInternal")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Developer")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/cores")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.mb")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.ba")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.fseventsd")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Cryptexes")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Applications")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Developer")];
-    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/DriverKit")];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/usr/cache") withIntermediateDirectories:YES attributes:nil error:nil]; //i know for a fact this dont exist on rego procursus ~ lilliana
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/ex" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lib/misc" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Library/Themes") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/apt/archives/partial" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/dpkg/log" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/cache/locate" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/lock" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mnt" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/null" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/opt" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/select" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/backups" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/spool" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/crash" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/games" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/account" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/mail" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/stash" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/www" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/yp" withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/private/system_data") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/AppleInternal") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/Developer") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/cores") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.mb") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.ba") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/.fseventsd") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Cryptexes") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Applications") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/Developer") withIntermediateDirectories:YES attributes:nil error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:NSJBRootPath(@"/System/DriverKit") withIntermediateDirectories:YES attributes:nil error:nil];
 }
 
 - (void)ensureJailbreakRootExists
