@@ -15,11 +15,6 @@
 #import <sys/mount.h>
 #import <dlfcn.h>
 #import <sys/stat.h>
-#import "NSData+Hex.h"
-#import <IOKit/IOKitLib.h>
-#import <sys/sysctl.h>
-#import <mach-o/dyld.h>
-#import <libjailbreak/codesign.h>
 
 #define LIBKRW_DOPAMINE_BUNDLED_VERSION @"2.0.1"
 #define LIBROOT_DOPAMINE_BUNDLED_VERSION @"1.0.1"
@@ -385,26 +380,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         return;
     }
     
-    // look, this is most probably the most inefficient way to do shit but who gives a fuck. cuz i sure dont ~ lilliana
     [[NSData data] writeToFile:NSJBRootPath(@"/.installed_dopamine") atomically:YES];
-    [[NSData data] writeToFile:@"/var/.keep_symlinks" atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/xina118") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/.cydia_no_stash") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/.installed_palera1n") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/.palecursus_strapped") atomically:YES];
-    [[NSData data] writeToFile:NSJBRootPath(@"/.x1links") atomically:YES];
     completion(nil);
 
-     BOOL needsdotfiles = ![[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/.zlogin"];
-    if (needsdotfiles) {
-        [[NSData data] writeToFile:@"/var/mobile/.zlogin" atomically:YES];
-        [[NSData data] writeToFile:@"/var/mobile/.zlogout" atomically:YES];
-        [[NSData data] writeToFile:@"/var/mobile/.zprofile" atomically:YES];
-        [[NSData data] writeToFile:@"/var/mobile/.zshenv" atomically:YES];
-        [[NSData data] writeToFile:@"/var/mobile/.zshrc" atomically:YES];
-    }
-
+     [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
+    completion(nil);
 }
 
 - (void)prepareBootstrapWithCompletion:(void (^)(NSError *))completion
@@ -434,75 +414,61 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         }
     }
     
+    // Clean up xinaA15 v1 leftovers if desired
+    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/.keep_symlinks"]) {
+        NSArray *xinaLeftoverSymlinks = @[
+            @"/var/alternatives",
+            @"/var/ap",
+            @"/var/apt",
+            @"/var/bin",
+            @"/var/bzip2",
+            @"/var/dpkg",
+            @"/var/etc",
+            @"/var/gzip",
+            @"/var/Lib",
+            @"/var/libexec",
+            @"/var/Library",
+            @"/var/LIY",
+            @"/var/Liy",
+            @"/var/newuser",
+            @"/var/profile",
+            @"/var/sbin",
+            @"/var/suid_profile",
+            @"/var/sh",
+            @"/var/sy",
+            @"/var/share",
+            @"/var/ssh",
+            @"/var/sudo_logsrvd.conf",
+            @"/var/suid_profile",
+            @"/var/sy",
+            @"/var/usr",
+            @"/var/zlogin",
+            @"/var/zlogout",
+            @"/var/zprofile",
+            @"/var/zshenv",
+            @"/var/zshrc",
+            @"/var/jb/vmo",
+            @"/var/jb/UsrLb",
+            @"/var/jb/Xapps",
+        ];
+        NSArray *xinaLeftoverFiles = @[
+            @"/var/master.passwd"
+        ];
+        
+        for (NSString *xinaLeftoverSymlink in xinaLeftoverSymlinks) {
+            [self deleteSymlinkAtPath:xinaLeftoverSymlink error:nil];
+        }
+        
+        for (NSString *xinaLeftoverFile in xinaLeftoverFiles) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:xinaLeftoverFile]) {
+                [[NSFileManager defaultManager] removeItemAtPath:xinaLeftoverFile error:nil];
+            }
+        }
+    }
+    
     NSString *basebinPath = NSJBRootPath(@"/basebin");
     NSString *installedPath = NSJBRootPath(@"/.installed_dopamine");
     error = [self createSymlinkAtPath:@"/var/jb" toPath:NSJBRootPath(@"/") createIntermediateDirectories:YES];
-    // most likely about to get half these symlinks wrong but the ones ik which will be wrong arent used by xinam1ne anyways so *aesthetics* dont judge me ~ lilliana
-    error = [[NSFileManager defaultManager] moveItemAtPath:@"/var/lib/apt" toPath:@"/var/aptbackup"]; // turns out apt is important so back this up first ~ lilliana
-    error = [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib"]; // var lib is usually filled with shit so get rid of it before making the link ~ lilliana
-    error = [[DOEnvironmentManager sharedManager] bullshitsymlinks];
-    error = [self createSymlinkAtPath:@"/var/alternatives" toPath:NSJBRootPath(@"/etc/alternatives") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/ap" toPath:NSJBRootPath(@"/etc/apt") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/ap" toPath:NSJBRootPath(@"/etc/ap") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/bash" toPath:NSJBRootPath(@"/bin/bash") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/bin" toPath:NSJBRootPath(@"/usr/bin") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/bzip2" toPath:NSJBRootPath(@"/usr/bin/bzip2") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/cache" toPath:NSJBRootPath(@"/usr/cache") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/dpkg" toPath:NSJBRootPath(@"/etc/dpkg") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/etc" toPath:NSJBRootPath(@"/etc") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/gzip" toPath:NSJBRootPath(@"/usr/bin/gzip") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIB" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/lib" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] moveItemAtPath:@"/var/aptbackup" toPath:@"/var/lib/apt"];
-    error = [self createSymlinkAtPath:@"/var/lib/dpkg" toPath:NSJBRootPath(@"/Library/dpkg") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/Lib" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/libexec" toPath:NSJBRootPath(@"/usr/libexec") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/Library" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIY" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIy" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/Liy" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/local" toPath:NSJBRootPath(@"/usr/local") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/master.passwd" toPath:NSJBRootPath(@"/etc/master.passwd") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/newuser" toPath:NSJBRootPath(@"/usr/sbin/adduser") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIY" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/profile" toPath:NSJBRootPath(@"/etc/profile") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/sbin" toPath:NSJBRootPath(@"/usr/sbin") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/sh" toPath:NSJBRootPath(@"/bin/sh") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/share" toPath:NSJBRootPath(@"/usr/share") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIY" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/ssh" toPath:NSJBRootPath(@"/etc/ssh") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/LIY" toPath:NSJBRootPath(@"/Library") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/sudo_logsrvd.conf" toPath:NSJBRootPath(@"/etc/sudo_logsrvd.conf") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/sy" toPath:NSJBRootPath(@"/System") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/Themes" toPath:NSJBRootPath(@"/Library/Themes") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/ubi" toPath:NSJBRootPath(@"/usr/bin") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/ulb" toPath:NSJBRootPath(@"/usr/lib") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/usr" toPath:NSJBRootPath(@"/usr") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zlogin" toPath:@"/var/mobile/.zlogin" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zlogout" toPath:@"/var/mobile/.zlogout" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zprofile" toPath:@"/var/mobile/.zprofile" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zshenv" toPath:@"/var/mobile/.zshenv" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zshrc" toPath:@"/var/mobile/.zshrc" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/zsh" toPath:NSJBRootPath(@"/bin/zsh") createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/var")];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/var") toPath:@"/var" createIntermediateDirectories:YES];
-    error = [[NSData data] writeToFile:@"/var/cache/apt/archives/lock" atomically:YES];
-    error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/dev")];
-    error = [[NSFileManager defaultManager] removeItemAtPath:NSJBRootPath(@"/tmp")];
-    error = [self createSymlinkAtPath:@"/var/jb/dev" toPath:@"/dev" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/Xapps") toPath:NSJBRootPath(@"/Applications") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/mobile/Library" toPath:NSJBRootPath(@"/UsrLb") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:@"/var/mobile" toPath:NSJBRootPath(@"/vmo") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/tmp") toPath:@"/var/tmp" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/private/preboot") toPath:@"/private/preboot" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/private/var") toPath:@"/var" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/private/xarts") toPath:@"/private/xarts" createIntermediateDirectories:YES];
-    error = [[NSFileManager defaultManager] moveItemAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc")];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc") createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/System/Cryptexes/App") toPath:@"/private/preboot/Cryptexes/App" createIntermediateDirectories:YES];
-    error = [self createSymlinkAtPath:NSJBRootPath(@"/System/Cryptexes/OS") toPath:@"/private/preboot/Cryptexes/OS" createIntermediateDirectories:YES];
-    error = [[NSData data] writeToFile:NSJBRootPath(@"/.file") atomically:YES];
-    error = [[NSData data] writeToFile:@"/var/.updated" atomically:YES];
     if (error) {
         completion(error);
         return;
@@ -723,43 +689,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
     if (error) return error;
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/.keep_symlinks" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/alternatives" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ap" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/apt" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/bash" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/bzip2" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/cache" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/dpkg" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/etc" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/gzip" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIB" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Lib" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/libexec" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIY" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Library" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIy" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Liy" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/local" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/master.passwd" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/newuser" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/profile" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sh" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/share" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ssh" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sy" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Themes" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sudo_logsrvd.conf" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ubi" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ulb" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/usr" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogin" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogout" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zprofile" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zsh" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshenv" error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshrc" error:nil];
     return error;
 }
 

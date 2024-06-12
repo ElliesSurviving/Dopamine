@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DOEnvironmentManager : NSObject
 {
-    void *bullshitsymlinks;
     DOBootstrapper *_bootstrapper;
     BOOL _bootstrapNeedsMigration;
 }
@@ -37,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)locateJailbreakRoot;
 - (void)ensureJailbreakRootExists;
 
-- (void)bullshitsymlinks;
+
 - (void)runUnsandboxed:(void (^)(void))unsandboxBlock;
 - (void)runAsRoot:(void (^)(void))rootBlock;
 
