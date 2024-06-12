@@ -45,9 +45,7 @@
 
 // Settings Buttons
 "Button_Remove_Jailbreak" = "Restore RootFS";
-"Button_Hide_Jailbreak" = "Hide Jailbreak Root";
-"Button_Unhide_Jailbreak" = "Unhide Jailbreak Root";
-"Button_Refresh_Jailbreak_Apps" = "Run UICache";
+"Button_Refresh_Jailbreak_Apps" = "UICache";
 "Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
 "Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 
