@@ -11,7 +11,7 @@
 
 // Action Menu
 "Menu_Settings_Title" = "Settings";
-"Menu_Restart_SpringBoard_Title" = "Restart SpringBoard";
+"Menu_Restart_SpringBoard_Title" = "Respring";
 "Menu_Reboot_Userspace_Title" = "Reboot Userspace";
 "Menu_Credits_Title" = "Credits";
 
