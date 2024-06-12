@@ -1,8 +1,9 @@
 #include <libjailbreak/libjailbreak.h>
 #include <libkrw/libkrw_plugin.h>
 #include <dispatch/dispatch.h>
+#include <errno.h>
 
-void load_primitives_once(void)
+static void load_primitives_once(void)
 {
 	static dispatch_once_t onceToken;
 	dispatch_once (&onceToken, ^{
@@ -10,22 +11,25 @@ void load_primitives_once(void)
 	});
 }
 
-int kwritebuf_wrapper(void *from, uint64_t to, size_t len)
+static int kwritebuf_wrapper(void *from, uint64_t to, size_t len)
 {
 	return kwritebuf(to, from, len);
 }
 
-int kcall_wrapper(uint64_t func, size_t argc, const uint64_t *argv, uint64_t *ret)
+static int kcall_wrapper(uint64_t func, size_t argc, const uint64_t *argv, uint64_t *ret)
 {
-	return kcall(ret, func, argc, argv);
+	if (jbinfo(usesPACBypass)) {
+		return kcall(ret, func, argc, argv);
+	}
+	return ENOTSUP;
 }
 
-int physreadbuf_wrapper(uint64_t from, void *to, size_t len, uint8_t granule)
+static int physreadbuf_wrapper(uint64_t from, void *to, size_t len, uint8_t granule)
 {
 	return physreadbuf(from, to, len);
 }
 
-int physwritebuf_wrapper(void *from, uint64_t to, size_t len, uint8_t granule)
+static int physwritebuf_wrapper(void *from, uint64_t to, size_t len, uint8_t granule)
 {
 	return physwritebuf(to, from, len);
 }
@@ -36,7 +40,7 @@ int kbase_wrapper(uint64_t *kbase)
 	return 0;
 }
 
-__attribute__((used)) krw_plugin_initializer_t krw_initializer(krw_handlers_t handlers)
+__attribute__((used)) int krw_initializer(krw_handlers_t handlers)
 {
 	load_primitives_once();
 
@@ -52,10 +56,7 @@ __attribute__((used)) krw_plugin_initializer_t kcall_initializer(krw_handlers_t 
 {
 	load_primitives_once();
 
-	if (jbinfo(usesPACBypass)) {
-		handlers->kcall = kcall_wrapper;
-	}
-
+	handlers->kcall = kcall_wrapper;
 	handlers->physread = physreadbuf_wrapper;
 	handlers->physwrite = physwritebuf_wrapper;
 	return 0;
