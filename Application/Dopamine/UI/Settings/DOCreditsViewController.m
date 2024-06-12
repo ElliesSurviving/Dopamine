@@ -38,10 +38,10 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/elliessurviving/Dopamine"] options:@{} completionHandler:nil];
 }
 
-- (void)openDiscord
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/jb"] options:@{} completionHandler:nil];
-}
+//- (void)openDiscord
+//{
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/jb"] options:@{} completionHandler:nil];
+//}
 
 - (void)openLicense
 {

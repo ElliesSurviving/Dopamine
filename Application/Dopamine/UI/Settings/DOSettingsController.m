@@ -253,23 +253,23 @@
                     [reinstallPackageManagersSpecifier setProperty:@"reinstallPackageManagersPressed" forKey:@"action"];
                     [specifiers addObject:reinstallPackageManagersSpecifier];
                 }
-                if ((envManager.isJailbroken || envManager.isInstalledThroughTrollStore) && envManager.isBootstrapped) {
-                    PSSpecifier *hideUnhideJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    hideUnhideJailbreakSpecifier.target = self;
-                    [hideUnhideJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    if (envManager.isJailbreakHidden) {
-                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Unhide_Jailbreak" forKey:@"title"];
-                        [hideUnhideJailbreakSpecifier setProperty:@"eye" forKey:@"image"];
-                    }
-                    else {
-                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Hide_Jailbreak" forKey:@"title"];
-                        [hideUnhideJailbreakSpecifier setProperty:@"eye.slash" forKey:@"image"];
-                    }
-                    [hideUnhideJailbreakSpecifier setProperty:@"hideUnhideJailbreakPressed" forKey:@"action"];
-                    BOOL hideJailbreakButtonShown = (envManager.isJailbroken || (envManager.isInstalledThroughTrollStore && envManager.isBootstrapped && !envManager.isJailbreakHidden));
-                    if (hideJailbreakButtonShown) {
-                        [specifiers addObject:hideUnhideJailbreakSpecifier];
-                    }
+//                if ((envManager.isJailbroken || envManager.isInstalledThroughTrollStore) && envManager.isBootstrapped) {
+//                    PSSpecifier *hideUnhideJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
+//                    hideUnhideJailbreakSpecifier.target = self;
+//                    [hideUnhideJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+//                    if (envManager.isJailbreakHidden) {
+//                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Unhide_Jailbreak" forKey:@"title"];
+//                        [hideUnhideJailbreakSpecifier setProperty:@"eye" forKey:@"image"];
+//                    }
+//                    else {
+//                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Hide_Jailbreak" forKey:@"title"];
+//                        [hideUnhideJailbreakSpecifier setProperty:@"eye.slash" forKey:@"image"];
+//                    }
+//                    [hideUnhideJailbreakSpecifier setProperty:@"hideUnhideJailbreakPressed" forKey:@"action"];
+//                    BOOL hideJailbreakButtonShown = (envManager.isJailbroken || (envManager.isInstalledThroughTrollStore && envManager.isBootstrapped && !envManager.isJailbreakHidden));
+//                    if (hideJailbreakButtonShown) {
+//                        [specifiers addObject:hideUnhideJailbreakSpecifier];
+///                    }
                     
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
@@ -450,12 +450,12 @@
     [self presentViewController:changeMobilePasswordAlert animated:YES completion:nil];
 }
 
-- (void)hideUnhideJailbreakPressed
-{
-    DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
-    [envManager setJailbreakHidden:!envManager.isJailbreakHidden];
-    [self reloadSpecifiers];
-}
+//- (void)hideUnhideJailbreakPressed
+//{
+//    DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
+//    [envManager setJailbreakHidden:!envManager.isJailbreakHidden];
+//    [self reloadSpecifiers];
+//}
 
 - (void)removeJailbreakPressed
 {

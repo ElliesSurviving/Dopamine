@@ -450,6 +450,10 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"/var/jb/vmo",
             @"/var/jb/UsrLb",
             @"/var/jb/Xapps",
+            @"/var/ubi"
+            @"/var/ulb"
+            @"/var/LIB"
+            @"/var/LIy"
         ];
         NSArray *xinaLeftoverFiles = @[
             @"/var/master.passwd"
