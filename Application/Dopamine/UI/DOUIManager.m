@@ -266,15 +266,15 @@
         dup2(fd, stdout_orig[1]);
         close(stdout_orig[0]);
         
-        dup2(stdout_pipe[1], STDOUT_FILENO);
+        dup2(stdout_pipe[1], fd);
         close(stdout_pipe[1]);
         
-        char buffer[1024];
+        char cur = 0;
         char line[1024];
         int line_index = 0;
         ssize_t bytes_read;
 
-         while ((bytes_read = read(stdout_pipe[0], &cur, sizeof(cur))) > 0) {
+        while ((bytes_read = read(stdout_pipe[0], &cur, sizeof(cur))) > 0) {
             @autoreleasepool {
                 write(stdout_orig[1], &cur, bytes_read);
 
@@ -285,7 +285,6 @@
                 } else {
                     if (line_index < sizeof(line) - 1) {
                         line[line_index++] = cur;
-                        }
                     }
                 }
             }
