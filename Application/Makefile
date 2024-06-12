@@ -1,18 +1,19 @@
 .PHONY: all clean build_clean
 
-all: Dopamine.tipa
+all: Dopamine.ipa
 
-Dopamine.tipa: build/Build/Products/Debug-iphoneos/Dopamine.app
+Dopamine.ipa: build/Build/Products/Debug-iphoneos/Dopamine.app
 	@echo Ad-Hoc signing Dopamine
 	xattr -rc build/Build/Products/Debug-iphoneos/Dopamine.app
 	ldid -SDopamine/Dopamine.entitlements build/Build/Products/Debug-iphoneos/Dopamine.app/Dopamine
 	ldid -s build/Build/Products/Debug-iphoneos/Dopamine.app
-	rm -rf Payload Dopamine.tipa
+	rm -rf Payload Dopamine.ipa
 	mkdir Payload
 	cp -r build/Build/Products/Debug-iphoneos/Dopamine.app Payload/Dopamine.app
-	zip -Ar Dopamine.tipa Payload
+	zip -Ar Dopamine.ipa Payload
 	rm -rf Payload
 	rm -rf Dopamine.tipa
+	cp Dopamine.ipa Dopamine.tipa
 
 ifeq ($(NIGHTLY), 1)
 build/Build/Products/Debug-iphoneos/Dopamine.app: FORCE
@@ -23,7 +24,7 @@ build/Build/Products/Debug-iphoneos/Dopamine.app: FORCE
 endif
 
 clean:
-	rm -rf build Payload Dopamine.tipa
+	rm -rf build Payload Dopamine.ipa Dopamine.tipa
 
 build_clean:
 	rm -rf Payload build
