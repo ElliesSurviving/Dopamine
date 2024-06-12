@@ -228,9 +228,9 @@
                 if (envManager.isJailbroken) {
                     PSSpecifier *refreshAppsSpecifier = [PSSpecifier emptyGroupSpecifier];
                     refreshAppsSpecifier.target = self;
-                    [refreshAppsSpecifier setProperty:@"Button_Refresh_Jailbreak_Apps" forKey:@"title"];
+                    [refreshAppsSpecifier setProperty:@"Menu_Reboot_Userspace_Title" forKey:@"title"];
                     [refreshAppsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [refreshAppsSpecifier setProperty:@"arrow.triangle.2.circlepath" forKey:@"image"];
+                    [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
                     [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
                     [specifiers addObject:refreshAppsSpecifier];
                     
@@ -375,7 +375,7 @@
 
 - (void)refreshJailbreakAppsPressed
 {
-    [[DOEnvironmentManager sharedManager] refreshJailbreakApps];
+    [[DOEnvironmentManager sharedManager] rebootUserspace];
 }
 
 - (void)reinstallPackageManagersPressed
