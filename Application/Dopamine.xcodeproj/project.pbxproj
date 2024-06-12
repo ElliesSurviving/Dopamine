@@ -184,7 +184,7 @@
 		8CC139822B53DE6C00230143 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC139812B53DE6C00230143 /* NSData+Hex.m */; };
 		8CC139832B53E05300230143 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD08372B4F682500A32B61 /* IOKit.framework */; };
 		8CCD2FC42B77AAA000F9C5DA /* basebin-link.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD2FC32B77AA9200F9C5DA /* basebin-link.deb */; };
-		8CCD8A872B6F16CC004B72B0 /* libkrw-plugin.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD8A852B6F1662004B72B0 /* libkrw-plugin.deb */; };
+		8CCD8A872B6F16CC004B72B0 /* libkrw-dopamine.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD8A852B6F1662004B72B0 /* libkrw-dopamine.deb */; };
 		8CCD8A882B6F16D0004B72B0 /* libroot.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8CCD8A832B6F165A004B72B0 /* libroot.deb */; };
 		8CDD07AA2B4F619000A32B61 /* kfd.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CDD07A92B4F619000A32B61 /* kfd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CDD07AF2B4F619000A32B61 /* kfd.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD07A72B4F619000A32B61 /* kfd.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -520,7 +520,7 @@
 		8CC139812B53DE6C00230143 /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
 		8CCD2FC32B77AA9200F9C5DA /* basebin-link.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "basebin-link.deb"; path = "../../../Packages/basebin-link/basebin-link.deb"; sourceTree = "<group>"; };
 		8CCD8A832B6F165A004B72B0 /* libroot.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libroot.deb; path = ../../../Packages/libroot/libroot.deb; sourceTree = "<group>"; };
-		8CCD8A852B6F1662004B72B0 /* libkrw-plugin.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libkrw-plugin.deb"; path = "../../../Packages/libkrw-provider/libkrw-plugin.deb"; sourceTree = "<group>"; };
+		8CCD8A852B6F1662004B72B0 /* libkrw-dopamine.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libkrw-dopamine.deb"; path = "../../../Packages/libkrw-provider/libkrw-dopamine.deb"; sourceTree = "<group>"; };
 		8CDD07A72B4F619000A32B61 /* kfd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = kfd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDD07A92B4F619000A32B61 /* kfd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kfd.h; sourceTree = "<group>"; };
 		8CDD07B32B4F639100A32B61 /* kfd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kfd.m; sourceTree = "<group>"; };
@@ -1093,7 +1093,7 @@
 				8CB94F022B59E17A0098BAFD /* basebin.tc */,
 				8C512B8B2B5C9DE800C6F14A /* sileo.deb */,
 				8C512B8C2B5C9DE800C6F14A /* zebra.deb */,
-				8CCD8A852B6F1662004B72B0 /* libkrw-plugin.deb */,
+				8CCD8A852B6F1662004B72B0 /* libkrw-dopamine.deb */,
 				8CCD8A832B6F165A004B72B0 /* libroot.deb */,
 				8CCD2FC32B77AA9200F9C5DA /* basebin-link.deb */,
 				04DD0B362B7BA6180055DE4F /* LICENSE.md */,
@@ -1491,7 +1491,7 @@
 				8C2875212BD850B4008B24DA /* LICENSE_libgrabkernel2.md in Resources */,
 				8C512B912B5C9F9100C6F14A /* sileo.deb in Resources */,
 				8C512B922B5C9F9400C6F14A /* zebra.deb in Resources */,
-				8CCD8A872B6F16CC004B72B0 /* libkrw-plugin.deb in Resources */,
+				8CCD8A872B6F16CC004B72B0 /* libkrw-dopamine.deb in Resources */,
 				8CCD8A882B6F16D0004B72B0 /* libroot.deb in Resources */,
 				8C296BAE2BE05914007C2AD1 /* LICENSE_plooshinit.md in Resources */,
 				8C5FA9712BDD81EF008C246F /* LICENSE_weightBufs.md in Resources */,
