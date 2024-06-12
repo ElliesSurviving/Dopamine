@@ -277,17 +277,16 @@
                     [removeJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
                     [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
                     [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
-                    if (hideJailbreakButtonShown) {
-                        if (envManager.isJailbroken) {
-                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak_Jailbroken") forKey:@"footerText"];
-                        }
-                        else {
-                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak") forKey:@"footerText"];
-                        }
-                    }
+//                    if (hideJailbreakButtonShown) {
+//                        if (envManager.isJailbroken) {
+//                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak_Jailbroken") forKey:@"footerText"];
+//                        }
+//                        else {
+//                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak") forKey:@"footerText"];
+//                        }
+ //                   }
                     [specifiers addObject:removeJailbreakSpecifier];
                 }
-            }
         }
         
         PSSpecifier *themingGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
