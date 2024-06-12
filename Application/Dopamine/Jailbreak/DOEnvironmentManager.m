@@ -364,16 +364,6 @@ int reboot3(uint64_t flags, ...);
 }
 
 
-- (void)changeMobilePassword:(NSString *)newPassword
-{
-    [self runAsRoot:^{
-        [self runUnsandboxed:^{
-            NSString *dashCommand = [NSString stringWithFormat:@"printf \"%%s\\n\" \"%@\" | %@ usermod 501 -h 0", newPassword, NSJBRootPath(@"/usr/sbin/pw")];
-            exec_cmd(JBRootPath("/usr/bin/dash"), "-c", dashCommand.UTF8String, NULL);
-        }];
-    }];
-}
-
 - (NSError*)updateEnvironment
 {
     NSString *newBasebinTarPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"basebin.tar"];

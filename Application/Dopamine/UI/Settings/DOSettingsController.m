@@ -234,14 +234,6 @@
                     [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
                     [specifiers addObject:refreshAppsSpecifier];
                     
-                    PSSpecifier *changeMobilePasswordSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    changeMobilePasswordSpecifier.target = self;
-                    [changeMobilePasswordSpecifier setProperty:@"Button_Change_Mobile_Password" forKey:@"title"];
-                    [changeMobilePasswordSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [changeMobilePasswordSpecifier setProperty:@"key" forKey:@"image"];
-                    [changeMobilePasswordSpecifier setProperty:@"changeMobilePasswordPressed" forKey:@"action"];
-                    [specifiers addObject:changeMobilePasswordSpecifier];
-                    
                     PSSpecifier *reinstallPackageManagersSpecifier = [PSSpecifier emptyGroupSpecifier];
                     reinstallPackageManagersSpecifier.target = self;
                     [reinstallPackageManagersSpecifier setProperty:@"Button_Reinstall_Package_Managers" forKey:@"title"];
@@ -252,39 +244,13 @@
                         [reinstallPackageManagersSpecifier setProperty:@"shippingbox" forKey:@"image"];
                     [reinstallPackageManagersSpecifier setProperty:@"reinstallPackageManagersPressed" forKey:@"action"];
                     [specifiers addObject:reinstallPackageManagersSpecifier];
-                }
-//                if ((envManager.isJailbroken || envManager.isInstalledThroughTrollStore) && envManager.isBootstrapped) {
-//                    PSSpecifier *hideUnhideJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
-//                    hideUnhideJailbreakSpecifier.target = self;
-//                    [hideUnhideJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-//                    if (envManager.isJailbreakHidden) {
-//                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Unhide_Jailbreak" forKey:@"title"];
-//                        [hideUnhideJailbreakSpecifier setProperty:@"eye" forKey:@"image"];
-//                    }
-//                    else {
-//                        [hideUnhideJailbreakSpecifier setProperty:@"Button_Hide_Jailbreak" forKey:@"title"];
-//                        [hideUnhideJailbreakSpecifier setProperty:@"eye.slash" forKey:@"image"];
-//                    }
-//                    [hideUnhideJailbreakSpecifier setProperty:@"hideUnhideJailbreakPressed" forKey:@"action"];
-//                    BOOL hideJailbreakButtonShown = (envManager.isJailbroken || (envManager.isInstalledThroughTrollStore && envManager.isBootstrapped && !envManager.isJailbreakHidden));
-//                    if (hideJailbreakButtonShown) {
-//                        [specifiers addObject:hideUnhideJailbreakSpecifier];
-///                    }
-                    
+                }       
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
                     [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
                     [removeJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
                     [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
                     [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
-//                    if (hideJailbreakButtonShown) {
-//                        if (envManager.isJailbroken) {
-//                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak_Jailbroken") forKey:@"footerText"];
-//                        }
-//                        else {
-//                            [removeJailbreakSpecifier setProperty:DOLocalizedString(@"Hint_Hide_Jailbreak") forKey:@"footerText"];
-//                        }
- //                   }
                     [specifiers addObject:removeJailbreakSpecifier];
                 }
         }
@@ -417,44 +383,6 @@
     [self.navigationController pushViewController:[[DOPkgManagerPickerViewController alloc] init] animated:YES];
 }
 
-- (void)changeMobilePasswordPressed
-{
-    UIAlertController *changeMobilePasswordAlert = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Button_Change_Mobile_Password") message:DOLocalizedString(@"Alert_Change_Mobile_Password_Body") preferredStyle:UIAlertControllerStyleAlert];
-    
-    [changeMobilePasswordAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = DOLocalizedString(@"Password_Placeholder");
-        textField.secureTextEntry = YES;
-    }];
-    
-    [changeMobilePasswordAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = DOLocalizedString(@"Repeat_Password_Placeholder");
-        textField.secureTextEntry = YES;
-    }];
-    
-    UIAlertAction *changeButton = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Change") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-        NSString *password = changeMobilePasswordAlert.textFields[0].text;
-        NSString *repeatPassword = changeMobilePasswordAlert.textFields[1].text;
-        if (![password isEqualToString:repeatPassword]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self changeMobilePasswordPressed];
-            });
-        }
-        else {
-            [[DOEnvironmentManager sharedManager] changeMobilePassword:password];
-        }
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Cancel") style:UIAlertActionStyleCancel handler:nil];
-    [changeMobilePasswordAlert addAction:changeButton];
-    [changeMobilePasswordAlert addAction:cancelAction];
-    [self presentViewController:changeMobilePasswordAlert animated:YES completion:nil];
-}
-
-//- (void)hideUnhideJailbreakPressed
-//{
-//    DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
-//    [envManager setJailbreakHidden:!envManager.isJailbreakHidden];
-//    [self reloadSpecifiers];
-//}
 
 - (void)removeJailbreakPressed
 {
