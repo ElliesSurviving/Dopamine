@@ -170,13 +170,12 @@
                 [specifiers addObject:pacBypassSpecifier];
                     
                 PSSpecifier *pplBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PPL Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
-                [pplBypassSpecifier setProperty:@YES forKey:@"enabled"];
                 [pplBypassSpecifier setProperty:exploitManager.preferredPPLBypass.identifier forKey:@"default"];
                 pplBypassSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
                 [pplBypassSpecifier setProperty:@"availablePPLBypassIdentifiers" forKey:@"valuesDataSource"];
                 [pplBypassSpecifier setProperty:@"availablePPLBypassNames" forKey:@"titlesDataSource"];
                 [pplBypassSpecifier setProperty:@"selectedPPLBypass" forKey:@"key"];
-                [pplBypassSpecifier setProperty:(_availablePPLBypasses.firstObject.identifier ?: @"none") forKey:@"recommendedExploitIdentifier"];
+                [pplBypassSpecifier setProperty:([envManager isPPLBypassRequired] ? _availablePPLBypasses.firstObject.identifier : @"none") forKey:@"recommendedExploitIdentifier"];
                 [specifiers addObject:pplBypassSpecifier];
                 
             }
