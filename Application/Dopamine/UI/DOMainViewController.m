@@ -127,6 +127,8 @@
     UIImage *jailbreakButtonImage;
     if (isSupported)
         jailbreakButtonImage = [UIImage systemImageNamed:@"lock.open" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]];
+    else if (!isJailbroken)
+        jailbreakButtonImage = [UIImage systemImageNamed:@"lock" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]];
     else
         jailbreakButtonImage = [UIImage systemImageNamed:@"lock.slash" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]];
     
