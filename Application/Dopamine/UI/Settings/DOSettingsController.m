@@ -233,17 +233,6 @@
                     [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
                     [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
                     [specifiers addObject:refreshAppsSpecifier];
-                    
-                    PSSpecifier *reinstallPackageManagersSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    reinstallPackageManagersSpecifier.target = self;
-                    [reinstallPackageManagersSpecifier setProperty:@"Button_Reinstall_Package_Managers" forKey:@"title"];
-                    [reinstallPackageManagersSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    if (@available(iOS 16.0, *))
-                        [reinstallPackageManagersSpecifier setProperty:@"shippingbox.and.arrow.backward" forKey:@"image"];
-                    else
-                        [reinstallPackageManagersSpecifier setProperty:@"shippingbox" forKey:@"image"];
-                    [reinstallPackageManagersSpecifier setProperty:@"reinstallPackageManagersPressed" forKey:@"action"];
-                    [specifiers addObject:reinstallPackageManagersSpecifier];
                 }       
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
@@ -376,11 +365,6 @@
 - (void)refreshJailbreakAppsPressed
 {
     [[DOEnvironmentManager sharedManager] rebootUserspace];
-}
-
-- (void)reinstallPackageManagersPressed
-{
-    [self.navigationController pushViewController:[[DOPkgManagerPickerViewController alloc] init] animated:YES];
 }
 
 
