@@ -39,7 +39,7 @@
 
 // Settings Toggles
 "Settings_Tweak_Injection" = "Enable Tweak Injection";
-"Settings_iDownload" = "Enable iDownloadd";
+"Settings_iDownload" = "Enable iDownload Daemon";
 "Settings_Verbose_Logs" = "Enable Verbose Logging";
 "Settings_Apps_JIT" = "Enable JIT in Apps";
 
