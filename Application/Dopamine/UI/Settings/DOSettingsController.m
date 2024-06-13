@@ -90,15 +90,20 @@
 - (NSArray *)availablePPLBypassIdentifiers
 {
     NSMutableArray *identifiers = [NSMutableArray new];
+    if (![DOEnvironmentManager sharedManager].isPPLBypassRequired) {
+        [identifiers addObject:@"none"];
+    }
     for (DOExploit *exploit in _availablePPLBypasses) {
         [identifiers addObject:exploit.identifier];
     }
     return identifiers;
 }
-
 - (NSArray *)availablePPLBypassNames
 {
     NSMutableArray *names = [NSMutableArray new];
+    if (![DOEnvironmentManager sharedManager].isPPLBypassRequired) {
+        [names addObject:DOLocalizedString(@"None")];
+    }
     for (DOExploit *exploit in _availablePPLBypasses) {
         [names addObject:exploit.name];
     }
