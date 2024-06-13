@@ -151,7 +151,6 @@
                 [kernelExploitSpecifier setProperty:@"availableKernelExploitIdentifiers" forKey:@"valuesDataSource"];
                 [kernelExploitSpecifier setProperty:@"availableKernelExploitNames" forKey:@"titlesDataSource"];
                 [kernelExploitSpecifier setProperty:@"selectedKernelExploit" forKey:@"key"];
-                [kernelExploitSpecifier setProperty:(_availableKernelExploits.firstObject.identifier ?: @"none") forKey:@"recommendedExploitIdentifier"];
                 [specifiers addObject:kernelExploitSpecifier];
                 
                 if (envManager.isArm64e) {
