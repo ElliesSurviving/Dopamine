@@ -144,47 +144,45 @@
         [specifiers addObject:headerSpecifier];
         
         if (envManager.isSupported) {
-            if (!envManager.isJailbroken) {
-                PSSpecifier *exploitGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
-                exploitGroupSpecifier.name = DOLocalizedString(@"Section_Exploits");
-                [specifiers addObject:exploitGroupSpecifier];
+            PSSpecifier *exploitGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
+            exploitGroupSpecifier.name = DOLocalizedString(@"Section_Exploits");
+            [specifiers addObject:exploitGroupSpecifier];
                 
-                PSSpecifier *kernelExploitSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Kernel Exploit") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
-                [kernelExploitSpecifier setProperty:@YES forKey:@"enabled"];
-                [kernelExploitSpecifier setProperty:exploitManager.preferredKernelExploit.identifier forKey:@"default"];
-                kernelExploitSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
-                [kernelExploitSpecifier setProperty:@"availableKernelExploitIdentifiers" forKey:@"valuesDataSource"];
-                [kernelExploitSpecifier setProperty:@"availableKernelExploitNames" forKey:@"titlesDataSource"];
-                [kernelExploitSpecifier setProperty:@"selectedKernelExploit" forKey:@"key"];
-                [specifiers addObject:kernelExploitSpecifier];
+            PSSpecifier *kernelExploitSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Kernel Exploit") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
+            [kernelExploitSpecifier setProperty:@YES forKey:@"enabled"];
+            [kernelExploitSpecifier setProperty:exploitManager.preferredKernelExploit.identifier forKey:@"default"];
+            kernelExploitSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
+            [kernelExploitSpecifier setProperty:@"availableKernelExploitIdentifiers" forKey:@"valuesDataSource"];
+            [kernelExploitSpecifier setProperty:@"availableKernelExploitNames" forKey:@"titlesDataSource"];
+            [kernelExploitSpecifier setProperty:@"selectedKernelExploit" forKey:@"key"];
+            [specifiers addObject:kernelExploitSpecifier];
                 
  
-                PSSpecifier *pacBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PAC Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
-                [pacBypassSpecifier setProperty:@YES forKey:@"enabled"];
-                DOExploit *preferredPACBypass = exploitManager.preferredPACBypass;
-                if (!preferredPACBypass) {
-                    [pacBypassSpecifier setProperty:@"none" forKey:@"default"];
-                }
-                else {
-                    [pacBypassSpecifier setProperty:preferredPACBypass.identifier forKey:@"default"];
-                }
-                pacBypassSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
-                [pacBypassSpecifier setProperty:@"availablePACBypassIdentifiers" forKey:@"valuesDataSource"];
-                [pacBypassSpecifier setProperty:@"availablePACBypassNames" forKey:@"titlesDataSource"];
-                [pacBypassSpecifier setProperty:@"selectedPACBypass" forKey:@"key"];
-                [pacBypassSpecifier setProperty:([envManager isPACBypassRequired] ? _availablePACBypasses.firstObject.identifier : @"none") forKey:@"recommendedExploitIdentifier"];
-                [specifiers addObject:pacBypassSpecifier];
-                    
-                PSSpecifier *pplBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PPL Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
-                [pplBypassSpecifier setProperty:exploitManager.preferredPPLBypass.identifier forKey:@"default"];
-                pplBypassSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
-                [pplBypassSpecifier setProperty:@"availablePPLBypassIdentifiers" forKey:@"valuesDataSource"];
-                [pplBypassSpecifier setProperty:@"availablePPLBypassNames" forKey:@"titlesDataSource"];
-                [pplBypassSpecifier setProperty:@"selectedPPLBypass" forKey:@"key"];
-                [pplBypassSpecifier setProperty:([envManager isPPLBypassRequired] ? _availablePPLBypasses.firstObject.identifier : @"none") forKey:@"recommendedExploitIdentifier"];
-                [specifiers addObject:pplBypassSpecifier];
-                
+            PSSpecifier *pacBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PAC Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
+            [pacBypassSpecifier setProperty:@YES forKey:@"enabled"];
+            DOExploit *preferredPACBypass = exploitManager.preferredPACBypass;
+             if (!preferredPACBypass) {
+                [pacBypassSpecifier setProperty:@"none" forKey:@"default"];
             }
+            else {
+                [pacBypassSpecifier setProperty:preferredPACBypass.identifier forKey:@"default"];
+            }
+            pacBypassSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
+            [pacBypassSpecifier setProperty:@"availablePACBypassIdentifiers" forKey:@"valuesDataSource"];
+            [pacBypassSpecifier setProperty:@"availablePACBypassNames" forKey:@"titlesDataSource"];
+            [pacBypassSpecifier setProperty:@"selectedPACBypass" forKey:@"key"];
+            [pacBypassSpecifier setProperty:([envManager isPACBypassRequired] ? _availablePACBypasses.firstObject.identifier : @"none") forKey:@"recommendedExploitIdentifier"];
+            [specifiers addObject:pacBypassSpecifier];
+                    
+            PSSpecifier *pplBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PPL Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
+            [pplBypassSpecifier setProperty:exploitManager.preferredPPLBypass.identifier forKey:@"default"];
+            pplBypassSpecifier.detailControllerClass = [DOPSExploitListItemsController class];
+            [pplBypassSpecifier setProperty:@"availablePPLBypassIdentifiers" forKey:@"valuesDataSource"];
+            [pplBypassSpecifier setProperty:@"availablePPLBypassNames" forKey:@"titlesDataSource"];
+            [pplBypassSpecifier setProperty:@"selectedPPLBypass" forKey:@"key"];
+            [pplBypassSpecifier setProperty:([envManager isPPLBypassRequired] ? _availablePPLBypasses.firstObject.identifier : @"none") forKey:@"recommendedExploitIdentifier"];
+            [specifiers addObject:pplBypassSpecifier];
+                
             
             PSSpecifier *settingsGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
             settingsGroupSpecifier.name = DOLocalizedString(@"Section_Jailbreak_Settings");
