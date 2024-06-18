@@ -1,4 +1,4 @@
-"Credits_Made_By" = "by opa334, ElleKit by évelyne\nfork maintained by @sys_winters";
+"Credits_Made_By" = "by opa334, ElleKit by évelyne, fork by @sys_winters";
 
 // Log
 "Status_Title_Jailbreaking" = "Jailbreaking";
@@ -91,23 +91,24 @@
 "Credits_Button_Source_Code" = "Source Code";
 
 // Logs
-"Initializing Environment" = "Initializing Jailbreak (10/14)";
+"Initializing Environment" = "Initializing Jailbreak (10/15)";
 "Initializing Protection" = "Initializing Protection";
-"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/14)";
-"Applying Bind Mount" = "Binding fakelib (11/14)";
+"Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/15)";
+"Applying Bind Mount" = "Binding fakelib (11/15)";
 "Removing Jailbreak" = "Restoring RootFS";
-"Elevating Privileges" = "Elevating Privileges (7/14)";
-"Cleaning Up Exploits" = "Cleaning Up Exploits (6/14)";
-"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/14)";
+"Elevating Privileges" = "Elevating Privileges (7/15)";
+"Cleaning Up Exploits" = "Cleaning Up Exploits (6/15)";
+"Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/15)";
 "Rebooting Userspace" = "Rebooting Userspace";
-"Patchfinding" = "Patchfinding (1/14)";
-"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/14)";
-"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/14)";
-"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/14)";
-"Checking For Duplicate Apps" = "Checking For Duplicate Apps (14/14)";
-"Updating BaseBin" = "Updating Basebins (8/14)";
-"Applying Cores Mount" = "Binding Cores (12/14)";
-"Applying Fonts Mount" = "Binding Fonts (13/14)";
+"Patchfinding" = "Patchfinding (1/15)";
+"Exploiting Kernel (%@)" = "Running Exploit (%@) (2/15)";
+"Bypassing PAC (%@)" = "Bypassing PAC (%@) (3/15)";
+"Bypassing PPL (%@)" = "Bypassing PPL (%@) (4/15)";
+"Checking For Duplicate Apps" = "Checking For Duplicate Apps (15/15)";
+"Updating BaseBin" = "Updating Basebins (8/15)";
+"Applying Cores Mount" = "Binding Cores (12/15)";
+"Applying Fonts Mount" = "Binding Fonts (13/15)";
+"Applying Dev Mount" = "Binding /dev (14/15)";
 
 // Package Manager selection
 "Status_Title_Select_Package_Managers" = "Select Package Manager(s)";
