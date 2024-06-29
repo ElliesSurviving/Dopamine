@@ -112,7 +112,6 @@ int reboot3(uint64_t flags, ...);
     NSError *error=nil;
     [self locateJailbreakRoot];
         
-        NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
         
         
         if (!error) {
