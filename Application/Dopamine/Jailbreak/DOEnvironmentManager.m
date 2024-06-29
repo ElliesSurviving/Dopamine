@@ -111,12 +111,6 @@ int reboot3(uint64_t flags, ...);
 {
     NSError *error=nil;
     [self locateJailbreakRoot];
-        
-        
-        
-        if (!error) {
-            gSystemInfo.jailbreakInfo.rootPath = strdup(jailbreakRootPath.UTF8String);
-        }
     return error;
 }
 
