@@ -112,8 +112,6 @@ int reboot3(uint64_t flags, ...);
     NSError *error=nil;
     [self locateJailbreakRoot];
         
-        NSString *randomJailbreakFolderName = [NSString stringWithFormat:@"dopamine-%@", randomString];
-        NSString *randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderName];
         NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
         
         
