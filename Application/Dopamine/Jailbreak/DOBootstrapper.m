@@ -390,8 +390,12 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSData data] writeToFile:NSJBRootPath(@"/.installed_dopamine") atomically:YES];
     completion(nil);
 
-     [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
+    [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
     completion(nil);
+
+    [[NSData data] writeToFile:NSJBRootPath(@"/.cydia_no_stash") atomically:YES];
+    completion(nil);
+}
 }
 
 - (void)prepareBootstrapWithCompletion:(void (^)(NSError *))completion

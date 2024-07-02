@@ -20,6 +20,7 @@
 #import "DOUIManager.h"
 #import "DOExploitManager.h"
 #import "NSData+Hex.h"
+#import "NSString+Version.h"
 
 int reboot3(uint64_t flags, ...);
 
@@ -147,6 +148,19 @@ int reboot3(uint64_t flags, ...);
     }
 }
 
+- (NSError *)createSymlinksAtPath:(NSString *)path toPath:(NSString *)destinationPath createIntermediateDirectories:(BOOL)createIntermediate
+{
+    NSError *error;
+    NSString *parentPath = [path stringByDeletingLastPathComponent];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:parentPath]) {
+        if (!createIntermediate) return [NSError errorWithDomain:bootstrapErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Failed create %@->%@ symlink: Parent dir does not exists", path, destinationPath]}];
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:parentPath withIntermediateDirectories:YES attributes:nil error:&error]) return error;
+    }
+    
+    [[NSFileManager defaultManager] createSymbolicLinkAtPath:path withDestinationPath:destinationPath error:&error];
+    return error;
+}
+
 - (NSError *)ensureJailbreakRootExists
 {
     NSError *error=nil;
@@ -194,6 +208,11 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootmb withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootba withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootFseventsd withIntermediateDirectories:YES attributes:nil error:&error];
+                [self createSymlinksAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc") createIntermediateDirectories:YES];
+                [self createSymlinksAtPath:NSJBRootPath(@"/var") toPath:@"/var" createIntermediateDirectories:YES];
+                [self createSymlinksAtPath:NSJBRootPath(@"/private/var") toPath:@"/var" createIntermediateDirectories:YES];
+                [self createSymlinksAtPath:NSJBRootPath(@"/dev") toPath:@"/dev" createIntermediateDirectories:YES];
+                [self createSymlinksAtPath:NSJBRootPath(@"/tmp") toPath:@"/var/tmp" createIntermediateDirectories:YES];
             }
         }
         
