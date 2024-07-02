@@ -396,7 +396,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSData data] writeToFile:NSJBRootPath(@"/.cydia_no_stash") atomically:YES];
     completion(nil);
 }
-}
+
 
 - (void)prepareBootstrapWithCompletion:(void (^)(NSError *))completion
 {
