@@ -148,18 +148,6 @@ int reboot3(uint64_t flags, ...);
     }
 }
 
-- (NSError *)createSymlinksAtPath:(NSString *)path toPath:(NSString *)destinationPath createIntermediateDirectories:(BOOL)createIntermediate
-{
-    NSError *error;
-    NSString *parentPath = [path stringByDeletingLastPathComponent];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:parentPath]) {
-        if (![[NSFileManager defaultManager] createDirectoryAtPath:parentPath withIntermediateDirectories:YES attributes:nil error:&error]) return error;
-    }
-    
-    [[NSFileManager defaultManager] createSymbolicLinkAtPath:path withDestinationPath:destinationPath error:&error];
-    return error;
-}
-
 - (NSError *)ensureJailbreakRootExists
 {
     NSError *error=nil;
@@ -207,11 +195,11 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootmb withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootba withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootFseventsd withIntermediateDirectories:YES attributes:nil error:&error];
-                [self createSymlinksAtPath:NSJBRootPath(@"/etc") toPath:NSJBRootPath(@"/private/etc") createIntermediateDirectories:YES];
-                [self createSymlinksAtPath:NSJBRootPath(@"/var") toPath:@"/var" createIntermediateDirectories:YES];
-                [self createSymlinksAtPath:NSJBRootPath(@"/private/var") toPath:@"/var" createIntermediateDirectories:YES];
-                [self createSymlinksAtPath:NSJBRootPath(@"/dev") toPath:@"/dev" createIntermediateDirectories:YES];
-                [self createSymlinksAtPath:NSJBRootPath(@"/tmp") toPath:@"/var/tmp" createIntermediateDirectories:YES];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:NSJBRootPath(@"/etc") withDestinationPath:NSJBRootPath(@"/private/etc") error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:NSJBRootPath(@"/var") withDestinationPath:@"/var" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:NSJBRootPath(@"/private/var") withDestinationPath:@"/var" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:NSJBRootPath(@"/dev") withDestinationPath:@"/dev" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:NSJBRootPath(@"/tmp") withDestinationPath:@"/var/tmp" error:&error];
             }
         }
         
