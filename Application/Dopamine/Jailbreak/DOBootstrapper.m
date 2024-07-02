@@ -543,12 +543,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     
     BOOL needsBootstrap = ![[NSFileManager defaultManager] fileExistsAtPath:installedPath];
     if (needsBootstrap) {
-        // First, wipe any existing content that's not basebin
-        for (NSURL *subItemURL in [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSJBRootPath(@"/")] includingPropertiesForKeys:nil options:0 error:nil]) {
-            if (![subItemURL.lastPathComponent isEqualToString:@"basebin"]) {
-                [[NSFileManager defaultManager] removeItemAtURL:subItemURL error:nil];
-            }
-        }
         
         /*void (^bootstrapDownloadCompletion)(NSString *, NSError *) = ^(NSString *path, NSError *error) {
             if (error) {

@@ -124,8 +124,7 @@ int reboot3(uint64_t flags, ...);
                         // These checks exist because of dumb users (and jailbreak developers) creating .installed_dopamine on jailbreaks that are NOT dopamine...
                         BOOL installedNekoJB = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_nekojb"]];
                         BOOL installedDefinitelyNotAGoodName = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.xia0o0o0o_jb_installed"]];
-                        BOOL installedPalera1n = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.palecursus_strapped"]];
-                        if (installedNekoJB || installedPalera1n || installedDefinitelyNotAGoodName) {
+                        if (installedNekoJB || installedDefinitelyNotAGoodName) {
                             continue;
                         }
                         
@@ -170,6 +169,14 @@ int reboot3(uint64_t flags, ...);
         NSString *randomJailbreakFolderName = [NSString stringWithFormat:@"dopamine-%@", randomString];
         NSString *randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderName];
         NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
+        NSString *jailbreakRootCores = [jailbreakRootPath stringByAppendingPathComponent:@"cores"];
+        NSString *jailbreakRootDeveloper = [jailbreakRootPath stringByAppendingPathComponent:@"Developer"];
+        NSString *jailbreakRootPrivate = [jailbreakRootPath stringByAppendingPathComponent:@"private"];
+        NSString *jailbreakRootSystemData = [jailbreakRootPrivate stringByAppendingPathComponent:@"system_data"];
+        NSString *jailbreakRootEtc = [jailbreakRootPrivate stringByAppendingPathComponent:@"etc"];
+        NSString *jailbreakRootmb = [jailbreakRootPath stringByAppendingPathComponent:@".mb"];
+        NSString *jailbreakRootFseventsd = [jailbreakRootPath stringByAppendingPathComponent:@".fseventsd"];
+        NSString *jailbreakRootba = [jailbreakRootPath stringByAppendingPathComponent:@".ba"];
         
         if (_bootstrapNeedsMigration) {
             NSString *oldRandomizedJailbreakPath = [[NSString stringWithUTF8String:gSystemInfo.jailbreakInfo.rootPath] stringByDeletingLastPathComponent];
@@ -178,6 +185,15 @@ int reboot3(uint64_t flags, ...);
         else {
             if (![[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath]) {
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootPath withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootCores withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootDeveloper withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootPrivate withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootSystemData withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootEtc withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootEtc withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootmb withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootba withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootFseventsd withIntermediateDirectories:YES attributes:nil error:&error];
             }
         }
         
