@@ -198,7 +198,7 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc" withDestinationPath:@"/var/jb/private/etc" error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/var" withDestinationPath:@"/var" error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/var" withDestinationPath:@"/var" error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:nil;
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:nil];
             }
         }
