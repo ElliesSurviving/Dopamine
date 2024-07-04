@@ -203,6 +203,8 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/xarts" withDestinationPath:@"/private/xarts" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:&error];
+                [[NSData data] writeToFile:@"/var/jb/.fseventsd/fseventsd-uuid" atomically:YES];
+
             }
         }
         

@@ -393,6 +393,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSData data] writeToFile:NSJBRootPath(@"/.mount_rw") atomically:YES];
     completion(nil);
 
+    [[NSData data] writeToFile:NSJBRootPath(@"/.file") atomically:YES];
+    completion(nil);
+
     [[NSData data] writeToFile:NSJBRootPath(@"/.cydia_no_stash") atomically:YES];
     completion(nil);
 }
