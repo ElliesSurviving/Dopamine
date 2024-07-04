@@ -702,7 +702,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             [self installPackage:ellekitDebPath];
 
             NSString *betapopupremoverPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"betaremover.deb"];
-            [self installPackage:betapopupremoverPath]
+            [self installPackage:betapopupremoverPath];
 
         }
     }
