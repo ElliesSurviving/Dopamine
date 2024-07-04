@@ -259,6 +259,14 @@
                     [forceTweaksSpecifier setProperty:@"forceTweaksPressed" forKey:@"action"];
                     [specifiers addObject:forceTweaksSpecifier];
 
+                    PSSpecifier *DoAllActionsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    DoAllActionsSpecifier.target = self;
+                    [DoAllActionsSpecifier setProperty:@"Menu_All_Actions_Title" forKey:@"title"];
+                    [DoAllActionsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [DoAllActionsSpecifier setProperty:@"wand.and.rays" forKey:@"image"];
+                    [DoAllActionsSpecifier setProperty:@"doAllActionsPressed" forKey:@"action"];
+                    [specifiers addObject:DoAllActionsSpecifier];
+
                     PSSpecifier *sepPanicSpecifier = [PSSpecifier emptyGroupSpecifier];
                     sepPanicSpecifier.target = self;
                     [sepPanicSpecifier setProperty:@"SEP Panic" forKey:@"title"];
@@ -267,14 +275,6 @@
                     [sepPanicSpecifier setProperty:@"sepPanicPressed" forKey:@"action"];
                     [specifiers addObject:sepPanicSpecifier];
 
-                    PSSpecifier *DoAllActionsSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    DoAllActionsSpecifier.target = self;
-                    [DoAllActionsSpecifier setProperty:@"Menu_All_Actions_Title" forKey:@"title"];
-                    [DoAllActionsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [DoAllActionsSpecifier setProperty:@"wand.and.rays" forKey:@"image"];
-                    [DoAllActionsSpecifier setProperty:@"doAllActionsPressed" forKey:@"action"];
-                    [specifiers addObject:DoAllActionsSpecifier];
-                    
                     if (!envManager.isJailbroken) {
                         PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                         removeJailbreakSpecifier.target = self;
