@@ -42,6 +42,10 @@
 "Settings_iDownload" = "Enable iDownload Daemon";
 "Settings_Verbose_Logs" = "Enable Verbose Logging";
 "Settings_Apps_JIT" = "Enable JIT in Apps";
+"Menu_All_Actions_Title" = "Do All";
+"Menu_Force_Tweaks_Title" = "Force Enable Tweaks";
+"Menu_Launch_Daemon_Title" = "Launch Daemons";
+"Menu_Remount_Title" = "Remount Directories";
 
 // Settings Buttons
 "Button_Remove_Jailbreak" = "Restore System";

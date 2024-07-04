@@ -247,7 +247,7 @@
                     launchstuffSpecifier.target = self;
                     [launchstuffSpecifier setProperty:@"Menu_Launch_Daemon_Title" forKey:@"title"];
                     [launchstuffSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [launchstuffSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                    [launchstuffSpecifier setProperty:@"slowmo" forKey:@"image"];
                     [launchstuffSpecifier setProperty:@"launchstuffPressed" forKey:@"action"];
                     [specifiers addObject:launchstuffSpecifier];
 
@@ -255,9 +255,17 @@
                     forceTweaksSpecifier.target = self;
                     [forceTweaksSpecifier setProperty:@"Menu_Force_Tweaks_Title" forKey:@"title"];
                     [forceTweaksSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [forceTweaksSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                    [forceTweaksSpecifier setProperty:@"hammer" forKey:@"image"];
                     [forceTweaksSpecifier setProperty:@"forceTweaksPressed" forKey:@"action"];
                     [specifiers addObject:forceTweaksSpecifier];
+
+                    PSSpecifier *DoAllActionsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    DoAllActionsSpecifier.target = self;
+                    [DoAllActionsSpecifier setProperty:@"Menu_All_Actions_Title" forKey:@"title"];
+                    [DoAllActionsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [DoAllActionsSpecifier setProperty:@"wand.and.rays" forKey:@"image"];
+                    [DoAllActionsSpecifier setProperty:@"doAllActionsPressed" forKey:@"action"];
+                    [specifiers addObject:DoAllActionsSpecifier];
                     
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
@@ -405,6 +413,15 @@
 - (void)forceTweaksPressed
 {
     exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
+}
+
+- (void)doAllActionsPressed
+{
+    exec_cmd_trusted("/sbin/mount", "-uw", "/private/preboot", NULL);
+    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
+    exec_cmd_trusted("uicache", "-a", NULL);
+    exec_cmd_trusted("killall", "SpringBoard", NULL);
 }
 
 - (void)removeJailbreakPressed

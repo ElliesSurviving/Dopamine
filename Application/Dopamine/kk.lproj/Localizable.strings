@@ -48,6 +48,10 @@
 "Button_Refresh_Jailbreak_Apps" = "UICache";
 "Button_Reinstall_Package_Managers" = "Reinstall Package Managers";
 "Button_Change_Mobile_Password" = "Change \"mobile\" Password";
+"Menu_All_Actions_Title" = "Do All";
+"Menu_Force_Tweaks_Title" = "Force Enable Tweaks";
+"Menu_Launch_Daemon_Title" = "Launch Daemons";
+"Menu_Remount_Title" = "Remount Directories";
 
 // Settings Hints
 "Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
