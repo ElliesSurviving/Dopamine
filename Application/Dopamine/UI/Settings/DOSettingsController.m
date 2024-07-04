@@ -283,6 +283,14 @@
                         [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
                         [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
                         [specifiers addObject:removeJailbreakSpecifier];
+
+                        PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                        remountDirsSpecifier.target = self;
+                        [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
+                        [remountDirsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                        [remountDirsSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                        [remountDirsSpecifier setProperty:@"remountDirsPressed" forKey:@"action"];
+                        [specifiers addObject:remountDirsSpecifier];
                     }
                 }
         }
