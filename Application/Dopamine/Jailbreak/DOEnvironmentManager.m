@@ -195,12 +195,14 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootmb withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootba withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootFseventsd withIntermediateDirectories:YES attributes:nil error:&error];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:jailbreakRootPath error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc" withDestinationPath:@"/var/jb/private/etc" error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/var" withDestinationPath:@"/var" error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/var" withDestinationPath:@"/var" error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:nil];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:nil];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:jailbreakRootPath error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc" withDestinationPath:@"/var/jb/private/etc" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/var" withDestinationPath:@"/var" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/var" withDestinationPath:@"/var" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/preboot" withDestinationPath:@"/private/preboot" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/xarts" withDestinationPath:@"/private/xarts" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:&error];
             }
         }
         
@@ -222,10 +224,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7.10 (custom)";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7.11 (custom)";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7.10 (custom)";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7.11 (custom)";
     }
 }
 

@@ -235,6 +235,14 @@
                     [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
                     [specifiers addObject:refreshAppsSpecifier];
                 }       
+                    PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    remountDirsSpecifier.target = self;
+                    [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
+                    [remountDirsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [remountDirsSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                    [remountDirsSpecifier setProperty:@"remountDirsPressed" forKey:@"action"];
+                    [specifiers addObject:remountDirsSpecifier];
+                    
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
                     [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
@@ -368,6 +376,10 @@
     [[DOEnvironmentManager sharedManager] rebootUserspace];
 }
 
+- (void)remountDirsPressed
+{
+    exec_cmd_trusted("/sbin/mount"), "-uw", "/private/preboot", NULL);
+}
 
 - (void)removeJailbreakPressed
 {
