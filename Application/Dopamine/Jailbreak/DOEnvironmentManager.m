@@ -419,6 +419,14 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)killallspringboard
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/bin/killall", "SpringBoard", NULL);
+        }];
+    }];
+}
 
 - (void)unregisterJailbreakApps
 {
