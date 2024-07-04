@@ -559,7 +559,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             [self extractBootstrap:path withCompletion:bootstrapFinishedCompletion];
         };*/
         
-        [[DOUIManager sharedInstance] sendLog:@"Extracting Bootstrap" debug:NO];
+        [[DOUIManager sharedInstance] sendLog:@"Installing Jailbreak" debug:NO];
 
         NSString *bootstrapZstdPath = [NSString stringWithFormat:@"%@/bootstrap_%@.tar.zst", [NSBundle mainBundle].bundlePath, [self bootstrapVersion]];
         [self extractBootstrap:bootstrapZstdPath withCompletion:bootstrapFinishedCompletion];
