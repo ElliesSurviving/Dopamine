@@ -701,6 +701,12 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *ellekitDebPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"ellekit.deb"];
             [self installPackage:ellekitDebPath];
 
+            NSString *pflDebPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"preferenceloader.deb"];
+            [self installPackage:pflDebPath];
+
+            NSString *afcDebPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"afc2d.deb"];
+            [self installPackage:afcDebPath];
+
             NSString *betapopupremoverPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"betaremover.deb"];
             [self installPackage:betapopupremoverPath];
 
