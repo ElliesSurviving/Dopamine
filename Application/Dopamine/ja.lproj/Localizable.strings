@@ -50,7 +50,7 @@
 "Button_Change_Mobile_Password" = "Change \"mobile\" Password";
 "Menu_All_Actions_Title" = "Do All";
 "Menu_Force_Tweaks_Title" = "Force Enable Tweaks";
-"Menu_Launch_Daemon_Title" = "Launch Daemons (BROKEN)";
+"Menu_Launch_Daemon_Title" = "Launch Daemons";
 "Menu_Remount_Title" = "Remount Directories";
 
 // Settings Hints

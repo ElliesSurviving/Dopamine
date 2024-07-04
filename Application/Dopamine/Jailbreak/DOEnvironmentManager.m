@@ -375,7 +375,7 @@ int reboot3(uint64_t flags, ...);
     [self runAsRoot:^{
         [self runUnsandboxed:^{
             exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
-  //          exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+            exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
             exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
             exec_cmd("uicache", "-a", NULL);
             exec_cmd("/var/jb/usr/bin/sbreload", NULL);
