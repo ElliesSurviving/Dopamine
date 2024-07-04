@@ -599,7 +599,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 - (void)finalize
 {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Respringing Now...") debug:NO];
-    [[DOEnvironmentManager sharedManager] respring];
+    [[DOEnvironmentManager sharedManager] killallspringboard];
 }
 
 
