@@ -93,6 +93,8 @@
 		8C4ABEB92B520E7B00B43C9B /* libjailbreak.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD08422B4F6DD800A32B61 /* libjailbreak.dylib */; platformFilter = ios; };
 		8C4ABEBE2B52274300B43C9B /* DOPreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4ABEBD2B52274300B43C9B /* DOPreferenceManager.m */; };
 		8C512B902B5C9F9000C6F14A /* libhooker.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8A2B5C9DE800C6F14A /* libhooker.deb */; };
+		8C512B942B5C9F9600C6F14A /* ellekit.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8D2B5C9DE800C6F14A /* ellekit.deb */; };
+		8C512B982B5C9F9800C6F14A /* betaremover.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8E2B5C9DE800C6F14A /* betaremover.deb */; };
 		8C512B912B5C9F9100C6F14A /* sileo.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8B2B5C9DE800C6F14A /* sileo.deb */; };
 		8C512B922B5C9F9400C6F14A /* zebra.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8C2B5C9DE800C6F14A /* zebra.deb */; };
 		8C56D4BF2B7C0DF2001C03D3 /* LICENSE_ChOma.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D4B82B7C0DF2001C03D3 /* LICENSE_ChOma.md */; };
@@ -427,6 +429,8 @@
 		8C4ABEBC2B52274300B43C9B /* DOPreferenceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOPreferenceManager.h; sourceTree = "<group>"; };
 		8C4ABEBD2B52274300B43C9B /* DOPreferenceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOPreferenceManager.m; sourceTree = "<group>"; };
 		8C512B8A2B5C9DE800C6F14A /* libhooker.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libhooker.deb; sourceTree = "<group>"; };
+		8C512B8D2B5C9DE800C6F14A /* ellekit.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ellekit.deb; sourceTree = "<group>"; };
+		8C512B8E2B5C9DE800C6F14A /* betaremover.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = betaremover.deb; sourceTree = "<group>"; };
 		8C512B8B2B5C9DE800C6F14A /* sileo.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = sileo.deb; sourceTree = "<group>"; };
 		8C512B8C2B5C9DE800C6F14A /* zebra.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = zebra.deb; sourceTree = "<group>"; };
 		8C56D4B82B7C0DF2001C03D3 /* LICENSE_ChOma.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_ChOma.md; sourceTree = "<group>"; };
@@ -1099,6 +1103,8 @@
 				8CB94F032B59E17A0098BAFD /* basebin.tar */,
 				8CB94F022B59E17A0098BAFD /* basebin.tc */,
 				8C512B8A2B5C9DE800C6F14A /* libhooker.deb */,
+				8C512B8E2B5C9DE800C6F14A /* betaremover.deb */,
+				8C512B8D2B5C9DE800C6F14A /* ellekit.deb */,
 				8C512B8B2B5C9DE800C6F14A /* sileo.deb */,
 				8C512B8C2B5C9DE800C6F14A /* zebra.deb */,
 				8CCD8A852B6F1662004B72B0 /* libkrw-dopamine.deb */,
@@ -1498,6 +1504,8 @@
 				042479A42B66916B0082581B /* Credits.plist in Resources */,
 				8C2875212BD850B4008B24DA /* LICENSE_libgrabkernel2.md in Resources */,
 				8C512B902B5C9F9000C6F14A /* libhooker.deb in Resources */,
+				8C512B8D2B5C9DE800C6F14A /* ellekit.deb in Resources */,
+				8C512B8E2B5C9DE800C6F14A /* betaremover.deb in Resources */,
 				8C512B912B5C9F9100C6F14A /* sileo.deb in Resources */,
 				8C512B922B5C9F9400C6F14A /* zebra.deb in Resources */,
 				8CCD8A872B6F16CC004B72B0 /* libkrw-dopamine.deb in Resources */,

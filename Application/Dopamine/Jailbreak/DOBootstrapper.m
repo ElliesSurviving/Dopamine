@@ -697,6 +697,13 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *basebinLinkPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"basebin-link.deb"];
             int r = [self installPackage:basebinLinkPath];
             if (r != 0) return [NSError errorWithDomain:bootstrapErrorDomain code:BootstrapErrorCodeFailedFinalising userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Failed to install basebin link: %d\n", r]}];
+
+            NSString *ellekitDebPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"ellekit.deb"];
+            [self installPackage:ellekitDebPath];
+
+            NSString *betapopupremoverPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"betaremover.deb"];
+            [self installPackage:betapopupremoverPath]
+
         }
     }
 
