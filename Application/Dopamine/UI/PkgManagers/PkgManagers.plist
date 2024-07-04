@@ -24,7 +24,7 @@
 	</dict>
 	<dict>
 		<key>Display Name</key>
-		<string>Libhooker Configurator</string>
+		<string>Libhooker Cfg</string>
 		<key>Key</key>
 		<string>org.coolstar.libhooker-configurator</string>
 		<key>Icon</key>

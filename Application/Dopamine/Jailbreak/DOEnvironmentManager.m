@@ -195,6 +195,7 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootmb withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootba withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootFseventsd withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:jailbreakRootPath error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc" withDestinationPath:@"/var/jb/private/etc" error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/var" withDestinationPath:@"/var" error:nil];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/var" withDestinationPath:@"/var" error:nil];
