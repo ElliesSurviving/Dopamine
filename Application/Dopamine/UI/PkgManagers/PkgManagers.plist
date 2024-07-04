@@ -4,16 +4,6 @@
 <array>
 	<dict>
 		<key>Display Name</key>
-		<string>Cydia</string>
-		<key>Key</key>
-		<string>com.saurik.Cydia</string>
-		<key>Icon</key>
-		<string>Cydia</string>
-		<key>Package</key>
-		<string>cydia.deb</string>
-	</dict>
-	<dict>
-		<key>Display Name</key>
 		<string>Sileo</string>
 		<key>Key</key>
 		<string>org.coolstar.SileoStore</string>
@@ -31,6 +21,16 @@
 		<string>Zebra</string>
 		<key>Package</key>
 		<string>zebra.deb</string>
+	</dict>
+	<dict>
+		<key>Display Name</key>
+		<string>Libhooker Configurator</string>
+		<key>Key</key>
+		<string>org.coolstar.libhooker-configurator</string>
+		<key>Icon</key>
+		<string>Libhooker</string>
+		<key>Package</key>
+		<string>libhooker.deb</string>
 	</dict>
 </array>
 </plist>
