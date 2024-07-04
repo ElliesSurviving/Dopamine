@@ -259,6 +259,14 @@
                     [forceTweaksSpecifier setProperty:@"forceTweaksPressed" forKey:@"action"];
                     [specifiers addObject:forceTweaksSpecifier];
 
+                    PSSpecifier *sepPanicSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    sepPanicSpecifier.target = self;
+                    [sepPanicSpecifier setProperty:@"Sep Panic" forKey:@"title"];
+                    [sepPanicSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [sepPanicSpecifier setProperty:@"exclamationmark.triangle" forKey:@"image"];
+                    [sepPanicSpecifier setProperty:@"sepPanicPressed" forKey:@"action"];
+                    [specifiers addObject:sepPanicSpecifier];
+
                     PSSpecifier *DoAllActionsSpecifier = [PSSpecifier emptyGroupSpecifier];
                     DoAllActionsSpecifier.target = self;
                     [DoAllActionsSpecifier setProperty:@"Menu_All_Actions_Title" forKey:@"title"];
@@ -415,6 +423,11 @@
 - (void)forceTweaksPressed
 {
     exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
+}
+
+- (void)sepPanicPressed
+{
+    exec_cmd_trusted("/usr/libexec/seputil", "--sepospanic", NULL)
 }
 
 - (void)doAllActionsPressed
