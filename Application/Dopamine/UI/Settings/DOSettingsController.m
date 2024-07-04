@@ -214,11 +214,19 @@
             [appJitSpecifier setProperty:@YES forKey:@"default"];
             [specifiers addObject:appJitSpecifier];
             
-            if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore) {
+            if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
                 [removeJailbreakSwitchSpecifier setProperty:@YES forKey:@"enabled"];
                 [removeJailbreakSwitchSpecifier setProperty:@"removeJailbreakEnabled" forKey:@"key"];
                 [specifiers addObject:removeJailbreakSwitchSpecifier];
+
+                PSSpecifier *refreshAppsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                refreshAppsSpecifier.target = self;
+                [refreshAppsSpecifier setProperty:@"Menu_Reboot_Userspace_Title" forKey:@"title"];
+                [refreshAppsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
+                [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
+                [specifiers addObject:refreshAppsSpecifier];
             }
             
             if (envManager.isJailbroken || envManager.isInstalledThroughTrollStore) {
@@ -227,14 +235,6 @@
                 [specifiers addObject:actionsGroupSpecifier];
                 
                 if (envManager.isJailbroken) {
-                    PSSpecifier *refreshAppsSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    refreshAppsSpecifier.target = self;
-                    [refreshAppsSpecifier setProperty:@"Menu_Reboot_Userspace_Title" forKey:@"title"];
-                    [refreshAppsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
-                    [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
-                    [specifiers addObject:refreshAppsSpecifier];
-
                     PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
                     remountDirsSpecifier.target = self;
                     [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
@@ -276,27 +276,7 @@
                     [specifiers addObject:sepPanicSpecifier];
 
                 }
-
-                    if (!envManager.isJailbroken && envManager.isBootstrapped) {
-                        PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
-                        removeJailbreakSpecifier.target = self;
-                        [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
-                        [removeJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                        [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
-                        [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
-                        [specifiers addObject:removeJailbreakSpecifier];
-                    }
-
-                    if (!envManager.isJailbroken) {
-                        PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
-                        remountDirsSpecifier.target = self;
-                        [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
-                        [remountDirsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                        [remountDirsSpecifier setProperty:@"eject.circle" forKey:@"image"];
-                        [remountDirsSpecifier setProperty:@"remountDirsPressed" forKey:@"action"];
-                        [specifiers addObject:remountDirsSpecifier];
-                    }
-                }
+            }
         }
         
         PSSpecifier *themingGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
