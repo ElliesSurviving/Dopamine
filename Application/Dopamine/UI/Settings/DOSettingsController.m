@@ -267,13 +267,15 @@
                     [DoAllActionsSpecifier setProperty:@"doAllActionsPressed" forKey:@"action"];
                     [specifiers addObject:DoAllActionsSpecifier];
                     
-                    PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
-                    removeJailbreakSpecifier.target = self;
-                    [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
-                    [removeJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                    [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
-                    [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
-                    [specifiers addObject:removeJailbreakSpecifier];
+                    if (!envManager.isJailbroken) {
+                        PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
+                        removeJailbreakSpecifier.target = self;
+                        [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
+                        [removeJailbreakSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                        [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
+                        [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
+                        [specifiers addObject:removeJailbreakSpecifier];
+                    }
                 }
         }
         
