@@ -221,7 +221,7 @@
                 [specifiers addObject:removeJailbreakSwitchSpecifier];
             }
             
-            if (envManager.isJailbroken || (envManager.isInstalledThroughTrollStore && envManager.isBootstrapped)) {
+            if (envManager.isJailbroken || envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *actionsGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
                 actionsGroupSpecifier.name = DOLocalizedString(@"Section_Actions");
                 [specifiers addObject:actionsGroupSpecifier];
@@ -234,7 +234,7 @@
                     [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
                     [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
                     [specifiers addObject:refreshAppsSpecifier];
-                }       
+
                     PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
                     remountDirsSpecifier.target = self;
                     [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
@@ -274,6 +274,8 @@
                     [sepPanicSpecifier setProperty:@"exclamationmark.triangle" forKey:@"image"];
                     [sepPanicSpecifier setProperty:@"sepPanicPressed" forKey:@"action"];
                     [specifiers addObject:sepPanicSpecifier];
+
+                }
 
                     if (!envManager.isJailbroken) {
                         PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
