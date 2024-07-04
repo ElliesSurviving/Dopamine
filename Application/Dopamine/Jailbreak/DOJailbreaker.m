@@ -598,8 +598,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (void)finalize
 {
-    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];
-    [[DOEnvironmentManager sharedManager] rebootUserspace];
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Respringing Now...") debug:NO];
+    [[DOEnvironmentManager sharedManager] respring];
 }
 
 
