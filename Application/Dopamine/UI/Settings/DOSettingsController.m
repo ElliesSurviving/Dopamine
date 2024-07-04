@@ -219,14 +219,6 @@
                 [removeJailbreakSwitchSpecifier setProperty:@YES forKey:@"enabled"];
                 [removeJailbreakSwitchSpecifier setProperty:@"removeJailbreakEnabled" forKey:@"key"];
                 [specifiers addObject:removeJailbreakSwitchSpecifier];
-
-                PSSpecifier *refreshAppsSpecifier = [PSSpecifier emptyGroupSpecifier];
-                refreshAppsSpecifier.target = self;
-                [refreshAppsSpecifier setProperty:@"Menu_Reboot_Userspace_Title" forKey:@"title"];
-                [refreshAppsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
-                [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
-                [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
-                [specifiers addObject:refreshAppsSpecifier];
             }
             
             if (envManager.isJailbroken || envManager.isInstalledThroughTrollStore) {
@@ -235,6 +227,14 @@
                 [specifiers addObject:actionsGroupSpecifier];
                 
                 if (envManager.isJailbroken) {
+                    PSSpecifier *refreshAppsSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    refreshAppsSpecifier.target = self;
+                    [refreshAppsSpecifier setProperty:@"Menu_Reboot_Userspace_Title" forKey:@"title"];
+                    [refreshAppsSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [refreshAppsSpecifier setProperty:@"arrow.clockwise.circle" forKey:@"image"];
+                    [refreshAppsSpecifier setProperty:@"refreshJailbreakAppsPressed" forKey:@"action"];
+                    [specifiers addObject:refreshAppsSpecifier];
+
                     PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
                     remountDirsSpecifier.target = self;
                     [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
