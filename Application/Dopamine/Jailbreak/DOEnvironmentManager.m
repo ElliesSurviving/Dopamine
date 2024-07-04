@@ -370,6 +370,56 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)allactionscall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
+            exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+            exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
+            exec_cmd("uicache", "-a", NULL);
+            exec_cmd("killall", "SpringBoard", NULL);
+        }];
+    }];
+}
+
+- (void)seppaniccall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/usr/libexec/seputil", "--sepospanic", NULL);
+        }];
+    }];
+}
+
+- (void)forcetweakscall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
+        }];
+    }];
+}
+
+- (void)launchstuffcall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+        }];
+    }];
+}
+
+- (void)remountdirscall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
+        }];
+    }];
+}
+
+
 - (void)unregisterJailbreakApps
 {
     [self runAsRoot:^{

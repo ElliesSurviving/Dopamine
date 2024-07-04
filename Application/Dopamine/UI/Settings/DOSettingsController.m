@@ -404,31 +404,27 @@
 
 - (void)remountDirsPressed
 {
-    exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
+    [[DOEnvironmentManager sharedManager] remountdirscall];
 }
 
 - (void)launchstuffPressed
 {
-    exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+    [[DOEnvironmentManager sharedManager] launchstuffcall];
 }
 
 - (void)forceTweaksPressed
 {
-    exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
+    [[DOEnvironmentManager sharedManager] forcetweakscall];
 }
 
 - (void)sepPanicPressed
 {
-    exec_cmd("/usr/libexec/seputil", "--sepospanic", NULL);
+    [[DOEnvironmentManager sharedManager] seppaniccall];
 }
 
 - (void)doAllActionsPressed
 {
-    exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
-    exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
-    exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
-    exec_cmd("uicache", "-a", NULL);
-    exec_cmd("killall", "SpringBoard", NULL);
+    [[DOEnvironmentManager sharedManager] allactionscall];
 }
 
 - (void)removeJailbreakPressed

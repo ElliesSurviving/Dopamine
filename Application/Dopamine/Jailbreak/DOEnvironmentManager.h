@@ -43,6 +43,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)respring;
 - (void)rebootUserspace;
 - (void)refreshJailbreakApps;
+- (void)allactionscall
+- (void)seppaniccall
+- (void)forcetweakscall
+- (void)remountdirscall
+- (void)launchstuffcall
 - (void)reboot;
 - (NSError*)updateEnvironment;
 - (void)updateJailbreakFromTIPA:(NSString *)tipaPath;
