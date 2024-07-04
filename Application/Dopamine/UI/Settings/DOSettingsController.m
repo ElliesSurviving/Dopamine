@@ -378,7 +378,7 @@
 
 - (void)remountDirsPressed
 {
-    exec_cmd_trusted("/sbin/mount"), "-uw", "/private/preboot", NULL);
+    exec_cmd_trusted("/sbin/mount", "-uw", "/private/preboot", NULL);
 }
 
 - (void)removeJailbreakPressed
