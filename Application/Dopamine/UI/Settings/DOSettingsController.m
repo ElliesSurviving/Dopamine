@@ -261,7 +261,7 @@
 
                     PSSpecifier *sepPanicSpecifier = [PSSpecifier emptyGroupSpecifier];
                     sepPanicSpecifier.target = self;
-                    [sepPanicSpecifier setProperty:@"Sep Panic" forKey:@"title"];
+                    [sepPanicSpecifier setProperty:@"SEP Panic" forKey:@"title"];
                     [sepPanicSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
                     [sepPanicSpecifier setProperty:@"exclamationmark.triangle" forKey:@"image"];
                     [sepPanicSpecifier setProperty:@"sepPanicPressed" forKey:@"action"];
@@ -427,7 +427,7 @@
 
 - (void)sepPanicPressed
 {
-    exec_cmd_trusted("/usr/libexec/seputil", "--sepospanic", NULL)
+    exec_cmd_trusted("/usr/libexec/seputil", "--sepospanic", NULL);
 }
 
 - (void)doAllActionsPressed
