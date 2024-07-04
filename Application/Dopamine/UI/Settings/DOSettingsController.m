@@ -277,7 +277,7 @@
 
                 }
 
-                    if (!envManager.isJailbroken) {
+                    if (!envManager.isJailbroken && envManager.isBootstrapped) {
                         PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                         removeJailbreakSpecifier.target = self;
                         [removeJailbreakSpecifier setProperty:@"Button_Remove_Jailbreak" forKey:@"title"];
@@ -285,7 +285,9 @@
                         [removeJailbreakSpecifier setProperty:@"trash" forKey:@"image"];
                         [removeJailbreakSpecifier setProperty:@"removeJailbreakPressed" forKey:@"action"];
                         [specifiers addObject:removeJailbreakSpecifier];
+                    }
 
+                    if (!envManager.isJailbroken) {
                         PSSpecifier *remountDirsSpecifier = [PSSpecifier emptyGroupSpecifier];
                         remountDirsSpecifier.target = self;
                         [remountDirsSpecifier setProperty:@"Menu_Remount_Title" forKey:@"title"];
