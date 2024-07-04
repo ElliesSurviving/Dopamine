@@ -242,6 +242,22 @@
                     [remountDirsSpecifier setProperty:@"eject.circle" forKey:@"image"];
                     [remountDirsSpecifier setProperty:@"remountDirsPressed" forKey:@"action"];
                     [specifiers addObject:remountDirsSpecifier];
+
+                    PSSpecifier *launchstuffSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    launchstuffSpecifier.target = self;
+                    [launchstuffSpecifier setProperty:@"Menu_Launch_Daemon_Title" forKey:@"title"];
+                    [launchstuffSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [launchstuffSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                    [launchstuffSpecifier setProperty:@"launchstuffPressed" forKey:@"action"];
+                    [specifiers addObject:launchstuffSpecifier];
+
+                    PSSpecifier *forceTweaksSpecifier = [PSSpecifier emptyGroupSpecifier];
+                    forceTweaksSpecifier.target = self;
+                    [forceTweaksSpecifier setProperty:@"Menu_Force_Tweaks_Title" forKey:@"title"];
+                    [forceTweaksSpecifier setProperty:@"DOButtonCell" forKey:@"headerCellClass"];
+                    [forceTweaksSpecifier setProperty:@"eject.circle" forKey:@"image"];
+                    [forceTweaksSpecifier setProperty:@"forceTweaksPressed" forKey:@"action"];
+                    [specifiers addObject:forceTweaksSpecifier];
                     
                     PSSpecifier *removeJailbreakSpecifier = [PSSpecifier emptyGroupSpecifier];
                     removeJailbreakSpecifier.target = self;
@@ -379,6 +395,16 @@
 - (void)remountDirsPressed
 {
     exec_cmd_trusted("/sbin/mount", "-uw", "/private/preboot", NULL);
+}
+
+- (void)launchstuffPressed
+{
+    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons")
+}
+
+- (void)forceTweaksPressed
+{
+    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader")
 }
 
 - (void)removeJailbreakPressed
