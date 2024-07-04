@@ -399,12 +399,12 @@
 
 - (void)launchstuffPressed
 {
-    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons");
+    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
 }
 
 - (void)forceTweaksPressed
 {
-    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader");
+    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
 }
 
 - (void)removeJailbreakPressed
