@@ -404,31 +404,31 @@
 
 - (void)remountDirsPressed
 {
-    exec_cmd_trusted("/sbin/mount", "-uw", "/private/preboot", NULL);
+    exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
 }
 
 - (void)launchstuffPressed
 {
-    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+    exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
 }
 
 - (void)forceTweaksPressed
 {
-    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
+    exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
 }
 
 - (void)sepPanicPressed
 {
-    exec_cmd_trusted("/usr/libexec/seputil", "--sepospanic", NULL);
+    exec_cmd("/usr/libexec/seputil", "--sepospanic", NULL);
 }
 
 - (void)doAllActionsPressed
 {
-    exec_cmd_trusted("/sbin/mount", "-uw", "/private/preboot", NULL);
-    exec_cmd_trusted("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
-    exec_cmd_trusted("/var/jb/usr/libexec/ellekit/loader", NULL);
-    exec_cmd_trusted("uicache", "-a", NULL);
-    exec_cmd_trusted("killall", "SpringBoard", NULL);
+    exec_cmd("/sbin/mount", "-uw", "/private/preboot", NULL);
+    exec_cmd("/var/jb/bin/launchctl", "bootstrap", "system", "/var/jb/Library/LaunchDaemons", NULL);
+    exec_cmd("/var/jb/usr/libexec/ellekit/loader", NULL);
+    exec_cmd("uicache", "-a", NULL);
+    exec_cmd("killall", "SpringBoard", NULL);
 }
 
 - (void)removeJailbreakPressed
