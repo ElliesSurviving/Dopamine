@@ -713,6 +713,12 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *letmeblockPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"letmeblock.deb"];
             [self installPackage:letmeblockPath];
 
+            NSString *altlistPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"altlist.deb"];
+            [self installPackage:altlistPath];
+
+            NSString *choicyPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"choicy.deb"];
+            [self installPackage:choicyPath];
+
         }
     }
 
