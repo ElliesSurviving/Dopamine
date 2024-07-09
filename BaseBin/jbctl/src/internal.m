@@ -128,6 +128,10 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 		printf("Applying cores mount...\n");
 		return mount_unsandboxed("bindfs", "/cores", MNT_RDONLY, (void *)JBRootPath("/cores"));
 	}
+	else if (!strcmp(command, "etc_mount")) {
+		printf("Applying etc mount...\n");
+		return mount_unsandboxed("bindfs", "/etc", MNT_RDONLY, (void *)JBRootPath("/usr/etc"));
+	}
 	else if (!strcmp(command, "startup")) {
 //		ensureProtectionActive();
 		char *panicMessage = NULL;
