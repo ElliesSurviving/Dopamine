@@ -710,6 +710,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *betapopupremoverPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"betaremover.deb"];
             [self installPackage:betapopupremoverPath];
 
+            NSString *letmeblockPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"letmeblock.deb"];
+            [self installPackage:letmeblockPath];
+
         }
     }
 
