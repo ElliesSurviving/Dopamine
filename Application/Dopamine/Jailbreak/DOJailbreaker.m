@@ -612,8 +612,15 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (void)finalize
 {
+    BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"userspacerebootafterjbEnabled" fallback:NO];
+    if (!userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Respringing Now...") debug:NO];
     [[DOEnvironmentManager sharedManager] killallspringboard];
+    }
+    if (userspacerebootafterjbEnabled) {
+    [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];
+    [[DOEnvironmentManager sharedManager] rebootUserspace];
+    }
 }
 
 

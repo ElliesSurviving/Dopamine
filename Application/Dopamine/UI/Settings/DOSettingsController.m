@@ -213,6 +213,11 @@
             [appJitSpecifier setProperty:@"appJITEnabled" forKey:@"key"];
             [appJitSpecifier setProperty:@YES forKey:@"default"];
             [specifiers addObject:appJitSpecifier];
+
+            PSSpecifier *sbreloaduserspacerebootSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Switch_SBLDRESTART") target:self set:@selector(setuserspacerebootafterjbEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
+            [sbreloaduserspacerebootSwitchSpecifier setProperty:@YES forKey:@"enabled"];
+            [sbreloaduserspacerebootSwitchSpecifier setProperty:@"userspacerebootafterjbEnabled" forKey:@"key"];
+            [specifiers addObject:sbreloaduserspacerebootSwitchSpecifier];
             
             if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
