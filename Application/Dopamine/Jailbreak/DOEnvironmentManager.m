@@ -432,7 +432,7 @@ int reboot3(uint64_t flags, ...);
 {
     [self runAsRoot:^{
         [self runUnsandboxed:^{
-            exec_cmd("/var/jb/usr/bin/killall", "com.opa334.Dopamine", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "Dopamine", NULL);
         }];
     }];
 }
