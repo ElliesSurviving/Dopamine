@@ -130,6 +130,9 @@ int jbctl_handle_internal(const char *command, int argc, char* argv[])
 	}
 	else if (!strcmp(command, "etc_mount")) {
 		printf("Applying etc mount...\n");
+		if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/jb/usr/etc/passwd"]) {
+        carbonCopy(@"/etc", @"/var/jb/usr/etc");
+    	}	
 		return mount_unsandboxed("bindfs", "/etc", MNT_RDONLY, (void *)JBRootPath("/usr/etc"));
 	}
 	else if (!strcmp(command, "startup")) {

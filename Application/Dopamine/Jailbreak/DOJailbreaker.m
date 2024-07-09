@@ -424,9 +424,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)BindEtcMount
 {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/jb/usr/etc/passwd"]) {
-        carbonCopy(@"/etc", @"/var/jb/usr/etc");
-    }
     int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "etc_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindEtcMount userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting etc failed with error: %d", r]}];
