@@ -616,6 +616,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (!userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Respringing Now...") debug:NO];
     [[DOEnvironmentManager sharedManager] killallspringboard];
+    [[DOEnvironmentManager sharedManager] killallDopamineApp]; // the dopamine app when reopened displays a black screen after sbreload, so just kill it ig?
     }
     if (userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];

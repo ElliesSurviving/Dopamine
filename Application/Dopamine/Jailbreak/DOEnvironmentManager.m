@@ -428,6 +428,15 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)killallDopamineApp
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/bin/killall", "com.opa334.Dopamine", NULL);
+        }];
+    }];
+}
+
 - (void)unregisterJailbreakApps
 {
     [self runAsRoot:^{
