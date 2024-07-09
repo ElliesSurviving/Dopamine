@@ -400,6 +400,11 @@
     }
 }
 
+- (void)setuserspacerebootafterjbEnabled:(id)value specifier:(PSSpecifier *)specifier
+{
+    [self setPreferenceValue:value specifier:specifier];
+}
+
 #pragma mark - Button Actions
 
 - (void)refreshJailbreakAppsPressed

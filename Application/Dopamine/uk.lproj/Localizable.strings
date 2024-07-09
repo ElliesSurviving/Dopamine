@@ -52,6 +52,7 @@
 "Menu_Force_Tweaks_Title" = "Force Enable Tweaks";
 "Menu_Launch_Daemon_Title" = "Launch Daemons";
 "Menu_Remount_Title" = "Remount Directories";
+"Button_Switch_SBLDRESTART" = "LDRestart after JB";
 
 // Settings Hints
 "Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";
