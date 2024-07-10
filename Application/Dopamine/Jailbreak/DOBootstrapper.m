@@ -730,7 +730,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         ];
         
         for (NSString *xinaLeftoverSymlink in xinaLeftoverSymlinks) {
-            [self deleteSymlinkAtPath:xinaLeftoverSymlink error:nil];
+            [self removeItemAtPath:xinaLeftoverSymlink error:nil];
         }
         
         for (NSString *xinaLeftoverFile in xinaLeftoverFiles) {
