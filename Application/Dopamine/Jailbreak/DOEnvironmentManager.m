@@ -167,7 +167,7 @@ int reboot3(uint64_t flags, ...);
             [randomString appendFormat:@"%C", randomCharacter];
         }
 
-        BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
+        BOOL x1linksEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
         NSString *randomJailbreakFolderName = [NSString stringWithFormat:@"dopamine-%@", randomString];
         NSString *randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderName];
         NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];

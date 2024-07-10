@@ -680,7 +680,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb" error:nil];
     return error;
     // Clean up xinaA15 v1 leftovers if desired
-    BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
+    BOOL x1linksEnabledEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
     if (x1linksEnabled) {
         NSArray *xinaLeftoverSymlinks = @[
             @"/var/.keep_symlinks"
