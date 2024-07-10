@@ -678,67 +678,49 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
     if (error) return error;
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb" error:nil];
-    return error;
-    // Clean up xinaA15 v1 leftovers if desired
     BOOL x1linksEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
     if (x1linksEnabled) {
-        NSArray *xinaLeftoverSymlinks = @[
-            @"/var/.keep_symlinks"
-            @"/var/alternatives",
-            @"/var/ap",
-            @"/var/apt",
-            @"/var/bin",
-            @"/var/bzip2",
-            @"/var/dpkg",
-            @"/var/etc",
-            @"/var/gzip",
-            @"/var/Lib",
-            @"/var/libexec",
-            @"/var/Library",
-            @"/var/LIY",
-            @"/var/lib"
-            @"/var/cache"
-            @"/var/local"
-            @"/var/Liy",
-            @"/var/newuser",
-            @"/var/profile",
-            @"/var/sbin",
-            @"/var/suid_profile",
-            @"/var/sh",
-            @"/var/sy",
-            @"/var/share",
-            @"/var/ssh",
-            @"/var/sudo_logsrvd.conf",
-            @"/var/suid_profile",
-            @"/var/sy",
-            @"/var/bash"
-            @"/var/zsh"
-            @"/var/usr",
-            @"/var/zlogin",
-            @"/var/zlogout",
-            @"/var/zprofile",
-            @"/var/Themes"
-            @"/var/zshenv",
-            @"/var/zshrc",
-            @"/var/ubi"
-            @"/var/ulb"
-            @"/var/LIB"
-            @"/var/LIy"
-        ];
-        NSArray *xinaLeftoverFiles = @[
-            @"/var/master.passwd"
-        ];
-        
-        for (NSString *xinaLeftoverSymlink in xinaLeftoverSymlinks) {
-            [self removeItemAtPath:xinaLeftoverSymlink error:nil];
-        }
-        
-        for (NSString *xinaLeftoverFile in xinaLeftoverFiles) {
-            if ([[NSFileManager defaultManager] fileExistsAtPath:xinaLeftoverFile]) {
-                [[NSFileManager defaultManager] removeItemAtPath:xinaLeftoverFile error:nil];
-            }
-        }
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/.keep_symlinks" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/alternatives" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/ap" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/apt" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/bin" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/bzip2" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/dpkg" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/etc" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/gzip" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/Lib" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIB" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/libexec" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/Library" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIY" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIy" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/Liy" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/cache" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/local" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/newuser" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/profile" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/sbin" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/suid_profile" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/sh" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/sy" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/share" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/ssh" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/sudo_logsrvd.conf" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/bash" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zsh" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/usr" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/Themes" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshenv" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zprofile" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/ubi" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/ulb" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogin" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogout" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/master.passwd" error:nil];
     }
+    return error;
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
