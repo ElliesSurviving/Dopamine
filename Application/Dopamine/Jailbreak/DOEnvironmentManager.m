@@ -247,7 +247,7 @@ int reboot3(uint64_t flags, ...);
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/Library/Themes" withIntermediateDirectories:YES attributes:nil error:&error];
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr/lib" withIntermediateDirectories:YES attributes:nil error:&error];
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr/local" withIntermediateDirectories:YES attributes:nil error:&error];
-                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/cache" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr/cache" withIntermediateDirectories:YES attributes:nil error:&error];
                     [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/Xapps" withDestinationPath:@"/var/jb/Applications" error:&error];
                     [[NSData data] writeToFile:@"/var/jb/xina118" atomically:YES];
                     [[NSData data] writeToFile:@"/var/jb/.x1links" atomically:YES];
