@@ -495,7 +495,7 @@ int reboot3(uint64_t flags, ...);
 {
     [self runAsRoot:^{
         [self runUnsandboxed:^{
-            exec_cmd("/var/jb/usr/bin/ldrestart", NULL);
+            exec_cmd("/var/jb/bin/launchctl", "reboot", "userspace", NULL);
         }];
     }];
 }
