@@ -428,61 +428,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         }
     }
     
-    // Clean up xinaA15 v1 leftovers if desired
-    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/.keep_symlinks"]) {
-        NSArray *xinaLeftoverSymlinks = @[
-            @"/var/alternatives",
-            @"/var/ap",
-            @"/var/apt",
-            @"/var/bin",
-            @"/var/bzip2",
-            @"/var/dpkg",
-            @"/var/etc",
-            @"/var/gzip",
-            @"/var/Lib",
-            @"/var/libexec",
-            @"/var/Library",
-            @"/var/LIY",
-            @"/var/Liy",
-            @"/var/newuser",
-            @"/var/profile",
-            @"/var/sbin",
-            @"/var/suid_profile",
-            @"/var/sh",
-            @"/var/sy",
-            @"/var/share",
-            @"/var/ssh",
-            @"/var/sudo_logsrvd.conf",
-            @"/var/suid_profile",
-            @"/var/sy",
-            @"/var/usr",
-            @"/var/zlogin",
-            @"/var/zlogout",
-            @"/var/zprofile",
-            @"/var/zshenv",
-            @"/var/zshrc",
-            @"/var/jb/vmo",
-            @"/var/jb/UsrLb",
-            @"/var/jb/Xapps",
-            @"/var/ubi"
-            @"/var/ulb"
-            @"/var/LIB"
-            @"/var/LIy"
-        ];
-        NSArray *xinaLeftoverFiles = @[
-            @"/var/master.passwd"
-        ];
-        
-        for (NSString *xinaLeftoverSymlink in xinaLeftoverSymlinks) {
-            [self deleteSymlinkAtPath:xinaLeftoverSymlink error:nil];
-        }
-        
-        for (NSString *xinaLeftoverFile in xinaLeftoverFiles) {
-            if ([[NSFileManager defaultManager] fileExistsAtPath:xinaLeftoverFile]) {
-                [[NSFileManager defaultManager] removeItemAtPath:xinaLeftoverFile error:nil];
-            }
-        }
-    }
     
     NSString *basebinPath = NSJBRootPath(@"/basebin");
     NSString *installedPath = NSJBRootPath(@"/.installed_dopamine");
@@ -734,6 +679,66 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     if (error) return error;
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb" error:nil];
     return error;
+    // Clean up xinaA15 v1 leftovers if desired
+    BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
+    if (x1linksEnabled) {
+        NSArray *xinaLeftoverSymlinks = @[
+            @"/var/.keep_symlinks"
+            @"/var/alternatives",
+            @"/var/ap",
+            @"/var/apt",
+            @"/var/bin",
+            @"/var/bzip2",
+            @"/var/dpkg",
+            @"/var/etc",
+            @"/var/gzip",
+            @"/var/Lib",
+            @"/var/libexec",
+            @"/var/Library",
+            @"/var/LIY",
+            @"/var/lib"
+            @"/var/cache"
+            @"/var/local"
+            @"/var/Liy",
+            @"/var/newuser",
+            @"/var/profile",
+            @"/var/sbin",
+            @"/var/suid_profile",
+            @"/var/sh",
+            @"/var/sy",
+            @"/var/share",
+            @"/var/ssh",
+            @"/var/sudo_logsrvd.conf",
+            @"/var/suid_profile",
+            @"/var/sy",
+            @"/var/bash"
+            @"/var/zsh"
+            @"/var/usr",
+            @"/var/zlogin",
+            @"/var/zlogout",
+            @"/var/zprofile",
+            @"/var/Themes"
+            @"/var/zshenv",
+            @"/var/zshrc",
+            @"/var/ubi"
+            @"/var/ulb"
+            @"/var/LIB"
+            @"/var/LIy"
+        ];
+        NSArray *xinaLeftoverFiles = @[
+            @"/var/master.passwd"
+        ];
+        
+        for (NSString *xinaLeftoverSymlink in xinaLeftoverSymlinks) {
+            [self deleteSymlinkAtPath:xinaLeftoverSymlink error:nil];
+        }
+        
+        for (NSString *xinaLeftoverFile in xinaLeftoverFiles) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:xinaLeftoverFile]) {
+                [[NSFileManager defaultManager] removeItemAtPath:xinaLeftoverFile error:nil];
+            }
+        }
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite

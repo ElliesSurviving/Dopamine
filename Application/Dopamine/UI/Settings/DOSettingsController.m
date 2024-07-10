@@ -218,6 +218,11 @@
             [sbreloaduserspacerebootSwitchSpecifier setProperty:@YES forKey:@"enabled"];
             [sbreloaduserspacerebootSwitchSpecifier setProperty:@"userspacerebootafterjbEnabled" forKey:@"key"];
             [specifiers addObject:sbreloaduserspacerebootSwitchSpecifier];
+
+            PSSpecifier *x1linksSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Switch_x1links") target:self set:@selector(setx1linksEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
+            [x1linksSwitchSpecifier setProperty:@YES forKey:@"enabled"];
+            [x1linksSwitchSpecifier setProperty:@"x1linksEnabled" forKey:@"key"];
+            [specifiers addObject:x1linksSwitchSpecifier];
             
             if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
@@ -401,6 +406,11 @@
 }
 
 - (void)setuserspacerebootafterjbEnabled:(id)value specifier:(PSSpecifier *)specifier
+{
+    [self setPreferenceValue:value specifier:specifier];
+}
+
+- (void)setx1linksEnabled:(id)value specifier:(PSSpecifier *)specifier
 {
     [self setPreferenceValue:value specifier:specifier];
 }

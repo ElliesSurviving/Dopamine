@@ -53,6 +53,7 @@
 "Menu_Launch_Daemon_Title" = "Launch Daemons";
 "Menu_Remount_Title" = "Remount Directories";
 "Button_Switch_SBLDRESTART" = "LDRestart after JB";
+"Button_Switch_x1links" = Enable xinam1ne links";
 
 // Settings Hints
 "Hint_Hide_Jailbreak" = "\"Hide Jailbreak Root\" temporarily removes jailbreak-related files until the next rejailbreak";

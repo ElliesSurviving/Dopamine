@@ -55,7 +55,7 @@
 					<key>name</key>
 					<string>Ellies Winters</string>
 					<key>link</key>
-					<string>https://twitter.com/sys_winters</string>
+					<string>https://twitter.com/elliessurviving</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -66,6 +66,12 @@
 				<dict>
 					<key>name</key>
 					<string>Esmé Winters</string>
+					<key>link</key>
+					<string>https://twitter.com/sys_winters</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Evie Winters</string>
 					<key>link</key>
 					<string>https://twitter.com/sys_winters</string>
 				</dict>

@@ -166,7 +166,8 @@ int reboot3(uint64_t flags, ...);
             unichar randomCharacter = [characterSet characterAtIndex:randomIndex];
             [randomString appendFormat:@"%C", randomCharacter];
         }
-        
+
+        BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
         NSString *randomJailbreakFolderName = [NSString stringWithFormat:@"dopamine-%@", randomString];
         NSString *randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderName];
         NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
@@ -204,6 +205,104 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:&error];
                 [[NSData data] writeToFile:@"/var/jb/.fseventsd/fseventsd-uuid" atomically:YES];
+                if (x1linksEnabled) {
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ap" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/apt" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/lib" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/alternatives" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/bash" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zsh" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/.keep_symlinks" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogin" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogout" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zprofile" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshenv" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshrc" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/bin" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/bzip2" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/cache" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/dpkg" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/etc" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/gzip" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Lib" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/libexec" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Library" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIY" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/Liy" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/LIy" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/local" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/newuser" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/profile" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sbin" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/suid_profile" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sy" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/usr" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sh" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/share" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/ssh" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/sudo_logsrvd.conf" error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:@"/var/master.passwd" error:nil];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/Library" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/Library/Themes" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr/lib" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/usr/local" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/cache" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/Xapps" withDestinationPath:@"/var/jb/Applications" error:&error];
+                    [[NSData data] writeToFile:@"/var/jb/xina118" atomically:YES];
+                    [[NSData data] writeToFile:@"/var/jb/.x1links" atomically:YES];
+                    [[NSData data] writeToFile:@"/var/.keep_symlinks" atomically:YES];
+                    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/.zprofile"]) {
+                        [[NSData data] writeToFile:@"/var/mobile/.zlogin" atomically:YES];
+                        [[NSData data] writeToFile:@"/var/mobile/.zlogout" atomically:YES];
+                        [[NSData data] writeToFile:@"/var/mobile/.zprofile" atomically:YES];
+                        [[NSData data] writeToFile:@"/var/mobile/.zshenv" atomically:YES];
+                        [[NSData data] writeToFile:@"/var/mobile/.zshrc" atomically:YES];
+                    }
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/lib" withDestinationPath:@"/var/jb/usr/lib" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/alternatives" withDestinationPath:@"/var/jb/etc/alternatives" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/ap" withDestinationPath:@"/var/jb/etc/apt" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/apt" withDestinationPath:@"/var/jb/etc/apt" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zsh" withDestinationPath:@"/var/jb/bin/zsh" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/bin" withDestinationPath:@"/var/jb/usr/bin" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/bash" withDestinationPath:@"/var/jb/bin/bash" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/bzip2" withDestinationPath:@"/var/jb/usr/bin/bzip2" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/dpkg" withDestinationPath:@"/var/jb/etc/dpkg" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/cache" withDestinationPath:@"/var/jb/usr/cache" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/etc" withDestinationPath:@"/var/jb/etc" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/local" withDestinationPath:@"/var/jb/usr/local" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/gzip" withDestinationPath:@"/var/jb/bin/gzip" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/LIB" withDestinationPath:@"/var/jb/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/sy" withDestinationPath:@"/var/jb/System" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/lib/dpkg" withDestinationPath:@"/var/jb/Library/dpkg" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/Lib" withDestinationPath:@"/var/jb/usr/lib" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/libexec" withDestinationPath:@"/var/jb/usr/libexec" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/Library" withDestinationPath:@"/var/jb/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/Liy" withDestinationPath:@"/var/jb/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/LIy" withDestinationPath:@"/var/jb/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/LIY" withDestinationPath:@"/var/jb/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/master.passwd" withDestinationPath:@"/var/jb/etc/master.passwd" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/newuser" withDestinationPath:@"/var/jb/usr/sbin/adduser" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/profile" withDestinationPath:@"/var/jb/etc/profile" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/sbin" withDestinationPath:@"/var/jb/usr/sbin" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/ssh" withDestinationPath:@"/var/jb/etc/ssh" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/sudo_logsrvd.conf" withDestinationPath:@"/var/jb/etc/sudo_logsrvd.conf" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/Themes" withDestinationPath:@"/var/jb/Library/Themes" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/ubi" withDestinationPath:@"/var/jb/usr/bin" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/ulb" withDestinationPath:@"/var/jb/usr/lib" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zshrc" withDestinationPath:@"/var/mobile/.zshrc" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zprofile" withDestinationPath:@"/var/mobile/.zprofile" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zshenv" withDestinationPath:@"/var/mobile/.zshenv" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zlogin" withDestinationPath:@"/var/mobile/.zlogin" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/zlogout" withDestinationPath:@"/var/mobile/.zlogout" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var//jb/UsrLb" withDestinationPath:@"/var/mobile/Library" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/vmo" withDestinationPath:@"/var/mobile" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/share" withDestinationPath:@"/var/jb/usr/share" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/sh" withDestinationPath:@"/var/jb/bin/sh" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/usr" withDestinationPath:@"/var/jb/usr" error:&error];
+
+
+                }
 
             }
         }
@@ -226,10 +325,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7.15 (custom)";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7.16 (custom)";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7.15 (custom)";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7.16 (custom)";
     }
 }
 
