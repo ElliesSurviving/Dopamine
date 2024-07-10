@@ -43,7 +43,7 @@
 "Settings_Verbose_Logs" = "Enable Verbose Logging";
 "Settings_Apps_JIT" = "Enable JIT in Apps";
 "Button_Switch_SBLDRESTART" = "LDRestart after JB";
-"Button_Switch_x1links" = "Enable xinam1ne links";
+"Button_Switch_x1links" = "Enable dirtypatch links";
 
 // Settings Buttons
 "Button_Remove_Jailbreak" = "Restore RootFS";

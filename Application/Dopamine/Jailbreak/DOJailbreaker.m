@@ -620,7 +620,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     }
     if (userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];
-    [[DOEnvironmentManager sharedManager] rebootUserspace];
+    [[DOEnvironmentManager sharedManager] ldrestartcall];
     }
 }
 

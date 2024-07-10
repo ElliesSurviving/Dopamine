@@ -491,6 +491,15 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)ldrestartcall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/bin/ldrestart", NULL);
+        }];
+    }];
+}
+
 - (void)forcetweakscall
 {
     [self runAsRoot:^{
@@ -566,7 +575,7 @@ int reboot3(uint64_t flags, ...);
     NSString *newBasebinTarPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"basebin.tar"];
     int result = jbclient_platform_stage_jailbreak_update(newBasebinTarPath.fileSystemRepresentation);
     if (result == 0) {
-        [self rebootUserspace];
+        [self ldrestartcall];
         return nil;
     }
     return [NSError errorWithDomain:@"Dopamine" code:result userInfo:nil];

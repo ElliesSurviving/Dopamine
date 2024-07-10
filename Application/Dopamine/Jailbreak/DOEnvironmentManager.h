@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshJailbreakApps;
 - (void)allactionscall;
 - (void)seppaniccall;
+- (void)ldrestartcall;
 - (void)forcetweakscall;
 - (void)remountdirscall;
 - (void)killallDopamineApp;
