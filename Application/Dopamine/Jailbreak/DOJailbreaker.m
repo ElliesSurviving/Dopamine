@@ -453,7 +453,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         }
     }
     
-    for (NSString *appUUID in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:userAppsPath error:nil]) {
+   /* for (NSString *appUUID in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:userAppsPath error:nil]) {
         NSString *UUIDPath = [userAppsPath stringByAppendingPathComponent:appUUID];
         for (NSString *appCandidate in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:UUIDPath error:nil]) {
             if ([appCandidate.pathExtension isEqualToString:@"app"]) {
@@ -466,7 +466,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
                 }
             }
         }
-    }
+    } */
     
     NSMutableSet *duplicateApps = dopamineInstalledAppIds.mutableCopy;
     [duplicateApps intersectSet:userInstalledAppIds];
