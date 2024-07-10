@@ -718,6 +718,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         [[NSFileManager defaultManager] removeItemAtPath:@"/var/ulb" error:nil];
         [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogin" error:nil];
         [[NSFileManager defaultManager] removeItemAtPath:@"/var/zlogout" error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:@"/var/zshrc" error:nil];
         [[NSFileManager defaultManager] removeItemAtPath:@"/var/master.passwd" error:nil];
     }
     return error;
