@@ -124,11 +124,11 @@
         
     UIImage *jailbreakButtonImage;
     if (isJailbroken)
-        jailbreakButtonImage = [UIImage systemImageNamed:@"lock.open" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]];
+        jailbreakButtonImage = nil;
     else if (isSupported)
         jailbreakButtonImage = nil;
     else
-        jailbreakButtonImage = [UIImage systemImageNamed:@"lock.slash" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]];
+        jailbreakButtonImage = nil;
     
     self.jailbreakBtn = [[DOJailbreakButton alloc] initWithAction: [UIAction actionWithTitle:jailbreakButtonTitle image:jailbreakButtonImage identifier:@"jailbreak" handler:^(__kindof UIAction * _Nonnull action) {
         [actionView hide];

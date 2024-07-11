@@ -198,6 +198,24 @@
 	</dict>
 	<dict>
 		<key>key</key>
+		<string>mangocrazy</string>
+		<key>icon</key>
+		<string>AppIcon_Blue</string>
+		<key>name</key>
+		<string>Mango Crazy</string>
+		<key>image</key>
+		<string>Background_MangoCrazy.jpg</string>
+		<key>actionMenuColor</key>
+		<string>3F0C2571</string>
+		<key>windowColor</key>
+		<string>6004050A</string>
+		<key>blur</key>
+		<integer>40</integer>
+		<key>titleShadow</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>key</key>
 		<string>azurLane</string>
 		<key>icon</key>
 		<string>AppIcon_ElleKit</string>
