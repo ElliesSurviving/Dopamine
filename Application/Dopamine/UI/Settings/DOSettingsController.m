@@ -459,6 +459,7 @@
         [[DOEnvironmentManager sharedManager] deleteBootstrap];
         if ([DOEnvironmentManager sharedManager].isJailbroken) {
             [[DOEnvironmentManager sharedManager] reboot];
+        }
         else {
             if (gSystemInfo.jailbreakInfo.rootPath) {
                 free(gSystemInfo.jailbreakInfo.rootPath);
