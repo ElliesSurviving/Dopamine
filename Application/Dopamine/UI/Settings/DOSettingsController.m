@@ -460,7 +460,7 @@
         [[DOEnvironmentManager sharedManager] reboot];
         [self reloadSpecifiers];
         }
-    };
+    }
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Cancel") style:UIAlertActionStyleDefault handler:nil];
     [confirmationAlertController addAction:uninstallAction];
     [confirmationAlertController addAction:cancelAction];
