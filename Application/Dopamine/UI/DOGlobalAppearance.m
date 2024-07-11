@@ -90,7 +90,7 @@
 {
     return [[NSAttributedString alloc] initWithString:string attributes:@{
         NSFontAttributeName: [UIFont systemFontOfSize:14 weight:UIFontWeightRegular],
-        NSForegroundColorAttributeName: [UIColor colorWithWhite:1 alpha:0.60],
+        NSForegroundColorAttributeName: [UIColor whiteColor],
     }];
 }
 

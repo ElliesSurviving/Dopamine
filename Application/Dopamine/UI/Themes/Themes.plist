@@ -162,6 +162,42 @@
 	</dict>
 	<dict>
 		<key>key</key>
+		<string>odyssey</string>
+		<key>icon</key>
+		<string>AppIcon_Red</string>
+		<key>name</key>
+		<string>Odyssey</string>
+		<key>image</key>
+		<string>Background_Odyssey.jpg</string>
+		<key>actionMenuColor</key>
+		<string>5F560808</string>
+		<key>windowColor</key>
+		<string>600A0404</string>
+		<key>blur</key>
+		<integer>25</integer>
+		<key>titleShadow</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>key</key>
+		<string>taurine</string>
+		<key>icon</key>
+		<string>AppIcon_Red</string>
+		<key>name</key>
+		<string>Taurine</string>
+		<key>image</key>
+		<string>Background_Taurine.jpg</string>
+		<key>actionMenuColor</key>
+		<string>5F560808</string>
+		<key>windowColor</key>
+		<string>600A0404</string>
+		<key>blur</key>
+		<integer>25</integer>
+		<key>titleShadow</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>key</key>
 		<string>azurLane</string>
 		<key>icon</key>
 		<string>AppIcon_ElleKit</string>

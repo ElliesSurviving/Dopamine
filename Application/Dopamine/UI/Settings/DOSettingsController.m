@@ -457,9 +457,7 @@
     UIAlertController *confirmationAlertController = [UIAlertController alertControllerWithTitle:DOLocalizedString(@"Alert_Remove_Jailbreak_Title") message:DOLocalizedString(@"Alert_Remove_Jailbreak_Pressed_Body") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *uninstallAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Continue") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[DOEnvironmentManager sharedManager] deleteBootstrap];
-        if ([DOEnvironmentManager sharedManager].isJailbroken) {
-            [[DOEnvironmentManager sharedManager] reboot];
-        }
+        [[DOEnvironmentManager sharedManager] reboot];
         else {
             if (gSystemInfo.jailbreakInfo.rootPath) {
                 free(gSystemInfo.jailbreakInfo.rootPath);
