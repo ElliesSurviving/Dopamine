@@ -164,6 +164,9 @@
              if (!preferredPACBypass) {
                 [pacBypassSpecifier setProperty:@"none" forKey:@"default"];
             }
+            if (!isArm64e) {
+                [pacBypassSpecifier setProperty:@"none" forkey:@"default"];
+            }
             else {
                 [pacBypassSpecifier setProperty:preferredPACBypass.identifier forKey:@"default"];
             }
