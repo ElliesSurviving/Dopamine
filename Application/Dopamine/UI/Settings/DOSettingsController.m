@@ -210,7 +210,7 @@
             PSSpecifier *idownloadSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Settings_iDownload") target:self set:@selector(setIDownloadEnabled:specifier:) get:@selector(readIDownloadEnabled:) detail:nil cell:PSSwitchCell edit:nil];
             [idownloadSpecifier setProperty:@YES forKey:@"enabled"];
             [idownloadSpecifier setProperty:@"idownloadEnabled" forKey:@"key"];
-            [idownloadSpecifier setProperty:@NO forKey:@"default"];
+            [idownloadSpecifier setProperty:@YES forKey:@"default"];
             [specifiers addObject:idownloadSpecifier];
             
             PSSpecifier *appJitSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Settings_Apps_JIT") target:self set:@selector(setAppJITEnabled:specifier:) get:@selector(readAppJITEnabled:) detail:nil cell:PSSwitchCell edit:nil];
@@ -222,6 +222,7 @@
             PSSpecifier *sbreloaduserspacerebootSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Switch_SBLDRESTART") target:self set:@selector(setuserspacerebootafterjbEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
             [sbreloaduserspacerebootSwitchSpecifier setProperty:@YES forKey:@"enabled"];
             [sbreloaduserspacerebootSwitchSpecifier setProperty:@"userspacerebootafterjbEnabled" forKey:@"key"];
+            [sbreloaduserspacerebootSwitchSpecifier setProperty:@YES forKey:@"default"];
             [specifiers addObject:sbreloaduserspacerebootSwitchSpecifier];
 
             PSSpecifier *x1linksSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Switch_x1links") target:self set:@selector(setx1linksEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
