@@ -65,6 +65,7 @@
         [self.bottomAnchor constraintEqualToAnchor:window.bottomAnchor constant:100] // slightly out of the screen to hide corners on i8
     ]];
     
+         [self.button setUserInteractionEnabled:NO];
 
     [UIView animateWithDuration: 0.2 animations:^{ [self.button setAlpha:0.0]; }];
     [UIView animateWithDuration:0.75 delay:0.0 usingSpringWithDamping:0.9 initialSpringVelocity:2.0  options: UIViewAnimationOptionCurveEaseInOut animations:^{

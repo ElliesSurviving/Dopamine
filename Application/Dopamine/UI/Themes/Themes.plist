@@ -228,7 +228,7 @@
 		<key>windowColor</key>
 		<string>994c4c4c</string>
 		<key>blur</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>titleShadow</key>
 		<true/>
 	</dict>
@@ -246,7 +246,7 @@
 		<key>windowColor</key>
 		<string>994c4c4c</string>
 		<key>blur</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>titleShadow</key>
 		<true/>
 	</dict>
@@ -264,7 +264,7 @@
 		<key>windowColor</key>
 		<string>994c4c4c</string>
 		<key>blur</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>titleShadow</key>
 		<true/>
 	</dict>
@@ -282,7 +282,7 @@
 		<key>windowColor</key>
 		<string>994c4c4c</string>
 		<key>blur</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>titleShadow</key>
 		<true/>
 	</dict>
@@ -300,7 +300,7 @@
 		<key>windowColor</key>
 		<string>994c4c4c</string>
 		<key>blur</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>titleShadow</key>
 		<true/>
 	</dict>
