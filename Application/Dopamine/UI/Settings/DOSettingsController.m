@@ -458,13 +458,7 @@
     UIAlertAction *uninstallAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Continue") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[DOEnvironmentManager sharedManager] deleteBootstrap];
         [[DOEnvironmentManager sharedManager] reboot];
-        else {
-            if (gSystemInfo.jailbreakInfo.rootPath) {
-                free(gSystemInfo.jailbreakInfo.rootPath);
-                gSystemInfo.jailbreakInfo.rootPath = NULL;
-                [[DOEnvironmentManager sharedManager] locateJailbreakRoot];
-            }
-            [self reloadSpecifiers];
+        [self reloadSpecifiers];
         }
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:DOLocalizedString(@"Button_Cancel") style:UIAlertActionStyleDefault handler:nil];
