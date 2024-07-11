@@ -408,7 +408,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 {
     int r = exec_cmd(JBRootPath("/basebin/jbctl"), "internal", "cores_mount", NULL);
     if (r != 0) {
-        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d", r]}];
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d, this is most likely due to a known bug, please try rejailbreaking again.", r]}];
     }
     return nil;
 }

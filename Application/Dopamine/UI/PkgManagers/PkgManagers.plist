@@ -22,15 +22,5 @@
 		<key>Package</key>
 		<string>zebra.deb</string>
 	</dict>
-	<dict>
-		<key>Display Name</key>
-		<string>Libhooker Cfg</string>
-		<key>Key</key>
-		<string>org.coolstar.libhooker-configurator</string>
-		<key>Icon</key>
-		<string>Libhooker</string>
-		<key>Package</key>
-		<string>libhooker.deb</string>
-	</dict>
 </array>
 </plist>
