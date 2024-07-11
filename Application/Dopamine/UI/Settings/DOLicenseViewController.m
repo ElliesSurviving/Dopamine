@@ -140,6 +140,30 @@
             @"name": @"Zebra",
             @"file": @"LICENSE_Zebra"
         },
+        @{
+            @"name": @"afc2d",
+            @"file": @"LICENSE_afc2d"
+        },
+        @{
+            @"name": @"AltList",
+            @"file": @"LICENSE_AltList"
+        },
+        @{
+            @"name": @"Choicy",
+            @"file": @"LICENSE_Choicy"
+        },
+        @{
+            @"name": @"LetMeBlock",
+            @"file": @"LICENSE_LetMeBlock"
+        },
+        @{
+            @"name": @"NoBetaAlert",
+            @"file": @"LICENSE_NoBetaAlert"
+        },
+        @{
+            @"name": @"PreferenceLoader",
+            @"file": @"LICENSE_PreferenceLoader"
+        },
     ];
 }
 

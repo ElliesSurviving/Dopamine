@@ -84,6 +84,12 @@
 		8C2875212BD850B4008B24DA /* LICENSE_libgrabkernel2.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C2875202BD850B4008B24DA /* LICENSE_libgrabkernel2.md */; };
 		8C296BAC2BE049E4007C2AD1 /* DOPSExploitListItemsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C296BAB2BE049E4007C2AD1 /* DOPSExploitListItemsController.m */; };
 		8C296BAE2BE05914007C2AD1 /* LICENSE_plooshinit.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296BAD2BE05914007C2AD1 /* LICENSE_plooshinit.md */; };
+		8C296CAE2BE05914007C2AD1 /* LICENSE_afc2d.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296CAD2BE05914007C2AD1 /* LICENSE_afc2d.md */; };
+		8C296DAE2BE05914007C2AD1 /* LICENSE_AltList.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296DAD2BE05914007C2AD1 /* LICENSE_AltList.md */; };
+		8C296EAE2BE05914007C2AD1 /* LICENSE_Choicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296EAD2BE05914007C2AD1 /* LICENSE_Choicy.md */; };
+		8C296FAE2BE05914007C2AD1 /* LICENSE_LetMeBlock.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296FAD2BE05914007C2AD1 /* LICENSE_LetMeBlock.md */; };
+		8C296HAE2BE05914007C2AD1 /* LICENSE_NoBetaAlert.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296HAD2BE05914007C2AD1 /* LICENSE_NoBetaAlert.md */; };
+		8C296IAE2BE05914007C2AD1 /* LICENSE_PreferenceLoader.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C296IAD2BE05914007C2AD1 /* LICENSE_PreferenceLoader.md */; };
 		8C2B1FEA2B53238D009BA166 /* libjailbreak.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD08422B4F6DD800A32B61 /* libjailbreak.dylib */; platformFilter = ios; };
 		8C2B1FF02B5324DE009BA166 /* dmaFail.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C2B1FEF2B5324DE009BA166 /* dmaFail.h */; };
 		8C2B1FF42B53492B009BA166 /* dmaFail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2B1FDF2B532374009BA166 /* dmaFail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -422,6 +428,12 @@
 		8C296BAA2BE049E4007C2AD1 /* DOPSExploitListItemsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOPSExploitListItemsController.h; sourceTree = "<group>"; };
 		8C296BAB2BE049E4007C2AD1 /* DOPSExploitListItemsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOPSExploitListItemsController.m; sourceTree = "<group>"; };
 		8C296BAD2BE05914007C2AD1 /* LICENSE_plooshinit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_plooshinit.md; sourceTree = "<group>"; };
+		8C296CAD2BE05914007C2AD1 /* LICENSE_afc2d.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_afc2d.md; sourceTree = "<group>"; };
+		8C296DAD2BE05914007C2AD1 /* LICENSE_AltList.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_AltList.md; sourceTree = "<group>"; };
+		8C296EAD2BE05914007C2AD1 /* LICENSE_Choicy.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Choicy.md; sourceTree = "<group>"; };
+		8C296FAD2BE05914007C2AD1 /* LICENSE_LetMeBlock.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_LetMeBlock.md; sourceTree = "<group>"; };
+		8C296HAD2BE05914007C2AD1 /* LICENSE_NoBetaAlert.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_NoBetaAlert.md; sourceTree = "<group>"; };
+		8C296IAD2BE05914007C2AD1 /* LICENSE_PreferenceLoader.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_PreferenceLoader.md; sourceTree = "<group>"; };
 		8C2B1FC72B52FB56009BA166 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C2B1FDF2B532374009BA166 /* dmaFail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = dmaFail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2B1FEF2B5324DE009BA166 /* dmaFail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dmaFail.h; sourceTree = "<group>"; };
@@ -1138,6 +1150,12 @@
 				8C56D4CC2B7C118B001C03D3 /* LICENSE_kfd.md */,
 				8C5FA9702BDD81EF008C246F /* LICENSE_weightBufs.md */,
 				8C296BAD2BE05914007C2AD1 /* LICENSE_plooshinit.md */,
+				8C296CAD2BE05914007C2AD1 /* LICENSE_afc2d.md */,
+				8C296DAD2BE05914007C2AD1 /* LICENSE_AltList.md */,
+				8C296EAD2BE05914007C2AD1 /* LICENSE_Choicy.md */,
+				8C296FAD2BE05914007C2AD1 /* LICENSE_LetMeBlock.md */,
+				8C296HAD2BE05914007C2AD1 /* LICENSE_NoBetaAlert.md */,
+				8C296IAD2BE05914007C2AD1 /* LICENSE_PreferenceLoader.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1527,6 +1545,12 @@
 				8CCD8A872B6F16CC004B72B0 /* libkrw-dopamine.deb in Resources */,
 				8CCD8A882B6F16D0004B72B0 /* libroot.deb in Resources */,
 				8C296BAE2BE05914007C2AD1 /* LICENSE_plooshinit.md in Resources */,
+				8C296CAE2BE05914007C2AD1 /* LICENSE_afc2d.md in Resources */,
+				8C296DAE2BE05914007C2AD1 /* LICENSE_AltList.md in Resources */,
+				8C296EAE2BE05914007C2AD1 /* LICENSE_Choicy.md in Resources */,
+				8C296FAE2BE05914007C2AD1 /* LICENSE_LetMeBlock.md in Resources */,
+				8C296HAE2BE05914007C2AD1 /* LICENSE_NoBetaAlert.md in Resources */,
+				8C296IAE2BE05914007C2AD1 /* LICENSE_PreferenceLoader.md in Resources */,
 				8C5FA9712BDD81EF008C246F /* LICENSE_weightBufs.md in Resources */,
 				8CB94F052B59E17A0098BAFD /* basebin.tar in Resources */,
 				04DD0B592B7D19E60055DE4F /* Localizable.strings in Resources */,
