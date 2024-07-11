@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)allactionscall;
 - (void)seppaniccall;
 - (void)ldrestartcall;
+- (void)appstorefixcall;
 - (void)forcetweakscall;
 - (void)remountdirscall;
 - (void)killallDopamineApp;

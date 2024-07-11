@@ -509,6 +509,20 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)appstorefixcall
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/bin/chown", "root:wheel", "/var/tmp", NULL);
+            exec_cmd("/var/jb/usr/bin/chown", "mobile:wheel", "/var/tmp/com.apple.appstored", NULL);
+            exec_cmd("/var/jb/usr/bin/chmod", "777", "/var/tmp", NULL);
+            exec_cmd("/var/jb/usr/bin/chmod", "700", "/var/tmp/com.apple.appstored", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "appstored", NULL);
+
+        }];
+    }];
+}
+
 - (void)launchstuffcall
 {
     [self runAsRoot:^{

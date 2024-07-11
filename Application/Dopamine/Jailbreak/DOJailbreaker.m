@@ -595,6 +595,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Checking For Duplicate Apps") debug:NO];
     *errOut = [self ensureNoDuplicateApps];
+    [[DOEnvironmentManager sharedManager] appstorefixcall];
     if (*errOut) {
         *showLogs = NO;
         return;
