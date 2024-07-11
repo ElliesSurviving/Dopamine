@@ -164,7 +164,7 @@
              if (!preferredPACBypass) {
                 [pacBypassSpecifier setProperty:@"none" forKey:@"default"];
             }
-            if (!isArm64e) {
+            if (![[DOEnvironmentManager sharedManager] isArm64e]) {
                 [pacBypassSpecifier setProperty:@"none" forkey:@"default"];
             }
             else {
