@@ -161,7 +161,7 @@
             PSSpecifier *pacBypassSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"PAC Bypass") target:self set:defSetter get:defGetter detail:nil cell:PSLinkListCell edit:nil];
             [pacBypassSpecifier setProperty:@YES forKey:@"enabled"];
             DOExploit *preferredPACBypass = exploitManager.preferredPACBypass;
-             if (![[DOEnvironmentManager sharedManager] isArm64e]) {
+             if (![[DOEnvironmentManager sharedManager] isArm64e] || !preferredPACBypass) {
                 [pacBypassSpecifier setProperty:@"none" forKey:@"default"];
             }
             else {
