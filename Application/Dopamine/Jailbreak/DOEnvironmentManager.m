@@ -106,9 +106,9 @@ int reboot3(uint64_t flags, ...);
         for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:activePrebootPath error:nil]) {
             if (subItem.length == 15 && [subItem hasPrefix:@"dopamine-"]) {
                 randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:subItem];
-                if (![[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"]]) {
+                BOOL installedWinters = [[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPathPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
+                if (!installedWinters) {
                      _bootstrapNeedsMigration = YES;
-                     break;
                 }
                 else {
                 break;
