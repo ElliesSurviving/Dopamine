@@ -123,7 +123,7 @@ int reboot3(uint64_t flags, ...);
             // If we find this and are sure it's from Dopamine 1.x, rename it so all Dopamine 2.x users will have the same path
             for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:activePrebootPath error:nil]) {
                 if (subItem.length == 9 && [subItem hasPrefix:@"jb-"]) {
-                    NSString *candidateLegacyPath = [agctivePrebootPath stringByAppendingPathComponent:subItem];
+                    NSString *candidateLegacyPath = [activePrebootPath stringByAppendingPathComponent:subItem];
                     
                     BOOL installedDopamine = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_dopamine"]];
                     
