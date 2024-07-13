@@ -108,14 +108,6 @@ int reboot3(uint64_t flags, ...);
                 randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:subItem];
             }
         }
-
-        if (randomizedJailbreakPath) {
-            BOOL installedWinters = [[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
-            if (!installedWinters) {
-                _bootstrapNeedsMigration = YES;
-                gSystemInfo.jailbreakInfo.rootPath = NO;
-            }
-        }
         
         if (!randomizedJailbreakPath) {
             // Second attempt at finding jailbreak root, look for Dopamine 1.x path, but as other jailbreaks use it too, make sure it is Dopamine
