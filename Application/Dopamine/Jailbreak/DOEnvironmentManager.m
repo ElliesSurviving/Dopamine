@@ -144,6 +144,9 @@ int reboot3(uint64_t flags, ...);
                 // Anything else in the jailbreak will get it from here
                 gSystemInfo.jailbreakInfo.rootPath = strdup(jailbreakRootPath.fileSystemRepresentation);
             }
+            else {
+                [self deleteBootstrap];
+            }
         }
     }
 }
