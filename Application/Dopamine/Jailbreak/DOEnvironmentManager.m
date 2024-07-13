@@ -106,6 +106,13 @@ int reboot3(uint64_t flags, ...);
         for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:activePrebootPath error:nil]) {
             if (subItem.length == 15 && [subItem hasPrefix:@"dopamine-"]) {
                 randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:subItem];
+                BOOL installedWinters = [[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
+                if (!installedWinters) {
+                     _bootstrapNeedsMigration = YES;
+                }
+                else {
+                break;
+                }
             }
         }
         
@@ -138,14 +145,10 @@ int reboot3(uint64_t flags, ...);
         
         if (randomizedJailbreakPath) {
             NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
-            NSString *JailbreakRootPathWinters = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath] && [[NSFileManager defaultManager] fileExistsAtPath:JailbreakRootPathWinters]) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath]) {
                 // This attribute serves as the primary source of what the root path is
                 // Anything else in the jailbreak will get it from here
                 gSystemInfo.jailbreakInfo.rootPath = strdup(jailbreakRootPath.fileSystemRepresentation);
-            }
-            else {
-                [self deleteBootstrap];
             }
         }
     }
