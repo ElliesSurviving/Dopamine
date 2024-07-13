@@ -106,13 +106,14 @@ int reboot3(uint64_t flags, ...);
         for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:activePrebootPath error:nil]) {
             if (subItem.length == 15 && [subItem hasPrefix:@"dopamine-"]) {
                 randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:subItem];
-                BOOL installedWinters = [[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
-                if (!installedWinters) {
-                     _bootstrapNeedsMigration = YES;
-                }
-                else {
-                break;
-                }
+            }
+        }
+
+        if (randomizedJailbreakPath) {
+            BOOL installedWinters = [[NSFileManager defaultManager] fileExistsAtPath:[randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
+            if (!installedWinters) {
+                _bootstrapNeedsMigration = YES;
+                gSystemInfo.jailbreakInfo.rootPath = NO;
             }
         }
         
@@ -122,7 +123,7 @@ int reboot3(uint64_t flags, ...);
             // If we find this and are sure it's from Dopamine 1.x, rename it so all Dopamine 2.x users will have the same path
             for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:activePrebootPath error:nil]) {
                 if (subItem.length == 9 && [subItem hasPrefix:@"jb-"]) {
-                    NSString *candidateLegacyPath = [activePrebootPath stringByAppendingPathComponent:subItem];
+                    NSString *candidateLegacyPath = [agctivePrebootPath stringByAppendingPathComponent:subItem];
                     
                     BOOL installedDopamine = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_dopamine"]];
                     
@@ -130,7 +131,7 @@ int reboot3(uint64_t flags, ...);
                         // Hopefully all other jailbreaks that use jb-<UUID>?
                         // These checks exist because of dumb users (and jailbreak developers) creating .installed_dopamine on jailbreaks that are NOT dopamine...
                         BOOL installedNekoJB = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_nekojb"]];
-                        BOOL installedDefinitelyNotAGoodName = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.xia0o0o0o_jb_installed"]];
+                        BOOL installedDefinitelyNotAGogodName = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.xia0o0o0o_jb_installed"]];
                         if (installedNekoJB || installedDefinitelyNotAGoodName) {
                             continue;
                         }
@@ -145,7 +146,8 @@ int reboot3(uint64_t flags, ...);
         
         if (randomizedJailbreakPath) {
             NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath]) {
+            NSString *JailbreakRootPathWinters = [JailbreakRootPath stringByAppendingPathComponent:@".installed_winters"]
+            if ([[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath] && [[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPathWinters]) {
                 // This attribute serves as the primary source of what the root path is
                 // Anything else in the jailbreak will get it from here
                 gSystemInfo.jailbreakInfo.rootPath = strdup(jailbreakRootPath.fileSystemRepresentation);
