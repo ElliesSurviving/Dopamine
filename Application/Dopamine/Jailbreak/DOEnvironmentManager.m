@@ -146,7 +146,7 @@ int reboot3(uint64_t flags, ...);
         
         if (randomizedJailbreakPath) {
             NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
-            NSString *JailbreakRootPathWinters = [JailbreakRootPath stringByAppendingPathComponent:@".installed_winters"]
+            NSString *JailbreakRootPathWinters = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus/.installed_winters"];
             if ([[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath] && [[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPathWinters]) {
                 // This attribute serves as the primary source of what the root path is
                 // Anything else in the jailbreak will get it from here
