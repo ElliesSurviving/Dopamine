@@ -331,10 +331,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7-winters-prerelease-winters-prerelease";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.1.7-internal";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7-winters-prerelease-winters-prerelease";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.1.7-internal";
     }
 }
 
@@ -843,6 +843,7 @@ int reboot3(uint64_t flags, ...);
     else {
         // Let's hope for the best
         return [_bootstrapper deleteBootstrap];
+        [self reboot];
     }
 }
 
