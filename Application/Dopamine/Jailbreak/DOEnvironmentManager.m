@@ -843,8 +843,8 @@ int reboot3(uint64_t flags, ...);
     else {
         // Let's hope for the best
         return [_bootstrapper deleteBootstrap];
-        [self reboot];
     }
+    [self reboot];
 }
 
 - (NSError *)reinstallPackageManagers
