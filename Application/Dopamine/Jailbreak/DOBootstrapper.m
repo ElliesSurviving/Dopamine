@@ -480,7 +480,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"Suites: ./\n"
             @"Components:\n";
             @"\n"
-            @"Typesdeb\n"
+            @"Types: deb\n"
             @"URIs: https://elliessurviving.github.io/dopaminerepo\n"
             @"Suites: ./\n"
             @"Components:\n";
