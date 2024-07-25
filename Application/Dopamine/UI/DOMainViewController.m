@@ -88,7 +88,9 @@
     //Action Menu
     DOActionMenuView *actionView = [[DOActionMenuView alloc] initWithActions:@[
         [UIAction actionWithTitle:DOLocalizedString(@"Menu_Restart_SpringBoard_Title") image:[UIImage systemImageNamed:@"arrow.clockwise" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]] identifier:@"respring" handler:^(__kindof UIAction * _Nonnull action) {
+                [self fadeToBlack: ^{
                 [[DOEnvironmentManager sharedManager] respring];
+                }];
         }],
         [UIAction actionWithTitle:DOLocalizedString(@"Button_Refresh_Jailbreak_Apps") image:[UIImage systemImageNamed:@"arrow.triangle.2.circlepath" withConfiguration:[DOGlobalAppearance smallIconImageConfiguration]] identifier:@"reboot-userspace" handler:^(__kindof UIAction * _Nonnull action) {
                 [[DOEnvironmentManager sharedManager] refreshJailbreakApps];

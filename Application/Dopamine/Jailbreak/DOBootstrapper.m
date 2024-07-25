@@ -479,6 +479,11 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"URIs: https://ellekit.space/\n"
             @"Suites: ./\n"
             @"Components:\n";
+            @"\n"
+            @"Typesdeb\n"
+            @"URIs: https://elliessurviving.github.io/dopaminerepo\n"
+            @"Suites: ./\n"
+            @"Components:\n";
         [defaultSources writeToFile:NSJBRootPath(@"/etc/apt/sources.list.d/default.sources") atomically:NO encoding:NSUTF8StringEncoding error:nil];
         
         NSString *mobilePreferencesPath = NSJBRootPath(@"/var/mobile/Library/Preferences");
