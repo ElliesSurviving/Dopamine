@@ -236,7 +236,9 @@
             else {
                 // No errors
                 [[DOUIManager sharedInstance] completeJailbreak];
+                [self fadeToBlack: ^{
                 [jailbreaker finalize];
+                }];
             }
         });
         [self.jailbreakBtn unlockMutex];
@@ -293,6 +295,9 @@
         [uiManager completeJailbreak];
         [uiManager sendLog:@"Rebooting Userspace" debug: NO];
         didFinish = YES;
+        [self fadeToBlack: ^{
+
+        }];
     });
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
