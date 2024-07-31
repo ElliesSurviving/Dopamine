@@ -15,7 +15,6 @@
 
 bool gFullyDebugged = false;
 static void *gLibSandboxHandle;
-
 char *JB_BootUUID = NULL;
 char *JB_RootPath = NULL;
 char *get_jbroot(void) { return JB_RootPath; }
@@ -50,7 +49,6 @@ void *sandbox_apply_hook(void *a1)
 {
 	void *r = sandbox_apply_orig(a1);
 	apply_sandbox_extensions();
-
 	return r;
 }
 
@@ -59,24 +57,21 @@ int dyld_hook_routine(void **dyld, int idx, void *hook, void **orig, uint16_t pa
 	if (!dyld) return -1;
 
 	uint64_t dyldPacDiversifier = ((uint64_t)dyld & ~(0xFFFFull << 48)) | (0x63FAull << 48);
-		void **dyldFuncPtrs = ptrauth_auth_data(*dyld, ptrauth_key_process_independent_data, dyldPacDiversifier);
-		if (!dyldFuncPtrs) return -1;
+	void **dyldFuncPtrs = ptrauth_auth_data(*dyld, ptrauth_key_process_independent_data, dyldPacDiversifier);
+	if (!dyldFuncPtrs) return -1;
 
-		if (vm_protect(mach_task_self_, (mach_vm_address_t)&dyldFuncPtrs[idx], sizeof(void *), false, VM_PROT_READ | VM_PROT_WRITE) == 0) {
-			uint64_t location = (uint64_t)&dyldFuncPtrs[idx];
-			uint64_t pacDiversifier = (location & ~(0xFFFFull << 48)) | ((uint64_t)pacSalt << 48);
+	if (vm_protect(mach_task_self_, (mach_vm_address_t)&dyldFuncPtrs[idx], sizeof(void *), false, VM_PROT_READ | VM_PROT_WRITE) == 0) {
+		uint64_t location = (uint64_t)&dyldFuncPtrs[idx];
+		uint64_t pacDiversifier = (location & ~(0xFFFFull << 48)) | ((uint64_t)pacSalt << 48);
 
-			orig = ptrauth_auth_and_resign(dyldFuncPtrs[idx], ptrauth_key_process_independent_code, pacDiversifier, ptrauth_key_function_pointer, 0);
-			dyldFuncPtrs[idx] = ptrauth_auth_and_resign(hook, ptrauth_key_function_pointer, 0, ptrauth_key_process_independent_code, pacDiversifier);
-			vm_protect(mach_task_self_, (mach_vm_address_t)&dyldFuncPtrs[idx], sizeof(void *), false, VM_PROT_READ);
+		*orig = ptrauth_auth_and_resign(dyldFuncPtrs[idx], ptrauth_key_process_independent_code, pacDiversifier, ptrauth_key_function_pointer, 0);
+		dyldFuncPtrs[idx] = ptrauth_auth_and_resign(hook, ptrauth_key_function_pointer, 0, ptrauth_key_process_independent_code, pacDiversifier);
+		vm_protect(mach_task_self_, (mach_vm_address_t)&dyldFuncPtrs[idx], sizeof(void *), false, VM_PROT_READ);
 		return 0;
-	
 	}
-
 
 	return -1;
 }
-
 
 void* (*dyld_dlopen_orig)(void *dyld, const char* path, int mode);
 void* dyld_dlopen_hook(void *dyld, const char* path, int mode)
@@ -84,7 +79,7 @@ void* dyld_dlopen_hook(void *dyld, const char* path, int mode)
 	if (path && !(mode & RTLD_NOLOAD)) {
 		jbclient_trust_library(path, __builtin_return_address(0));
 	}
-    return dlopen_from(path, mode, addressInCaller);
+    return dyld_dlopen_orig(dyld, path, mode);
 }
 
 void* (*dyld_dlopen_from_orig)(void *dyld, const char* path, int mode, void* addressInCaller);
@@ -142,9 +137,10 @@ int ptrace_hook(int request, pid_t pid, caddr_t addr, int data)
 
 	return r;
 }
+
 #ifndef __arm64e__
 
-// The NECP subsystem is the only thing in the kernel that ever checks CS_VALID on userspace processes (Only on >=iOS 16)
+// The NECP subsystem is the only thing in the kernel that ever checks CS_VALID on userspace processes (Only on iOS >=16)
 // In order to not break system functionality, we need to readd CS_VALID before any of these are invoked
 
 int necp_match_policy_hook(uint8_t *parameters, size_t parameters_size, void *returned_result)
@@ -257,7 +253,6 @@ bool should_enable_tweaks(void)
 	return true;
 }
 
-
 int __posix_spawn_hook(pid_t *restrict pid, const char *restrict path, struct _posix_spawn_args_desc *desc, char *const argv[restrict], char * const envp[restrict])
 {
 	return spawn_hook_common(pid, path, desc, argv, envp, (void *)__posix_spawn_orig, jbclient_trust_binary, jbclient_platform_set_process_debugged, jbclient_jbsettings_get_double("jetsamMultiplier"));
@@ -289,7 +284,6 @@ int __execve_hook(const char *path, char *const argv[], char *const envp[])
 
 	return result;
 }
-
 
 __attribute__((constructor)) static void initializer(void)
 {
@@ -368,8 +362,6 @@ __attribute__((constructor)) static void initializer(void)
 			litehook_hook_function(ptrace, ptrace_hook);
 		}
 
-
-
 #ifndef __arm64e__
 		// On arm64, writing to executable pages removes CS_VALID from the csflags of the process
 		// These hooks are neccessary to get the system to behave with this
@@ -384,7 +376,6 @@ __attribute__((constructor)) static void initializer(void)
 			litehook_hook_function(necp_session_action, necp_session_action_hook);
 		}
 #endif
-
 		// Load tweaks if desired
 		// We can hardcode /var/jb here since if it doesn't exist, loading TweakLoader.dylib is not going to work anyways
 		if (should_enable_tweaks()) {
@@ -403,4 +394,3 @@ __attribute__((constructor)) static void initializer(void)
 #endif
 	}
 }
-
