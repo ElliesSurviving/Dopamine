@@ -17,6 +17,7 @@
 #import "DOPSExploitListItemsController.h"
 #import "DOThemeManager.h"
 #import "DOSceneDelegate.h"
+#import "DOPSJetsamListItemsController.h"
 
 
 @interface DOSettingsController ()
@@ -115,6 +116,33 @@
 {
     return [[DOThemeManager sharedInstance] getAvailableThemeKeys];
 }
+
+- (NSArray *)jetsamOptionNumbers
+{
+    return @[
+    @2,
+    @3,
+    @4,
+    @5,
+    @6,
+    @7,
+    @8,
+    ];
+}
+
+- (NSArray *)jetsamOptionTitles
+{
+    return @[
+        @"1x",
+        @"1.5x",
+        @"2x",
+        @"2.5x",
+        @"3x",
+        @"3.5x",
+        @"4x",
+    ];
+}
+
 
 - (NSArray *)themeNames
 {
@@ -229,6 +257,15 @@
             [x1linksSwitchSpecifier setProperty:@YES forKey:@"enabled"];
             [x1linksSwitchSpecifier setProperty:@"x1linksEnabled" forKey:@"key"];
             [specifiers addObject:x1linksSwitchSpecifier];
+
+            PSSpecifier *jetsamSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Settings_Jetsam_Multiplier") target:self set:@selector(setJetsamMultiplier:specifier:) get:@selector(readJetsamMultiplier:) detail:nil cell:PSLinkListCell edit:nil];
+            [jetsamSpecifier setProperty:@YES forKey:@"enabled"];
+            [jetsamSpecifier setProperty:@"jetsamMultiplier" forKey:@"key"];
+            [jetsamSpecifier setProperty:@6 forKey:@"default"];
+            jetsamSpecifier.detailControllerClass = [DOPSJetsamListItemsController class];
+            [jetsamSpecifier setProperty:@"jetsamOptionNumbers" forKey:@"valuesDataSource"];
+            [jetsamSpecifier setProperty:@"jetsamOptionTitles" forKey:@"titlesDataSource"];
+            [specifiers addObject:jetsamSpecifier];
             
             if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
@@ -380,7 +417,7 @@
 {
     DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
     if (envManager.isJailbroken) {
-        bool v = jbclient_platform_jbsettings_get_bool("markAppsAsDebugged");
+        bool v = jbclient_jbsettings_get_bool("markAppsAsDebugged");
         return @(v);
     }
     return [self readPreferenceValue:specifier];
@@ -392,6 +429,25 @@
     DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
     if (envManager.isJailbroken) {
         jbclient_platform_jbsettings_set_bool("markAppsAsDebugged", ((NSNumber *)value).boolValue);
+    }
+}
+
+- (id)readJetsamMultiplier:(PSSpecifier *)specifier
+{
+    DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
+    if (envManager.isJailbroken) {
+        double v = jbclient_jbsettings_get_double("jetsamMultiplier");
+         return @((v < 1 || isnan(v)) ? 6 : ceil(v * 2));
+    }
+    return [self readPreferenceValue:specifier];
+}
+
+- (void)setJetsamMultiplier:(id)value specifier:(PSSpecifier *)specifier
+{
+    [self setPreferenceValue:value specifier:specifier];
+    DOEnvironmentManager *envManager = [DOEnvironmentManager sharedManager];
+    if (envManager.isJailbroken) {
+        jbclient_platform_jbsettings_set_double("jetsamMultiplier", ((NSNumber *)value).doubleValue / 2);
     }
 }
 

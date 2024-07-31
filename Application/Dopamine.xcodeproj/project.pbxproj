@@ -187,6 +187,8 @@
 		8C5FA96F2BDD789C008C246F /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5FA9412BDD503D008C246F /* IOSurface.framework */; };
 		8C5FA9712BDD81EF008C246F /* LICENSE_weightBufs.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C5FA9702BDD81EF008C246F /* LICENSE_weightBufs.md */; };
 		8C71981A2ABF0E82003C6658 /* DOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7198192ABF0E82003C6658 /* DOAppDelegate.m */; };
+		8C6599DB2C555A60000FF57F /* DOPSJetsamListItemsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6599DA2C555A60000FF57F /* DOPSJetsamListItemsController.m */; };
+		8C6599DD2C555A71000FF57F /* DOPSJetsamListItemsController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8C6599DC2C555A71000FF57F /* DOPSJetsamListItemsController.h */; };
 		8C609C9E2C19B4270023DD12 /* NSString+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C609C9C2C19AECF0023DD12 /* NSString+Version.m */; };
 		8C71981D2ABF0E82003C6658 /* DOSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C71981C2ABF0E82003C6658 /* DOSceneDelegate.m */; };
 		8C7198252ABF0E84003C6658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C7198242ABF0E84003C6658 /* Assets.xcassets */; };
@@ -506,6 +508,8 @@
 		8C5FA9172BDD47D5008C246F /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
 		8C5FA9182BDD47D5008C246F /* IOSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSurface.h; sourceTree = "<group>"; };
 		8C5FA9192BDD47D5008C246F /* IOGPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOGPU.h; sourceTree = "<group>"; };
+		8C6599DA2C555A60000FF57F /* DOPSJetsamListItemsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOPSJetsamListItemsController.m; sourceTree = "<group>"; };
+		8C6599DC2C555A71000FF57F /* DOPSJetsamListItemsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOPSJetsamListItemsController.h; sourceTree = "<group>"; };
 		8C5FA93F2BDD5039008C246F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		8C5FA9412BDD503D008C246F /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/IOSurface.framework; sourceTree = DEVELOPER_DIR; };
 		8C5FA9432BDD5062008C246F /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/CoreML.framework; sourceTree = DEVELOPER_DIR; };
@@ -751,6 +755,8 @@
 				0443A9AF2B79D9C10014C933 /* DOPSListItemsController.m */,
 				8C296BAA2BE049E4007C2AD1 /* DOPSExploitListItemsController.h */,
 				8C296BAB2BE049E4007C2AD1 /* DOPSExploitListItemsController.m */,
+				8C6599DC2C555A71000FF57F /* DOPSJetsamListItemsController.h */,
+				8C6599DA2C555A60000FF57F /* DOPSJetsamListItemsController.m */,
 			);
 			path = PSLists;
 			sourceTree = "<group>";
@@ -1713,10 +1719,12 @@
 			files = (
 				8C609C9E2C19B4270023DD12 /* NSString+Version.m in Sources */,
 				042479A62B66916B0082581B /* DOHeaderCell.m in Sources */,
+				8C6599DD2C555A71000FF57F /* DOPSJetsamListItemsController.h in Sources */,
 				042479A22B66916B0082581B /* DOCreditsViewController.m in Sources */,
 				042479B32B66916B0082581B /* DODebugLogView.m in Sources */,
 				042479AF2B66916B0082581B /* DONavigationController.m in Sources */,
 				04C246AE2B74ACA200E17924 /* DOAppSwitch.m in Sources */,
+				8C6599DB2C555A60000FF57F /* DOPSJetsamListItemsController.m in Sources */,
 				042479B22B66916B0082581B /* DOLyricsLogView.m in Sources */,
 				042479A52B66916B0082581B /* DOCreditsCell.m in Sources */,
 				8C296BAC2BE049E4007C2AD1 /* DOPSExploitListItemsController.m in Sources */,
@@ -2287,7 +2295,7 @@
 					"$(PROJECT_DIR)/Dopamine/Dependencies",
 					"$(PROJECT_DIR)/Dopamine/Resources",
 				);
-				MARKETING_VERSION = 2.1.7;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.opa334.Dopamine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2324,7 +2332,7 @@
 					"$(PROJECT_DIR)/Dopamine/Dependencies",
 					"$(PROJECT_DIR)/Dopamine/Resources",
 				);
-				MARKETING_VERSION = 2.1.7;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.opa334.Dopamine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
