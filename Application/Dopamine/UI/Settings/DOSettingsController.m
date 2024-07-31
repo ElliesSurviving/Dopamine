@@ -257,6 +257,13 @@
             [x1linksSwitchSpecifier setProperty:@YES forKey:@"enabled"];
             [x1linksSwitchSpecifier setProperty:@"x1linksEnabled" forKey:@"key"];
             [specifiers addObject:x1linksSwitchSpecifier];
+            
+            if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
+                PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
+                [removeJailbreakSwitchSpecifier setProperty:@YES forKey:@"enabled"];
+                [removeJailbreakSwitchSpecifier setProperty:@"removeJailbreakEnabled" forKey:@"key"];
+                [specifiers addObject:removeJailbreakSwitchSpecifier];
+            }
 
             PSSpecifier *jetsamSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Settings_Jetsam_Multiplier") target:self set:@selector(setJetsamMultiplier:specifier:) get:@selector(readJetsamMultiplier:) detail:nil cell:PSLinkListCell edit:nil];
             [jetsamSpecifier setProperty:@YES forKey:@"enabled"];
@@ -266,13 +273,6 @@
             [jetsamSpecifier setProperty:@"jetsamOptionNumbers" forKey:@"valuesDataSource"];
             [jetsamSpecifier setProperty:@"jetsamOptionTitles" forKey:@"titlesDataSource"];
             [specifiers addObject:jetsamSpecifier];
-            
-            if (!envManager.isJailbroken && !envManager.isInstalledThroughTrollStore || !envManager.isJailbroken && envManager.isInstalledThroughTrollStore) {
-                PSSpecifier *removeJailbreakSwitchSpecifier = [PSSpecifier preferenceSpecifierNamed:DOLocalizedString(@"Button_Remove_Jailbreak") target:self set:@selector(setRemoveJailbreakEnabled:specifier:) get:defGetter detail:nil cell:PSSwitchCell edit:nil];
-                [removeJailbreakSwitchSpecifier setProperty:@YES forKey:@"enabled"];
-                [removeJailbreakSwitchSpecifier setProperty:@"removeJailbreakEnabled" forKey:@"key"];
-                [specifiers addObject:removeJailbreakSwitchSpecifier];
-            }
             
             if (envManager.isJailbroken || envManager.isInstalledThroughTrollStore) {
                 PSSpecifier *actionsGroupSpecifier = [PSSpecifier emptyGroupSpecifier];
