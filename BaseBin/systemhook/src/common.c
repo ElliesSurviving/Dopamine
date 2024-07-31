@@ -165,7 +165,7 @@ int spawn_hook_common(pid_t *restrict pid, const char *restrict path,
 			if (!strcmp(existingLibraryInsert, HOOK_DYLIB_PATH)) {
 				systemHookAlreadyInserted = true;
 			}
-			else if (!(spawnConfig & kSpawnConfigDontTrust)) {
+			else if (spawnConfig & kSpawnConfigTrust) {
 				// Upload everything already in DYLD_INSERT_LIBRARIES to trustcache aswell
 				trust_binary(existingLibraryInsert, NULL);
 			}
