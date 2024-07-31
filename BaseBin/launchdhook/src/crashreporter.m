@@ -130,16 +130,16 @@ void crashreporter_dump_backtrace_line(FILE *f, vm_address_t addr)
 {
 	Dl_info info;
 	if (dladdr((void *)addr, &info) != 0) {
+		const char *sname = info.dli_sname;
+		const char *fname = info.dli_fname;
+		if (!sname) {
+			sname = "<unexported>";
+		}
+
 		fprintf(f, "0x%lX: %s (0x%lX + 0x%lX) (%s(0x%lX) + 0x%lX)\n", addr, sname, (vm_address_t)info.dli_saddr, addr - (vm_address_t)info.dli_saddr, fname, (vm_address_t)info.dli_fbase, addr - (vm_address_t)info.dli_fbase);
 	}
 	else {
 		fprintf(f, "0x%lX (no association)\n", addr);
-		}
-
-	const char *sname = info.dli_sname;
-	const char *fname = info.dli_fname;
-	if (!sname) {
-		sname = "<unexported>";
 	}
 }
 
@@ -252,7 +252,6 @@ void crashreporter_dump_image_list(FILE *f)
 		fprintf(f, "%s: %p\n", _dyld_get_image_name(i), _dyld_get_image_header(i));
 	}
 }
-
 
 void crashreporter_catch_mach(exception_raise_request *request, exception_raise_reply *reply)
 {
@@ -402,4 +401,3 @@ void crashreporter_start(void)
 		crashreporter_resume();
 	}
 }
-
