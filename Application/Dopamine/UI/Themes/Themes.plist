@@ -20,6 +20,24 @@
 	</dict>
 	<dict>
 		<key>key</key>
+		<string>nightly</string>
+		<key>icon</key>
+		<string>AppIcon_Purple</string>
+		<key>name</key>
+		<string>Nightly</string>
+		<key>image</key>
+		<string>Background_Nightly.jpg</string>
+		<key>actionMenuColor</key>
+		<string>4F150C71</string>
+		<key>windowColor</key>
+		<string>6008040A</string>
+		<key>blur</key>
+		<integer>35</integer>
+		<key>titleShadow</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>key</key>
 		<string>ellekit</string>
 		<key>icon</key>
 		<string>AppIcon_ElleKit</string>
