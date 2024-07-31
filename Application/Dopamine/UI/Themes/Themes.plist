@@ -28,11 +28,11 @@
 		<key>image</key>
 		<string>Background_Nightly.jpg</string>
 		<key>actionMenuColor</key>
-		<string>4F150C71</string>
+		<string>43090071</string>
 		<key>windowColor</key>
 		<string>6008040A</string>
 		<key>blur</key>
-		<integer>35</integer>
+		<integer>18</integer>
 		<key>titleShadow</key>
 		<false/>
 	</dict>
