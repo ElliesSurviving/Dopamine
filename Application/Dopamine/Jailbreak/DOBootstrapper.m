@@ -386,9 +386,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         completion(decompressionError);
         return;
     }
-    
-    [[NSData data] writeToFile:JBROOT_PATH(@"/.installed_dopamine") atomically:YES];
-    completion(nil);
 
     [[NSData data] writeToFile:JBROOT_PATH(@"/.installed_winters") atomically:YES];
     completion(nil);
@@ -397,9 +394,6 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     completion(nil);
 
     [[NSData data] writeToFile:JBROOT_PATH(@"/.file") atomically:YES];
-    completion(nil);
-
-    [[NSData data] writeToFile:JBROOT_PATH(@"/.cydia_no_stash") atomically:YES];
     completion(nil);
 }
 
@@ -433,7 +427,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     
     
     NSString *basebinPath = JBROOT_PATH(@"/basebin");
-    NSString *installedPath = JBROOT_PATH(@"/.installed_dopamine");
+    NSString *installedPath = JBROOT_PATH(@"/.installed_winters");
     error = [self createSymlinkAtPath:@"/var/jb" toPath:JBROOT_PATH(@"/") createIntermediateDirectories:YES];
     if (error) {
         completion(error);

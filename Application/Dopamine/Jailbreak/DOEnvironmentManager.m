@@ -124,7 +124,7 @@ int reboot3(uint64_t flags, ...);
                 if (subItem.length == 9 && [subItem hasPrefix:@"jb-"]) {
                     NSString *candidateLegacyPath = [activePrebootPath stringByAppendingPathComponent:subItem];
                     
-                    BOOL installedDopamine = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_dopamine"]];
+                    BOOL installedDopamine = [[NSFileManager defaultManager] fileExistsAtPath:[candidateLegacyPath stringByAppendingPathComponent:@"procursus/.installed_winters"]];
                     
                     if (installedDopamine) {
                         // Hopefully all other jailbreaks that use jb-<UUID>?
@@ -331,10 +331,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.1-Nightly";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.1-Nightly.2";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.1-Nightly";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.1-Nightly.2";
     }
 }
 
