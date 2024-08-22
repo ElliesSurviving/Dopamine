@@ -88,7 +88,7 @@ void* dyld_dlopen_from_hook(void *dyld, const char* path, int mode, void* addres
 	if (path && !(mode & RTLD_NOLOAD)) {
 		jbclient_trust_library(path, addressInCaller);
 	}
-	return dyld_dlopen_from_orig(dyld, path, mode, addressInCaller);
+	__attribute__((musttail)) return dyld_dlopen_from_orig(dyld, path, mode, addressInCaller);
 }
 
 void* (*dyld_dlopen_audited_orig)(void *dyld, const char* path, int mode);
@@ -97,7 +97,7 @@ void* dyld_dlopen_audited_hook(void *dyld, const char* path, int mode)
 	if (path && !(mode & RTLD_NOLOAD)) {
 		jbclient_trust_library(path, __builtin_return_address(0));
 	}
-	return dyld_dlopen_audited_orig(dyld, path, mode);
+	__attribute__((musttail)) return dyld_dlopen_audited_orig(dyld, path, mode);
 }
 
 bool (*dyld_dlopen_preflight_orig)(void *dyld, const char *path);
@@ -106,7 +106,7 @@ bool dyld_dlopen_preflight_hook(void *dyld, const char* path)
 	if (path) {
 		jbclient_trust_library(path, __builtin_return_address(0));
 	}
-	return dyld_dlopen_preflight_orig(dyld, path);
+	__attribute__((musttail)) return dyld_dlopen_preflight_orig(dyld, path);
 }
 
 void *(*dyld_dlsym_orig)(void *dyld, void *handle, const char *name);
@@ -117,7 +117,7 @@ void *dyld_dlsym_hook(void *dyld, void *handle, const char *name)
 		// Because we can just return a different pointer, we avoid doing instruction replacements
 		return sandbox_apply_hook;
 	}
-	return dyld_dlsym_orig(dyld, handle, name);
+	__attribute__((musttail)) return dyld_dlsym_orig(dyld, handle, name);
 }
 
 int ptrace_hook(int request, pid_t pid, caddr_t addr, int data)
