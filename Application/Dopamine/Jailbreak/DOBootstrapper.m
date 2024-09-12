@@ -537,7 +537,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     }
     else {
         // idk why but waitpid sometimes fails and this returns -1, so we just ignore the return value
-        exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "install_pkg", packagePath.fileSystemRepresentation, NULL);
+        exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "install_pkg", packagePath.fileSystemRepresentation, NULL);
         return 0;
     }
 }
@@ -630,8 +630,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             if (![self fileOrSymlinkExistsAtPath:JBROOT_PATH(@"/usr/bin/opainject")]) {
                 [[NSFileManager defaultManager] removeItemAtPath:JBROOT_PATH(@"/usr/bin/opainject") error:nil];
             }
-            if (![self fileOrSymlinkExistsAtPath:JBROOT_PATH(@"/usr/bin/jbctl")]) {
-                [[NSFileManager defaultManager] removeItemAtPath:JBROOT_PATH(@"/usr/bin/jbctl") error:nil];
+            if (![self fileOrSymlinkExistsAtPath:JBROOT_PATH(@"/usr/bin/jailbreakd")]) {
+                [[NSFileManager defaultManager] removeItemAtPath:JBROOT_PATH(@"/usr/bin/jailbreakd") error:nil];
             }
             if (![self fileOrSymlinkExistsAtPath:JBROOT_PATH(@"/usr/lib/libjailbreak.dylib")]) {
                 [[NSFileManager defaultManager] removeItemAtPath:JBROOT_PATH(@"/usr/lib/libjailbreak.dylib") error:nil];

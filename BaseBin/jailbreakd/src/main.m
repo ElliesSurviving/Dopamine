@@ -10,7 +10,7 @@ extern char **environ;
 
 void print_usage(void)
 {
-	printf("Usage: jbctl <command> <arguments>\n\
+	printf("Usage: jailbreakd <command> <arguments>\n\
 Available commands:\n\
 	proc_set_debugged <pid>\t\tMarks the process with the given pid as being debugged, allowing invalid code pages inside of it\n\
 	trustcache info\t\t\tPrint info about all jailbreak related trustcaches and the cdhashes contained in them\n\
@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
 	if (getuid() != 0 && geteuid() == 0) {
 		// When jailbroken the Dopamine app cannot have uid 0 because it can't drop it anymore without loosing it
-		// So in some cases (e.g. for spawning dpkg) we need to use jbctl to get it
+		// So in some cases (e.g. for spawning dpkg) we need to use jailbreakd to get it
 		setuid(0);
 	}
 
@@ -172,7 +172,7 @@ int main(int argc, char* argv[])
 		if (argc < 3) return -1;
 
 		const char *internalCmd = argv[2];
-		return jbctl_handle_internal(internalCmd, argc-2, &argv[2]);
+		return jailbreakd_handle_internal(internalCmd, argc-2, &argv[2]);
 	}
 
 	return 0;

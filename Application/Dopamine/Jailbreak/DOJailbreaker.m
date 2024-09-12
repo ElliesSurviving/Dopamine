@@ -326,23 +326,23 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     dispatch_resume(serverSource);
 
     // Stash port to server in launchd's initPorts[2]
-    // Since we don't have the neccessary entitlements, we need to do it over jbctl
+    // Since we don't have the neccessary entitlements, we need to do it over jailbreakd
     posix_spawnattr_t attr;
     posix_spawnattr_init(&attr);
     posix_spawnattr_set_registered_ports_np(&attr, (mach_port_t[]){MACH_PORT_NULL, MACH_PORT_NULL, serverPort}, 3);
     pid_t spawnedPid = 0;
-    const char *jbctlPath = JBROOT_PATH("/basebin/jbctl");
-    int spawnError = posix_spawn(&spawnedPid, jbctlPath, NULL, &attr, (char *const *)(const char *[]){ jbctlPath, "internal", "launchd_stash_port", NULL }, NULL);
+    const char *jailbreakdPath = JBROOT_PATH("/basebin/jailbreakd");
+    int spawnError = posix_spawn(&spawnedPid, jailbreakdPath, NULL, &attr, (char *const *)(const char *[]){ jailbreakdPath, "internal", "launchd_stash_port", NULL }, NULL);
     if (spawnError != 0) {
         dispatch_cancel(serverSource);
-        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedLaunchdInjection userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Spawning jbctl failed with error code %d", spawnError]}];
+        return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedLaunchdInjection userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Spawning jailbreakd failed with error code %d", spawnError]}];
     }
     posix_spawnattr_destroy(&attr);
     int status = 0;
     do {
         if (waitpid(spawnedPid, &status, 0) == -1) {
             dispatch_cancel(serverSource);
-            return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedLaunchdInjection userInfo:@{NSLocalizedDescriptionKey : @"Waiting for jbctl failed"}];;
+            return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedLaunchdInjection userInfo:@{NSLocalizedDescriptionKey : @"Waiting for jailbreakd failed"}];;
         }
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
 
@@ -363,7 +363,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)applyProtection
 {
-    int r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "protection_init", NULL);
+    int r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "protection_init", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitProtection userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Failed initializing protection with error: %d", r]}];
     }
@@ -372,7 +372,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)createFakeLib
 {
-    int r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "fakelib_init", NULL);
+    int r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "fakelib_init", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitFakeLib userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Creating fakelib failed with error: %d", r]}];
     }
@@ -394,7 +394,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitFakeLib userInfo:@{NSLocalizedDescriptionKey : @"Failed to build dyld trustcache"}];
     }
     
-    r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "fakelib_mount", NULL);
+    r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "fakelib_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedInitFakeLib userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fakelib failed with error: %d", r]}];
     }
@@ -406,7 +406,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)BindCores
 {
-    int r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "cores_mount", NULL);
+    int r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "cores_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindCores userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting cores failed with error: %d, this is most likely due to a known bug, please try rejailbreaking again.", r]}];
     }
@@ -415,7 +415,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)BindFonts
 {
-    int r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "fonts_mount", NULL);
+    int r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "fonts_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindFonts userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting fonts failed with error: %d", r]}];
     }
@@ -424,7 +424,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
 
 - (NSError *)BindEtcMount
 {
-    int r = exec_cmd(JBROOT_PATH("/basebin/jbctl"), "internal", "etc_mount", NULL);
+    int r = exec_cmd(JBROOT_PATH("/basebin/jailbreakd"), "internal", "etc_mount", NULL);
     if (r != 0) {
         return [NSError errorWithDomain:JBErrorDomain code:JBErrorCodeFailedBindEtcMount userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"Mounting etc failed with error: %d", r]}];
     }

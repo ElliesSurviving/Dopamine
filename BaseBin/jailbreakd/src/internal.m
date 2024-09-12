@@ -42,7 +42,7 @@ void ensureProtectionActive(void)
 	ensureProtected(prebootUUIDPath("/usr"));
 }
 
-int jbctl_handle_internal(const char *command, int argc, char* argv[])
+int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
 {
 	if (!strcmp(command, "launchd_stash_port")) {
 		mach_port_t *selfInitPorts = NULL;

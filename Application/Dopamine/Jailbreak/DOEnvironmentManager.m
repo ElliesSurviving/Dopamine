@@ -458,7 +458,7 @@ int reboot3(uint64_t flags, ...);
         __block int pid = 0;
         __block int r = 0;
         [self runUnsandboxed:^{
-            r = exec_cmd_suspended(&pid, JBROOT_PATH("/basebin/jbctl"), "reboot_userspace", NULL);
+            r = exec_cmd_suspended(&pid, JBROOT_PATH("/basebin/jailbreakd"), "reboot_userspace", NULL);
             if (r == 0) {
                 // the original plan was to have the process continue outside of this block
                 // unfortunately sandbox blocks kill aswell, so it's a bit racy but works
@@ -615,7 +615,7 @@ int reboot3(uint64_t flags, ...);
     [self runAsRoot:^{
         [self runUnsandboxed:^{
             pid_t pid = 0;
-            if (exec_cmd_suspended(&pid, JBROOT_PATH("/basebin/jbctl"), "update", "tipa", tipaPath.fileSystemRepresentation, NULL) == 0) {
+            if (exec_cmd_suspended(&pid, JBROOT_PATH("/basebin/jailbreakd"), "update", "tipa", tipaPath.fileSystemRepresentation, NULL) == 0) {
                 kill(pid, SIGCONT);
             }
         }];

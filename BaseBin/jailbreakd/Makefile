@@ -1,4 +1,4 @@
-TARGET = jbctl
+TARGET = jailbreakd
 
 CC = clang
 
