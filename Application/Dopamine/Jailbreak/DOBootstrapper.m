@@ -390,6 +390,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     [[NSData data] writeToFile:JBROOT_PATH(@"/.installed_winters") atomically:YES];
     completion(nil);
 
+    [[NSData data] writeToFile:JBROOT_PATH(@"/.installed_dopamine") atomically:YES];
+    completion(nil);
+
     [[NSData data] writeToFile:JBROOT_PATH(@"/.mount_rw") atomically:YES];
     completion(nil);
 

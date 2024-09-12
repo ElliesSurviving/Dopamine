@@ -3,7 +3,7 @@ Name: Dopamine BaseBin Link
 Author: opa334 <opa334@protonmail.com>
 Maintainer: opa334 <opa334@protonmail.com>
 Architecture: iphoneos-arm64
-Version: 1.0.0
+Version: 1.0.1
 Provides: opainject
 Section: Libraries
 Priority: standard

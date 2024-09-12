@@ -217,8 +217,9 @@ int reboot3(uint64_t flags, ...);
                 if (@available(iOS 16.0, *)) {
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Applications" withIntermediateDirectories:YES attributes:nil error:&error];
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Cryptexes" withIntermediateDirectories:YES attributes:nil error:&error];
-                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Cryptexes/App" withIntermediateDirectories:YES attributes:nil error:&error];
-                    [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Cryptexes/OS" withIntermediateDirectories:YES attributes:nil error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/System/Cryptexes/App" withDestinationPath:@"/System/Cryptexes/App" error:&error];
+                    [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/System/Cryptexes/OS" withDestinationPath:@"/System/Cryptexes/OS" error:&error];
+                    
                 }
                 if (x1linksEnabled) {
                     [[NSFileManager defaultManager] removeItemAtPath:@"/var/ap" error:nil];
@@ -340,10 +341,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.1";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.2";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.1";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.2";
     }
 }
 
