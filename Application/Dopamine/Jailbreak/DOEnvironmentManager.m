@@ -204,6 +204,7 @@ int reboot3(uint64_t flags, ...);
         else {
             if (![[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath]) {
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootPath withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:jailbreakRootPath error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:randomizedJailbreakPathSecond withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootCores withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootDeveloper withIntermediateDirectories:YES attributes:nil error:&error];
@@ -217,7 +218,6 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System" withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/DriverKit" withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Developer" withIntermediateDirectories:YES attributes:nil error:&error];
-                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb" withDestinationPath:jailbreakRootPath error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc" withDestinationPath:@"/var/jb/private/etc" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/var" withDestinationPath:@"/var" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/var" withDestinationPath:@"/var" error:&error];
@@ -355,10 +355,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.3";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.3-fix1";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.3";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.3-fix1";
     }
 }
 
