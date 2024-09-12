@@ -669,9 +669,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *choicyPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"choicy.deb"];
             [self installPackage:choicyPath];
 
-            NSString *abistubPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"abistub.deb"];
-            [self installPackage:abistubPath];
-
+            //NSString *abistubPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"abistub.deb"];
+            //[self installPackage:abistubPath];
+            //todo: arm64 check, it fucks with dpkg on arm64e
         }
     }
 
@@ -683,6 +683,13 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     NSError *error = [self ensurePrivatePrebootIsWritable];
     if (error) return error;
     NSString *path = [[NSString stringWithUTF8String:gSystemInfo.jailbreakInfo.rootPath] stringByDeletingLastPathComponent];
+    for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/jb/etc/active" error:nil]) {
+            if (subItem.length == 11 && [subItem hasPrefix:@"jb-"]) {
+                oldsecondaryjbpath = [@"/var/jb/etc/active" stringByAppendingPathComponent:subItem];
+            }
+    }
+    [[NSFileManager defaultManager] removeItemAtPath:oldsecondaryjbpath error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb/etc/active/procursus" error:&error];
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
     if (error) return error;
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb" error:nil];

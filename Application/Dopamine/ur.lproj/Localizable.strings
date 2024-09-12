@@ -103,7 +103,7 @@
 "Initializing Protection" = "Initializing Protection";
 "Loading BaseBin TrustCache" = "Loading BaseBin TrustCache (9/15)";
 "Applying Bind Mount" = "Binding fakelib (11/15)";
-"Removing Jailbreak" = "Restoring RootFS";
+"Removing Jailbreak" = "Reverting System Snapshot";
 "Elevating Privileges" = "Elevating Privileges (7/15)";
 "Cleaning Up Exploits" = "Cleaning Up Exploits (6/15)";
 "Building Phys R/W Primitive" = "Building Phys R/W Primitive (5/15)";

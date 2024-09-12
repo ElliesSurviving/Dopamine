@@ -227,6 +227,7 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:secondJBPath withDestinationPath:jailbreakRootPath error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:procursusSymlinkLol withDestinationPath:jailbreakRootPath error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/etc/active" withDestinationPath:activePrebootPath error:&error]; // yes im cheating and thats cuz i know the rules /s
                 [[NSData data] writeToFile:@"/var/jb/.fseventsd/fseventsd-uuid" atomically:YES];
                 if (@available(iOS 16.0, *)) {
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Applications" withIntermediateDirectories:YES attributes:nil error:&error];
@@ -355,10 +356,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.4";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.5";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.4";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.5";
     }
 }
 
