@@ -686,9 +686,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/jb/etc/active" error:nil]) {
             if (subItem.length == 11 && [subItem hasPrefix:@"jb-"]) {
                 NSString *oldsecondaryjbpath = [@"/var/jb/etc/active" stringByAppendingPathComponent:subItem];
+                [[NSFileManager defaultManager] removeItemAtPath:oldsecondaryjbpath error:&error];
             }
     }
-    [[NSFileManager defaultManager] removeItemAtPath:oldsecondaryjbpath error:&error];
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/jb/etc/active/procursus" error:&error];
     [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
     if (error) return error;
