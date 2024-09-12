@@ -166,17 +166,28 @@ int reboot3(uint64_t flags, ...);
 
         NSString *characterSet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         NSUInteger stringLen = 6;
+        NSUInteger stringLenSecond = 8;
         NSMutableString *randomString = [NSMutableString stringWithCapacity:stringLen];
+        NSMutableString *randomStringSecond = [NSMutableString stringWithCapacity:stringLenSecond];
         for (NSUInteger i = 0; i < stringLen; i++) {
             NSUInteger randomIndex = arc4random_uniform((uint32_t)[characterSet length]);
             unichar randomCharacter = [characterSet characterAtIndex:randomIndex];
             [randomString appendFormat:@"%C", randomCharacter];
         }
+        for (NSUInteger i = 0; i < stringLenSecond; i++) {
+            NSUInteger randomIndex = arc4random_uniform((uint32_t)[characterSet length]);
+            unichar randomCharacter = [characterSet characterAtIndex:randomIndex];
+            [randomStringSecond appendFormat:@"%C", randomCharacter];
+        }
 
         BOOL x1linksEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"x1linksEnabled" fallback:NO];
         NSString *randomJailbreakFolderName = [NSString stringWithFormat:@"dopamine-%@", randomString];
+        NSString *randomJailbreakFolderNameSecond = [NSString stringWithFormat:@"jb-%@", randomStringSecond];
         NSString *randomizedJailbreakPath = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderName];
+        NSString *randomizedJailbreakPathSecond = [activePrebootPath stringByAppendingPathComponent:randomJailbreakFolderNameSecond];
+        NSString *secondJBPath = [randomizedJailbreakPathSecond stringByAppendingPathComponent:@"procursus"];
         NSString *jailbreakRootPath = [randomizedJailbreakPath stringByAppendingPathComponent:@"procursus"];
+        NSString *procursusSymlinkLol = [activePrebootPath stringByAppendingPathComponent:@"procursus"];
         NSString *jailbreakRootCores = [jailbreakRootPath stringByAppendingPathComponent:@"cores"];
         NSString *jailbreakRootDeveloper = [jailbreakRootPath stringByAppendingPathComponent:@"Developer"];
         NSString *jailbreakRootPrivate = [jailbreakRootPath stringByAppendingPathComponent:@"private"];
@@ -193,6 +204,7 @@ int reboot3(uint64_t flags, ...);
         else {
             if (![[NSFileManager defaultManager] fileExistsAtPath:jailbreakRootPath]) {
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootPath withIntermediateDirectories:YES attributes:nil error:&error];
+                [[NSFileManager defaultManager] createDirectoryAtPath:randomizedJailbreakPathSecond withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootCores withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootDeveloper withIntermediateDirectories:YES attributes:nil error:&error];
                 [[NSFileManager defaultManager] createDirectoryAtPath:jailbreakRootPrivate withIntermediateDirectories:YES attributes:nil error:&error];
@@ -213,6 +225,8 @@ int reboot3(uint64_t flags, ...);
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/private/xarts" withDestinationPath:@"/private/xarts" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/dev" withDestinationPath:@"/dev" error:&error];
                 [[NSFileManager defaultManager] createSymbolicLinkAtPath:@"/var/jb/tmp" withDestinationPath:@"/var/tmp" error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:secondJBPath withDestinationPath:jailbreakRootPath error:&error];
+                [[NSFileManager defaultManager] createSymbolicLinkAtPath:procursusSymlinkLol withDestinationPath:jailbreakRootPath error:&error];
                 [[NSData data] writeToFile:@"/var/jb/.fseventsd/fseventsd-uuid" atomically:YES];
                 if (@available(iOS 16.0, *)) {
                     [[NSFileManager defaultManager] createDirectoryAtPath:@"/var/jb/System/Applications" withIntermediateDirectories:YES attributes:nil error:&error];
@@ -341,10 +355,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.2";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.3";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.2";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.3";
     }
 }
 
