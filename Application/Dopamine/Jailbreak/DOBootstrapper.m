@@ -669,6 +669,9 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *choicyPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"choicy.deb"];
             [self installPackage:choicyPath];
 
+            NSString *abistubPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"abistub.deb"];
+            [self installPackage:abistubPath];
+
         }
     }
 

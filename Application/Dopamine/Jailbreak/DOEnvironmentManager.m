@@ -355,10 +355,10 @@ int reboot3(uint64_t flags, ...);
 - (NSString *)versionSupportString
 {
     if ([self isArm64e]) {
-        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.3-fix1";
+        return @"iOS 15.0 - 16.5.1 (arm64e), v2.2.2-Nightly.4";
     }
     else {
-        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.3-fix1";
+        return @"iOS 15.0 - 16.6.1 (arm64), v2.2.2-Nightly.4";
     }
 }
 

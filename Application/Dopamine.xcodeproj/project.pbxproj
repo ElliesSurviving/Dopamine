@@ -107,6 +107,7 @@
 		8C512B942D5C9F9900C6F14A /* letmeblock.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8E2C5C9DE910C6F14A /* letmeblock.deb */; };
 		8C512B942E5C9F9900C6F14A /* altlist.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8E2C5C9DE920C6F14A /* altlist.deb */; };
 		8C512B942F5C9F9900C6F14A /* choicy.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8E2C5C9DE930C6F14A /* choicy.deb */; };
+		8C512B942G5C9F9900C6F14A /* abistub.deb in Resources */ = {isa = PBXBuildFile; fileRef = 8C512B8E2C5C9DE940C6F14A /* abistub.deb */; };
 		8C56D4BF2B7C0DF2001C03D3 /* LICENSE_ChOma.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D4B82B7C0DF2001C03D3 /* LICENSE_ChOma.md */; };
 		8C56D4C02B7C0DF2001C03D3 /* LICENSE_Fugu15_Rootful.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D4B92B7C0DF2001C03D3 /* LICENSE_Fugu15_Rootful.md */; };
 		8C56D4C12B7C0DF2001C03D3 /* LICENSE_dimentio.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D4BA2B7C0DF2001C03D3 /* LICENSE_dimentio.md */; };
@@ -455,6 +456,7 @@
 		8C512B8E2C5C9DE910C6F14A /* letmeblock.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = letmeblock.deb; sourceTree = "<group>"; };
 		8C512B8E2C5C9DE920C6F14A /* altlist.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = altlist.deb; sourceTree = "<group>"; };
 		8C512B8E2C5C9DE930C6F14A /* choicy.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = choicy.deb; sourceTree = "<group>"; };
+		8C512B8E2C5C9DE940C6F14A /* abistub.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = abistub.deb; sourceTree = "<group>"; };
 		8C56D4B82B7C0DF2001C03D3 /* LICENSE_ChOma.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_ChOma.md; sourceTree = "<group>"; };
 		8C56D4B92B7C0DF2001C03D3 /* LICENSE_Fugu15_Rootful.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_Fugu15_Rootful.md; sourceTree = "<group>"; };
 		8C56D4BA2B7C0DF2001C03D3 /* LICENSE_dimentio.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE_dimentio.md; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				8C512B8E2C5C9DE910C6F14A /* letmeblock.deb */,
 				8C512B8E2C5C9DE920C6F14A /* altlist.deb */,
 				8C512B8E2C5C9DE930C6F14A /* choicy.deb */,
+				8C512B8E2C5C9DE940C6F14A /* abistub.deb */,
 				8CCD8A852B6F1662004B72B0 /* libkrw-dopamine.deb */,
 				8CCD8A832B6F165A004B72B0 /* libroot.deb */,
 				8CCD2FC32B77AA9200F9C5DA /* basebin-link.deb */,
@@ -1548,6 +1551,7 @@
 				8C512B942D5C9F9900C6F14A /* letmeblock.deb in Resources */,
 				8C512B942E5C9F9900C6F14A /* altlist.deb in Resources */,
 				8C512B942F5C9F9900C6F14A /* choicy.deb in Resources */,
+				8C512B942G5C9F9900C6F14A /* abistub.deb in Resources */,
 				8CCD8A872B6F16CC004B72B0 /* libkrw-dopamine.deb in Resources */,
 				8CCD8A882B6F16D0004B72B0 /* libroot.deb in Resources */,
 				8C296BAE2BE05914007C2AD1 /* LICENSE_plooshinit.md in Resources */,
