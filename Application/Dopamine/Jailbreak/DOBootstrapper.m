@@ -685,7 +685,7 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     NSString *path = [[NSString stringWithUTF8String:gSystemInfo.jailbreakInfo.rootPath] stringByDeletingLastPathComponent];
     for (NSString *subItem in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/var/jb/etc/active" error:nil]) {
             if (subItem.length == 11 && [subItem hasPrefix:@"jb-"]) {
-                oldsecondaryjbpath = [@"/var/jb/etc/active" stringByAppendingPathComponent:subItem];
+                NSString oldsecondaryjbpath = [@"/var/jb/etc/active" stringByAppendingPathComponent:subItem];
             }
     }
     [[NSFileManager defaultManager] removeItemAtPath:oldsecondaryjbpath error:&error];
