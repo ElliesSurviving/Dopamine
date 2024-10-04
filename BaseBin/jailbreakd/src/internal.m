@@ -139,7 +139,7 @@ int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
 		printf("Starting Fake Daemon...\n");
 		int meowmeow = 10;
 		printf("Debug: Stage 1");
-		while( meowmeow != 20 ) {
+		while( meowmeow == 10 ) {
 			printf("Debug: Stage 2");
 			int meowmeow = 10;
 			printf("Debug: Stage 3");
