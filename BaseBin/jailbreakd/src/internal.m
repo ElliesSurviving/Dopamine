@@ -141,10 +141,8 @@ int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
 		printf("Debug: Stage 1");
 		while( meowmeow != 20 ) {
 			printf("Debug: Stage 2");
-			usleep(10000); //this would be more efficient dont you think
-			printf("Debug: Stage 3");
 			int meowmeow = 10;
-			printf("Debug: Stage 4");
+			printf("Debug: Stage 3");
 			return meowmeow;
 		}
 		return nil;
