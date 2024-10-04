@@ -139,7 +139,9 @@ int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
 		printf("Starting Fake Daemon...\n");
 		int meowmeow = 10;
 		while( meowmeow != 20 ) {
-			return 0;
+			usleep(1800); //this would be more efficient dont you think
+			meowmeow = 10;
+			return meowmeow;
 		}
 	}
 	else if (!strcmp(command, "startup")) {
