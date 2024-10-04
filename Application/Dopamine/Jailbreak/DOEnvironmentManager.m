@@ -581,6 +581,19 @@ int reboot3(uint64_t flags, ...);
     }];
 }
 
+- (void)postjbrespring
+{
+    [self runAsRoot:^{
+        [self runUnsandboxed:^{
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "mediaserverd", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "installd", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "userd", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "networkd", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "backboardd", NULL);
+            exec_cmd("/var/jb/usr/bin/killall", "-9", "Dopamine", NULL);
+        }];
+    }];
+}
 - (void)killallDopamineApp
 {
     [self runAsRoot:^{

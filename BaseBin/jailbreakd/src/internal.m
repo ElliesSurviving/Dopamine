@@ -135,6 +135,13 @@ int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
     	}	
 		return mount_unsandboxed("bindfs", "/etc", MNT_RDONLY, (void *)JBROOT_PATH("/usr/etc"));
 	}
+	else if (!strcmp(command, "startfaked")) { // i want this to act as a daemon fr
+		printf("Starting Fake Daemon...\n");
+		int meowmeow = 10;
+		while( meowmeow != 20 ) {
+			return 0;
+		}
+	}
 	else if (!strcmp(command, "startup")) {
 //		ensureProtectionActive();
 		char *panicMessage = NULL;
