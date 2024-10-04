@@ -669,6 +669,10 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             NSString *choicyPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"choicy.deb"];
             [self installPackage:choicyPath];
 
+            //NSString *dependsx1Path = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"dependsx1.deb"];
+            //[self installPackage:dependsx1Path];
+            //for next update
+
             //NSString *abistubPath = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"abistub.deb"];
             //[self installPackage:abistubPath];
             //todo: arm64 check, it fucks with dpkg on arm64e
