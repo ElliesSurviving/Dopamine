@@ -138,9 +138,13 @@ int jailbreakd_handle_internal(const char *command, int argc, char* argv[])
 	else if (!strcmp(command, "startfaked")) { // i want this to act as a daemon fr
 		printf("Starting Fake Daemon...\n");
 		int meowmeow = 10;
+		printf("Debug: Stage 1")
 		while( meowmeow != 20 ) {
-			usleep(1800); //this would be more efficient dont you think
-			meowmeow = 10;
+			printf("Debug: Stage 2")
+			usleep(10000); //this would be more efficient dont you think
+			printf("Debug: Stage 3")
+			int meowmeow = 10;
+			printf("Debug: Stage 4")
 			return meowmeow;
 		}
 	}
