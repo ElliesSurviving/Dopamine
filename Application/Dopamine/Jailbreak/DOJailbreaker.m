@@ -618,10 +618,12 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
     BOOL userspacerebootafterjbEnabled = [[DOPreferenceManager sharedManager] boolPreferenceValueForKey:@"userspacerebootafterjbEnabled" fallback:YES];
     if (!userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Respringing Now...") debug:NO];
+    [[NSData data] writeToFile:JBROOT_PATH(@"/tmp/.DopamineLoaded") atomically:YES];
     [[DOEnvironmentManager sharedManager] postjbrespring];
     }
     if (userspacerebootafterjbEnabled) {
     [[DOUIManager sharedInstance] sendLog:DOLocalizedString(@"Jailbroken. Rebooting Now...") debug:NO];
+    [[NSData data] writeToFile:JBROOT_PATH(@"/tmp/.DopamineLoaded") atomically:YES];
     [[DOEnvironmentManager sharedManager] ldrestartcall];
     }
 }
