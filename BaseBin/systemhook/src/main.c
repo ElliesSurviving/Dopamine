@@ -290,7 +290,7 @@ __attribute__((constructor)) static void initializer(void)
 	// Apply posix_spawn / execve hooks
 	if (__builtin_available(iOS 16.0, *)) {
 		litehook_hook_function(__posix_spawn, __posix_spawn_hook);
-		litehook_hook_function(__execve, __execve_hook);
+		litehook_hook_function(__execve,      __execve_hook);
 	}
 	else {
 		// On iOS 15 there is a way to hook posix_spawn and execve without doing instruction replacements
@@ -298,10 +298,10 @@ __attribute__((constructor)) static void initializer(void)
 		// Unfortunately Apple decided to remove these in iOS 16 :( Doesn't matter too much though because spinlock panics are fixed there
 
 		void **posix_spawn_with_filter = litehook_find_dsc_symbol("/usr/lib/system/libsystem_kernel.dylib", "_posix_spawn_with_filter");
-		*posix_spawn_with_filter = __posix_spawn_hook_with_filter;
+		void **execve_with_filter      = litehook_find_dsc_symbol("/usr/lib/system/libsystem_kernel.dylib", "_execve_with_filter");
 
-		void **execve_with_filter = litehook_find_dsc_symbol("/usr/lib/system/libsystem_kernel.dylib", "_execve_with_filter");
-		*execve_with_filter = __execve_hook;
+	    *posix_spawn_with_filter = __posix_spawn_hook_with_filter;
+		*execve_with_filter      = __execve_hook;
 	}
 
 	// Initialize stuff neccessary for sandbox_apply hook
@@ -311,11 +311,11 @@ __attribute__((constructor)) static void initializer(void)
 	// Apply dyld hooks
 	void ***gDyldPtr = litehook_find_dsc_symbol("/usr/lib/system/libdyld.dylib", "__ZN5dyld45gDyldE");
 	if (gDyldPtr) {
-		dyld_hook_routine(*gDyldPtr, 14, (void *)&dyld_dlopen_hook, (void **)&dyld_dlopen_orig, 0xBF31);
-		dyld_hook_routine(*gDyldPtr, 17, (void *)&dyld_dlsym_hook, (void **)&dyld_dlsym_orig, 0x839D);
+		dyld_hook_routine(*gDyldPtr, 14, (void *)&dyld_dlopen_hook,           (void **)&dyld_dlopen_orig,           0xBF31);
+		dyld_hook_routine(*gDyldPtr, 17, (void *)&dyld_dlsym_hook,            (void **)&dyld_dlsym_orig,            0x839D);
 		dyld_hook_routine(*gDyldPtr, 18, (void *)&dyld_dlopen_preflight_hook, (void **)&dyld_dlopen_preflight_orig, 0xB1B6);
-		dyld_hook_routine(*gDyldPtr, 97, (void *)&dyld_dlopen_from_hook, (void **)&dyld_dlopen_from_orig, 0xD48C);
-		dyld_hook_routine(*gDyldPtr, 98, (void *)&dyld_dlopen_audited_hook, (void **)&dyld_dlopen_audited_orig, 0xD2A5);
+		dyld_hook_routine(*gDyldPtr, 97, (void *)&dyld_dlopen_from_hook,      (void **)&dyld_dlopen_from_orig,      0xD48C);
+		dyld_hook_routine(*gDyldPtr, 98, (void *)&dyld_dlopen_audited_hook,   (void **)&dyld_dlopen_audited_orig,   0xD2A5);
 	}
 
 #ifdef __arm64e__
