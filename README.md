@@ -3,7 +3,7 @@
 # Dopamine
 
 ~~This fork is essentially discontinued for the time being. Why? We're doing a lot more Android and Linux stuff now so this isnt at all a priority, and the current source here works just fine for what we need. This may be revived in the future, but its not a priority by us.~~
-As of 30/05/2025 we are back working on the project having now using KDE that actually works and switched back to iOS
+As of 30/05/2025 we are back working on the project having now using KDE that actually works and switched back to iOS, the new "refactor" branch contains more updated and stable code as the main branch is a mess and i cba to fix it
 
 Currently updated to dopamine 21/12/2024
 
