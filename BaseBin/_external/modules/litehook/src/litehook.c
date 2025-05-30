@@ -21,6 +21,55 @@
 #include <ptrauth.h>
 #include <sys/mman.h>
 
+#if __arm64__
+#define _COMM_PAGE_START_ADDRESS (0x0000000FFFFFC000ULL)
+#define _COMM_PAGE_TPRO_WRITE_ENABLE (_COMM_PAGE_START_ADDRESS + 0x0D0)
+#define _COMM_PAGE_TPRO_WRITE_DISABLE (_COMM_PAGE_START_ADDRESS + 0x0D8)
+
+static bool os_tpro_is_supported(void)
+{
+	if (*(uint64_t*)_COMM_PAGE_TPRO_WRITE_ENABLE) {
+		return true;
+	}
+	return false;
+}
+
+__attribute__((naked)) bool os_thread_self_tpro_is_writeable(void)
+{
+	__asm__ __volatile__ (
+		"mrs             x0, s3_6_c15_c1_5\n"
+		"ubfx            x0, x0, #0x24, #1;\n"
+		"ret\n"
+	);
+}
+
+void os_thread_self_restrict_tpro_to_rw(void)
+{
+	__asm__ __volatile__ (
+		"mov x0, %0\n"
+		"ldr x0, [x0]\n"
+		"msr s3_6_c15_c1_5, x0\n"
+		"isb sy\n"
+		:: "r" (_COMM_PAGE_TPRO_WRITE_ENABLE)
+		: "memory", "x0"
+	);
+	return;
+}
+
+void os_thread_self_restrict_tpro_to_ro(void)
+{
+	__asm__ __volatile__ (
+		"mov x0, %0\n"
+		"ldr x0, [x0]\n"
+		"msr s3_6_c15_c1_5, x0\n"
+		"isb sy\n"
+		:: "r" (_COMM_PAGE_TPRO_WRITE_DISABLE)
+		: "memory", "x0"
+	);
+	return;
+}
+#endif
+
 size_t _lth_fstrlen(FILE *f)
 {
 	size_t sz = 0;
@@ -164,6 +213,82 @@ uintptr_t litehook_get_dsc_slide(void)
 	return slide;
 }
 
+void *_litehook_sign_if_executable(void *ptr)
+{
+	vm_address_t region = (vm_address_t)ptr;
+	vm_size_t region_len = 0;
+	struct vm_region_submap_short_info_64 info;
+	mach_msg_type_number_t info_count = VM_REGION_SUBMAP_SHORT_INFO_COUNT_64;
+	natural_t max_depth = 99999;
+	kern_return_t kr = vm_region_recurse_64(mach_task_self(), &region, &region_len, &max_depth, (vm_region_recurse_info_t)&info, &info_count);
+	if (info.protection & PROT_EXEC) {
+		return ptrauth_sign_unauthenticated(ptr, ptrauth_key_function_pointer, 0);
+	}
+	return ptr;
+}
+
+void *litehook_find_symbol(const mach_header_u *header, const char *symbolName)
+{
+	struct symtab_command *symtabCommand = NULL;
+	segment_command_u *linkeditSegCommand = NULL;
+
+	uint32_t slide = -1;
+
+	uint32_t off = 0;
+	for (uint32_t i = 0; i < header->ncmds && off < header->sizeofcmds; i++) {
+		struct load_command *lc = (struct load_command *)((uintptr_t)header + sizeof(mach_header_u) + off);
+
+		if (lc->cmd == LC_SYMTAB) {
+			symtabCommand = (struct symtab_command *)lc;
+		}
+		else if (lc->cmd == LC_SEGMENT_U) {
+			segment_command_u *segCmd = (segment_command_u *)lc;
+			if (slide == -1) {
+				slide = (uintptr_t)header - segCmd->vmaddr;
+			}
+			if (!strncmp(segCmd->segname, "__LINKEDIT", sizeof(segCmd->segname))) {
+				linkeditSegCommand = segCmd;
+			}
+		}
+
+		if (symtabCommand && linkeditSegCommand) break;
+
+		off += lc->cmdsize;
+	}
+
+	if (!symtabCommand || !linkeditSegCommand) return NULL;
+
+	uint8_t *linkedit = (uint8_t *)((uintptr_t)header + linkeditSegCommand->vmaddr);
+
+	nlist_u *syms = (nlist_u *)(linkedit + (symtabCommand->symoff - linkeditSegCommand->fileoff));
+	char *strtbl = (char *)(linkedit + (symtabCommand->stroff - linkeditSegCommand->fileoff));
+	size_t strtblSize = symtabCommand->strsize;
+
+	for (uint32_t i = 0; i < symtabCommand->nsyms; i++) {
+		nlist_u *symEntry = &syms[i];
+
+		uint32_t stroff = symEntry->n_un.n_strx;
+		if (stroff >= strtblSize || off == 0) {
+			continue;
+		}
+
+		if ((symEntry->n_type & N_TYPE) != N_SECT) {
+			continue;
+		}
+
+		const char* curSymbolName = &strtbl[stroff];
+		if (curSymbolName[0] == '\x00') {
+			continue;
+		}
+
+		if (!strcmp(curSymbolName, symbolName)) {
+			return _litehook_sign_if_executable((void *)((uintptr_t)header + symEntry->n_value));
+		}
+	}
+
+	return NULL;
+}
+
 void *litehook_find_dsc_symbol(const char *imagePath, const char *symbolName)
 {
 	const char *mainDSCPath = litehook_locate_dsc();
@@ -241,7 +366,7 @@ void *litehook_find_dsc_symbol(const char *imagePath, const char *symbolName)
 		char curSymbolName[len+1];
 		if (fread(curSymbolName, len+1, 1, symbolDSC) != 1) goto end;
 		if (!strcmp(curSymbolName, symbolName)) {
-			symbol = (void *)(litehook_get_dsc_slide() + n.n_value);
+			symbol = _litehook_sign_if_executable((void *)(litehook_get_dsc_slide() + n.n_value));
 		}
 	}
 
@@ -256,7 +381,7 @@ end:
 	return symbol;
 }
 
-void _litehook_rebind_symbol_in_section(const mach_header *targetHeader, section *section, void *replacee, void *replacement)
+void _litehook_rebind_symbol_in_section(const mach_header_u *targetHeader, section_u *section, void *replacee, void *replacement)
 {
 	char segname[sizeof(section->segname)+1];
 	strlcpy(segname, section->segname, sizeof(segname));
@@ -278,6 +403,15 @@ void _litehook_rebind_symbol_in_section(const mach_header *targetHeader, section
 		if (auth) symbolPointer = ptrauth_strip(ptrauth_auth_function(symbolPointers[i], ptrauth_key_function_pointer, &symbolPointers[i]), ptrauth_key_function_pointer);
 
 		if (symbolPointer == replacee) {
+#if __arm64__
+			bool needsTPRORevert = false;
+			if (os_tpro_is_supported()) {
+				if (!os_thread_self_tpro_is_writeable()) {
+					os_thread_self_restrict_tpro_to_rw();
+					needsTPRORevert = true;
+				}
+			}
+#endif
 			litehook_unprotect((vm_address_t)&symbolPointers[i], sizeof(void *));
 			if (auth) { 
 				symbolPointers[i] = ptrauth_auth_and_resign(replacement, ptrauth_key_function_pointer, 0, ptrauth_key_process_independent_code, &symbolPointers[i]);
@@ -285,21 +419,26 @@ void _litehook_rebind_symbol_in_section(const mach_header *targetHeader, section
 			else {
 				symbolPointers[i] = ptrauth_strip(replacement, ptrauth_key_function_pointer);
 			}
+#if __arm64__
+			if (needsTPRORevert) {
+				os_thread_self_restrict_tpro_to_ro();
+			}
+#endif
 		}
 	}
 }
 
 typedef struct {
-	const mach_header *sourceHeader;
+	const mach_header_u *sourceHeader;
 	void *replacee;
 	void *replacement;
-	bool (*exceptionFilter)(const mach_header *header);
+	bool (*exceptionFilter)(const mach_header_u *header);
 } global_rebind;
 
 uint32_t gRebindCount = 0;
 global_rebind *gRebinds = NULL;
 
-void _litehook_apply_global_rebind(const mach_header* mh, global_rebind *rebind)
+void _litehook_apply_global_rebind(const mach_header_u *mh, global_rebind *rebind)
 {
 	if (mh != rebind->sourceHeader) {
 		bool filterAllowed = true;
@@ -310,7 +449,7 @@ void _litehook_apply_global_rebind(const mach_header* mh, global_rebind *rebind)
 	}
 }
 
-void _litehook_apply_global_rebinds(const mach_header* mh, intptr_t vmaddr_slide)
+void _litehook_apply_global_rebinds(const mach_header_u *mh, intptr_t vmaddr_slide)
 {
 	if (!gRebinds || gRebindCount == 0) return;
 
@@ -320,7 +459,7 @@ void _litehook_apply_global_rebinds(const mach_header* mh, intptr_t vmaddr_slide
 	}
 }
 
-void litehook_rebind_symbol(const mach_header *targetHeader, void *replacee, void *replacement, bool (*exceptionFilter)(const mach_header *header))
+void litehook_rebind_symbol(const mach_header_u *targetHeader, void *replacee, void *replacement, bool (*exceptionFilter)(const mach_header_u *header))
 {
 	if (targetHeader == LITEHOOK_REBIND_GLOBAL) {
 		if (!replacee || !replacement) return;
@@ -329,10 +468,10 @@ void litehook_rebind_symbol(const mach_header *targetHeader, void *replacee, voi
 		Dl_info replacementInfo = {};
 		if (dladdr(replacement, &replacementInfo) == 0) return;
 		if (replacementInfo.dli_fname == NULL) return;
-		const mach_header *sourceHeader = NULL;
+		const mach_header_u *sourceHeader = NULL;
 		for (unsigned i = 0; i < _dyld_image_count(); i++) {
 			if (!strcmp(_dyld_get_image_name(i), replacementInfo.dli_fname)) {
-				sourceHeader = (const mach_header *)_dyld_get_image_header(i);
+				sourceHeader = (const mach_header_u *)_dyld_get_image_header(i);
 				break;
 			}
 		}
@@ -351,20 +490,20 @@ void litehook_rebind_symbol(const mach_header *targetHeader, void *replacee, voi
 		rebind->exceptionFilter = exceptionFilter;
 
 		for (uint32_t i = 0; i < _dyld_image_count(); i++) {
-			const mach_header *header = (const mach_header *)_dyld_get_image_header(i);
+			const mach_header_u *header = (const mach_header_u *)_dyld_get_image_header(i);
 			// Apply new rebind for all already loaded images
 			_litehook_apply_global_rebind(header, rebind);
 		}
 	}
 	else {
-		struct load_command *lcp = (void *)((uintptr_t)targetHeader + sizeof(mach_header));
+		struct load_command *lcp = (void *)((uintptr_t)targetHeader + sizeof(mach_header_u));
 		for(int i = 0; i < targetHeader->ncmds; i++) {
-			if (lcp->cmd == LC_SEGMENT_ARCH) {
-				segment_command *segCmd = (segment_command *)lcp;
+			if (lcp->cmd == LC_SEGMENT_U) {
+				segment_command_u *segCmd = (segment_command_u *)lcp;
 				if (!strncmp(segCmd->segname, "__AUTH_CONST", sizeof(segCmd->segname)) ||
 					!strncmp(segCmd->segname, "__DATA_CONST", sizeof(segCmd->segname)) ||
 					!strncmp(segCmd->segname, "__DATA", sizeof(segCmd->segname))) {
-					section *sections = (void *)((uintptr_t)lcp + sizeof(segment_command));
+					section_u *sections = (void *)((uintptr_t)lcp + sizeof(segment_command_u));
 					for (int j = 0; j < segCmd->nsects; j++) {
 						if ((sections[j].flags & SECTION_TYPE) == S_LAZY_SYMBOL_POINTERS || 
 							(sections[j].flags & SECTION_TYPE) == S_NON_LAZY_SYMBOL_POINTERS) {
