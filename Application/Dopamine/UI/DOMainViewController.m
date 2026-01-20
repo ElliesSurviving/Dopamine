@@ -238,9 +238,7 @@
             else {
                 // No errors
                 [[DOUIManager sharedInstance] completeJailbreak];
-                [self fadeToBlack: ^{
                     [jailbreaker finalize];
-                }];
             }
         });
         [self.jailbreakBtn unlockMutex];

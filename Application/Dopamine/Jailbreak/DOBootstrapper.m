@@ -426,17 +426,14 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"/var/apt",
             @"/var/bin",
             @"/var/bzip2",
-            @"/var/cache",
             @"/var/dpkg",
             @"/var/etc",
             @"/var/gzip",
-            @"/var/lib",
             @"/var/Lib",
             @"/var/libexec",
             @"/var/Library",
             @"/var/LIY",
             @"/var/Liy",
-            @"/var/local",
             @"/var/newuser",
             @"/var/profile",
             @"/var/sbin",
@@ -454,11 +451,8 @@ typedef NS_ENUM(NSInteger, JBErrorCode) {
             @"/var/zprofile",
             @"/var/zshenv",
             @"/var/zshrc",
-            @"/var/log/dpkg",
-            @"/var/log/apt",
         ];
         NSArray *xinaLeftoverFiles = @[
-            @"/var/lib",
             @"/var/master.passwd"
         ];
         
