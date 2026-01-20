@@ -83,7 +83,7 @@ int __posix_spawn_hook(pid_t *restrict pid, const char *restrict path,
 			ensure_fakelib_mounted();
 
 #if LOG_PROCESS_LAUNCHES
-			FILE *f = fopen("//var/mobilelaunch_log.txt", "a");
+			FILE *f = fopen("//var/mobile/launch_log.txt", "a");
 			fprintf(f, "==== USERSPACE REBOOT ====\n");
 			fclose(f);
 #endif
