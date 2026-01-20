@@ -2,8 +2,14 @@
 
 # Dopamine
 
-A rootless semi-untethered jailbreak for iOS 15.0 - 16.5.1 (arm64e) and iOS 15.0 - 16.6.1 (arm64). More details will follow here soon.
+I made a fork of this. the original 2.0 branch on this repository was the default but i hate the code and its a mess so im redoing it.
 
-Please note that all issues related to version support will be deleted without response.
+Under no circumstances blame opa334 for anything on this repo, aint his shit, if you fuck up your phone with this aint anyones fault, womm.
 
-Official website / download: https://ellekit.space/dopamine/
+### Ok but, why?
+
+Long fucking story dude, in 2024 opa almost bootlooped my phone with an update that had a recursive chown of /var/jb/var/mobile every jailbreak, and my /var/jb/var was a symlink to /var. SO, i made this repo to fix that and then add some other things i wanted like automatic symlinking of var every bootstrap, xinamine but like not shit? (their package kept breaking every time they updated it idk)
+
+### Where is this at?
+
+Im refactoring this again as of january 20th 2026 so uh, nowhere rn!, the other codebase is fucked if you want to look at it but has been fucked from since like 2024, im readding all the features of my fork into modern dopamine, yeah.

@@ -84,6 +84,5 @@ char *boot_manifest_hash(void);
 NSString *NSPrebootUUIDPath(NSString *relativePath);
 #endif
 
-void JBFixMobilePermissions(void);
 
 #endif
